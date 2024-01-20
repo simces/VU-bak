@@ -35,7 +35,7 @@ CREATE TABLE comments (
                         commented_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         FOREIGN KEY (user_id) REFERENCES users (id),
                         FOREIGN KEY (photo_id) REFERENCES photos (id)
-)
+);
 
 CREATE TABLE notifications (
                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -46,15 +46,36 @@ CREATE TABLE notifications (
                         read_status BIT NOT NULL DEFAULT 0,
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         FOREIGN KEY (user_id) REFERENCES users (id)
-)
+);
 
 CREATE TABLE follows (
                          follower_id BIGINT NOT NULL,
-                         following_id BIGINT NOT NOT NULL,
+                         following_id BIGINT NOT NULL,
                          PRIMARY KEY (follower_id, following_id),
                          FOREIGN KEY (follower_id) REFERENCES users (id),
                          FOREIGN KEY (following_id) REFERENCES users (id)
 );
 
+CREATE TABLE AiTagFeedback (
+                               id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                               photo_tag_id BIGINT NOT NULL,
+                               user_id BIGINT NOT NULL,
+                               feedback BIT NOT NULL,
+                               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                               FOREIGN KEY (photo_tag_id) REFERENCES photos(id),
+                               FOREIGN KEY (user_id) REFERENCES users(id)
+);
 
+CREATE TABLE tag (
+                     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                     name VARCHAR(255) NOT NULL
+);
 
+CREATE TABLE PhotoTag (
+                          photo_id BIGINT NOT NULL,
+                          tag_id BIGINT NOT NULL,
+                          confidence DECIMAL(10, 9),
+                          PRIMARY KEY (photo_id, tag_id),
+                          FOREIGN KEY (photo_id) REFERENCES photos(id),
+                          FOREIGN KEY (tag_id) REFERENCES tag(id)
+);
