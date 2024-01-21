@@ -53,7 +53,7 @@ def predict():
 
         # retrieves top 5 results with propabilities
         probabilities = torch.nn.functional.softmax(outputs[0], dim=0)
-        top5_prob, top5_catid = torch.topk(probabilities, 1)
+        top5_prob, top5_catid = torch.topk(probabilities, 3)
         results = [{"label": labels_map[str(catid.item())][1], "probability": prob.item()} for prob, catid in zip(top5_prob, top5_catid)]
         
         # returns the result as a JSON response
