@@ -1,21 +1,46 @@
 package com.photoAI.business.service;
 
 import com.photoAI.business.repository.model.UserDAO;
-
-import java.util.List;
-import java.util.Optional;
+import com.photoAI.model.UserCreationDTO;
+import com.photoAI.model.UserPasswordChangeDTO;
+import com.photoAI.model.UserProfileDTO;
 
 public interface UserService {
 
-    UserDAO createUser(UserDAO user);
+    /**
+     * Retrieves a user profile based on the username.
+     *
+     * @param username The username of the user.
+     * @return UserProfileDTO containing user details.
+     */
+    UserProfileDTO findByUsername(String username);
 
-    Optional<UserDAO> getUserById(Long id);
+    /**
+     * Registers a new user into the system.
+     *
+     * @param userCreationDTO The data transfer object containing user creation data.
+     * @return UserDAO representing the newly created user.
+     */
+    UserDAO registerUser(UserCreationDTO userCreationDTO);
 
-    List<UserDAO> getAllUsers();
+    /**
+     * Updates the profile details of an existing user.
+     *
+     * @param userId The ID of the user to update.
+     * @param userProfileDTO The data transfer object containing new user profile data.
+     * @return UserProfileDTO representing the updated user profile.
+     */
+    UserProfileDTO changeProfileDetails(Long userId, UserProfileDTO userProfileDTO);
 
-    UserDAO updateUser(Long id, UserDAO userDetails);
+    /**
+     * Changes the password of an existing user.
+     *
+     * @param userId The ID of the user whose password is to be changed.
+     * @param passwordChangeDTO The data transfer object containing the old and new password.
+     */
+    void changePassword(Long userId, UserPasswordChangeDTO passwordChangeDTO);
 
-    void deleteUser(Long id);
-
-    // Additional methods based on your business logic (e.g., findByUsername, changePassword, etc.)
+    // void deleteUser(Long userId);
+    // List<UserProfileDTO> listUsers(int page, int size);
+    // void recoverPassword(String email);
 }

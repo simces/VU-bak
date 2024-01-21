@@ -1,13 +1,25 @@
 package com.photoAI.business.repository.model;
+import com.photoAI.business.repository.keys.FollowId;
 import jakarta.persistence.*;
 
+@Entity
 public class FollowDAO {
 
-    @Id
-    @Column(name = "follower_id")
-    private Long followerId;
+    @EmbeddedId
+    private FollowId id;
 
-    @Id
-    @Column(name = "following_id")
-    private Long followingId;
+    // Constructors, getters, setters
+    public FollowDAO() {}
+
+    public FollowDAO(FollowId id) {
+        this.id = id;
+    }
+
+    public FollowId getId() {
+        return id;
+    }
+
+    public void setId(FollowId id) {
+        this.id = id;
+    }
 }
