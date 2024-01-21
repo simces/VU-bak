@@ -13,6 +13,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -38,8 +41,14 @@ public class UserServiceImpl implements UserService {
     public UserDAO registerUser(UserCreationDTO userCreationDTO) {
         UserDAO newUser = userMapper.userCreationDTOToUserDAO(userCreationDTO);
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+
+        Timestamp now = Timestamp.from(Instant.now());
+        newUser.setCreatedAt(now);
+        newUser.setUpdatedAt(now);
+
         return userRepository.save(newUser);
     }
+
 
 
     @Transactional
@@ -48,12 +57,17 @@ public class UserServiceImpl implements UserService {
         UserDAO user = userRepository.findById(userId)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        UserDAO updatedUser = userMapper.userProfileDTOToUserDAO(userProfileDTO);
-        updatedUser.setId(user.getId());
+        user.setUsername(userProfileDTO.getUsername());
+        user.setEmail(userProfileDTO.getEmail());
+        user.setBio(userProfileDTO.getBio());
+        user.setProfilePictureUrl(userProfileDTO.getProfilePictureUrl());
+        user.setUpdatedAt(Timestamp.from(Instant.now()));
 
-        UserDAO savedUser = userRepository.save(updatedUser);
-        return userMapper.userDAOToUserProfileDTO(savedUser);
+        userRepository.save(user);
+
+        return userMapper.userDAOToUserProfileDTO(user);
     }
+
 
 
     @Transactional
@@ -67,6 +81,7 @@ public class UserServiceImpl implements UserService {
         }
 
         user.setPassword(passwordEncoder.encode(passwordChangeDTO.getNewPassword()));
+
         userRepository.save(user);
     }
 }
