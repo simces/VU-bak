@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com</groupId>
-	<artifactId>photoAI</artifactId>
+	<artifactId>photo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>photoAI</name>
 	<description>photoAI bachelor&apos;s project</description>
