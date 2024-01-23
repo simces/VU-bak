@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.userDAOToUserProfileDTO(user);
     }
 
-
     @Transactional
     @Override
     public UserDAO registerUser(UserCreationDTO userCreationDTO) {
@@ -54,9 +53,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(newUser);
     }
 
-
-
-
     @Transactional
     @Override
     public UserProfileDTO changeProfileDetails(Long userId, UserProfileDTO userProfileDTO) {
@@ -73,8 +69,6 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.userDAOToUserProfileDTO(user);
     }
-
-
 
     @Transactional
     @Override
