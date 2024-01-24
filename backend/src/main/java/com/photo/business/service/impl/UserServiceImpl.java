@@ -1,15 +1,18 @@
 package com.photo.business.service.impl;
 
+import com.photo.business.handlers.exceptions.EmailAlreadyInUseException;
+import com.photo.business.handlers.exceptions.IncorrectPasswordException;
+import com.photo.business.handlers.exceptions.UserNotFoundException;
+import com.photo.business.handlers.exceptions.UsernameAlreadyTakenException;
 import com.photo.business.mappers.UserMapper;
 import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.UserDAO;
+import com.photo.business.service.UserService;
 import com.photo.model.UserCreationDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
-import com.photo.business.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserProfileDTO findByUsername(String username) {
         UserDAO user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(UserNotFoundException::new);
         return userMapper.userDAOToUserProfileDTO(user);
     }
 
@@ -37,10 +40,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDAO registerUser(UserCreationDTO userCreationDTO) {
         if (userRepository.existsByUsername(userCreationDTO.getUsername())) {
-            throw new IllegalArgumentException("Username already taken");
+            throw new UsernameAlreadyTakenException();
         }
         if (userRepository.existsByEmail(userCreationDTO.getEmail())) {
-            throw new IllegalArgumentException("Email already in use");
+            throw new EmailAlreadyInUseException("The email " + userCreationDTO.getEmail() + " is already registered.");
         }
 
         UserDAO newUser = userMapper.userCreationDTOToUserDAO(userCreationDTO);
@@ -57,7 +60,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserProfileDTO changeProfileDetails(Long userId, UserProfileDTO userProfileDTO) {
         UserDAO user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(UserNotFoundException::new);
 
         user.setUsername(userProfileDTO.getUsername());
         user.setEmail(userProfileDTO.getEmail());
@@ -74,10 +77,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changePassword(Long userId, UserPasswordChangeDTO passwordChangeDTO) {
         UserDAO user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(UserNotFoundException::new);
 
         if (!passwordEncoder.matches(passwordChangeDTO.getCurrentPassword(), user.getPassword())) {
-            throw new IllegalArgumentException("Incorrect current password");
+            throw new IncorrectPasswordException();
         }
 
         user.setPassword(passwordEncoder.encode(passwordChangeDTO.getNewPassword()));
