@@ -24,12 +24,14 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // POST - Register a new user
+    /*
+    //POST - Register a new user, but for Postman requests
     @PostMapping("/register")
     public ResponseEntity<UserDAO> registerUser(@Valid @RequestBody UserCreationDTO userCreationDTO) {
         UserDAO newUser = userService.registerUser(userCreationDTO);
         return ResponseEntity.ok(newUser);
     }
+    */
 
     // PUT - Update user profile details
     @PutMapping("/{userId}/profile")
