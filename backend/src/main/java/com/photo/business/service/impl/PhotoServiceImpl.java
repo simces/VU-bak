@@ -1,5 +1,8 @@
 package com.photo.business.service.impl;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.photo.business.mappers.PhotoMapper;
 import com.photo.business.repository.PhotoRepository;
 import com.photo.business.repository.UserRepository;
@@ -13,15 +16,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.Timestamp;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -30,12 +31,14 @@ public class PhotoServiceImpl implements PhotoService {
     private final PhotoRepository photoRepository;
     private final PhotoMapper photoMapper;
     private final UserRepository userRepository;
+    private final AmazonS3 s3client;
 
     @Autowired
-    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository) {
+    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client) {
         this.photoRepository = photoRepository;
         this.photoMapper = photoMapper;
         this.userRepository = userRepository;
+        this.s3client = s3client;
     }
 
     @Override
@@ -55,8 +58,8 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException {
-        String fileName = storeFile(file);
-        photoDTO.setImageUrl(fileName);
+        String fileUrl = uploadFileToS3(file);
+        photoDTO.setImageUrl(fileUrl);
 
         // Retrieve the currently authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -71,23 +74,20 @@ public class PhotoServiceImpl implements PhotoService {
         photoRepository.save(photo);
     }
 
-    private String storeFile(MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
-            throw new IllegalStateException("Cannot upload empty file");
-        }
+    private String generateFileName(MultipartFile file) {
+        String originalFileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        String fileExtension = Optional.of(originalFileName)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(originalFileName.lastIndexOf(".") + 1))
+                .orElse("");
+        return UUID.randomUUID().toString() + "." + fileExtension;
+    }
 
-        File directory = new File("C:\\Users\\Simas\\Desktop\\test");
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
 
-        // Construct file path
-        String originalFileName = file.getOriginalFilename();
-        String storedFileName = UUID.randomUUID().toString() + "_" + originalFileName;
-        Path destinationFilePath = Paths.get("C:\\Users\\Simas\\Desktop\\test", storedFileName);
-
-        // Save the file
-        Files.copy(file.getInputStream(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
-        return storedFileName;
+    private String uploadFileToS3(MultipartFile file) throws IOException {
+        String fileName = generateFileName(file);
+        String bucketName = "photo-ai-bak";
+        s3client.putObject(new PutObjectRequest(bucketName, fileName, file.getInputStream(), new ObjectMetadata()));
+        return s3client.getUrl(bucketName, fileName).toString(); // URL
     }
 }
