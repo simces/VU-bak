@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>User Profile</h1>
+<div>
+  <h2>Photos</h2>
+
+  <div th:each="photo : ${photos}">
+    <img th:src="${photo.imageUrl}" src="#" alt="User Photo" />
+  </div>
+
+</div>
+</body>
+</html>

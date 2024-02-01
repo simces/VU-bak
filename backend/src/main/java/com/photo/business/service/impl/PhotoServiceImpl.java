@@ -21,9 +21,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
@@ -48,6 +50,13 @@ public class PhotoServiceImpl implements PhotoService {
         PhotoDAO savedPhoto = photoRepository.save(photo);
         return photoMapper.photoDAOToPhotoDTO(savedPhoto);
     }
+
+    @Override
+    public List<PhotoDTO> getPhotosByUserId(Long userId) {
+        List<PhotoDAO> photos = photoRepository.findByUserId(userId);
+        return photos.stream().map(photoMapper::photoDAOToPhotoDTO).collect(Collectors.toList());
+    }
+
 
     @Override
     public PhotoDTO getPhotoById(Long id) {
@@ -88,6 +97,6 @@ public class PhotoServiceImpl implements PhotoService {
         String fileName = generateFileName(file);
         String bucketName = "photo-ai-bak";
         s3client.putObject(new PutObjectRequest(bucketName, fileName, file.getInputStream(), new ObjectMetadata()));
-        return s3client.getUrl(bucketName, fileName).toString(); // URL
+        return s3client.getUrl(bucketName, fileName).toString(); // URL of the uploaded file
     }
 }
