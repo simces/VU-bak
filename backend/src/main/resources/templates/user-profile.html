@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Profile</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
 <body>
-<h1>User Profile</h1>
-<div>
-  <h2>Photos</h2>
 
-  <div th:each="photo : ${photos}">
+<div class="profile-info">
+  <h2 th:text="${userProfile.username}">Username</h2>
+  <p th:text="${userProfile.bio}">Bio</p>
+</div>
+
+<h2>Photos</h2>
+<div class="photo-grid">
+  <div th:each="photo : ${photos}" class="photo-item">
     <img th:src="${photo.imageUrl}" src="#" alt="User Photo" />
   </div>
-
 </div>
+
 </body>
 </html>
