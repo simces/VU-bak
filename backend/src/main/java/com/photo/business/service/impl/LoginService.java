@@ -1,36 +1,30 @@
 package com.photo.business.service.impl;
 
-import com.photo.business.repository.UserRepository;
-import com.photo.business.repository.model.UserDAO;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.photo.security.JwtGenerator;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import java.util.Collections;
 
 @Service
-public class LoginService implements UserDetailsService {
+public class LoginService {
 
-    private final UserRepository userRepository;
+    private final AuthenticationManager authenticationManager;
 
-    public LoginService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private final JwtGenerator jwtGenerator;
+
+    public LoginService(AuthenticationManager authenticationManager, JwtGenerator jwtGenerator) {
+        this.authenticationManager = authenticationManager;
+        this.jwtGenerator = jwtGenerator;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDAO user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        return User.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
-
-                // Assign a default role, will need to change later!!
-                .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")))
-                .build();
+    public String authenticateAndGetToken(String username, String password) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(username, password)
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return jwtGenerator.generateToken(authentication);
     }
 }
 
