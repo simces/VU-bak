@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import '../styles/styles.css';
+import '../styles/UserProfile.css';
 import Masonry from 'react-masonry-css';
 
 const fetchWithToken = async (url) => {
@@ -42,8 +42,8 @@ const UserProfile = () => {
   };
 
   return (
-<div className="user-profile">
-  <header className="profile-header">
+  <div className="user-profile">
+   <header className="profile-header">
     <div className="profile-info">
     <img className="profile-pic" src={userProfile.profilePictureUrl || 'default-profile-pic-url.jpg'} alt={`${userProfile.username}'s profile`} />
       <h2>{userProfile.username}</h2>
