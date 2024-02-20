@@ -23,7 +23,7 @@ public class SecurityController {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/api/auth/login")
     public String login() {
         return "login";
     }

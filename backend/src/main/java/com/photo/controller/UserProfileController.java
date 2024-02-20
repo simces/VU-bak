@@ -5,17 +5,18 @@ import com.photo.business.service.UserService;
 import com.photo.model.PhotoDTO;
 import com.photo.model.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
-@Controller
-@RequestMapping("/users")
+@RestController
+@RequestMapping("/api/users")
 public class UserProfileController {
 
     @Autowired
@@ -25,11 +26,18 @@ public class UserProfileController {
     private UserService userService;
 
     @GetMapping("/{username}")
-    public String userProfile(@PathVariable String username, Model model) {
+    public ResponseEntity<?> userProfile(@PathVariable String username) {
         UserProfileDTO userProfile = userService.findByUsername(username);
+        if (userProfile == null) {
+            return ResponseEntity.notFound().build(); // Return 404 if user not found
+        }
         List<PhotoDTO> photos = photoService.getPhotosByUserId(userProfile.getId());
-        model.addAttribute("userProfile", userProfile);
-        model.addAttribute("photos", photos);
-        return "user-profile";
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("userProfile", userProfile);
+        response.put("photos", photos);
+
+        return ResponseEntity.ok(response); // Return the data as JSON
     }
 }
+
