@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // returns user's profile
     @Override
     public UserProfileDTO findByUsername(String username) {
         UserDAO user = userRepository.findByUsername(username)

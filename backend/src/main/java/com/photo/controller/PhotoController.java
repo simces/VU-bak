@@ -2,40 +2,34 @@ package com.photo.controller;
 
 import com.photo.business.service.PhotoService;
 import com.photo.model.PhotoDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
-@RequestMapping("/photos")
+@RestController
+@RequestMapping("/api/photos")
+@CrossOrigin(origins = "http://localhost:3000") // react app origin url
 public class PhotoController {
 
     private final PhotoService photoService;
 
-    @Autowired
     public PhotoController(PhotoService photoService) {
         this.photoService = photoService;
     }
 
-    @GetMapping("/upload")
-    public String showUploadForm(Model model) {
-        model.addAttribute("photoDTO", new PhotoDTO());
-        return "upload";
-    }
-
     @PostMapping("/upload")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   @ModelAttribute PhotoDTO photoDTO,
-                                   RedirectAttributes redirectAttributes) {
+    public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file,
+                                              @RequestParam("title") String title,
+                                              @RequestParam("description") String description) {
         try {
+            PhotoDTO photoDTO = new PhotoDTO();
+            photoDTO.setTitle(title);
+            photoDTO.setDescription(description);
             photoService.uploadPhotoFile(photoDTO, file);
-            redirectAttributes.addFlashAttribute("message", "Photo uploaded successfully!");
+            return ResponseEntity.ok().body("Photo uploaded successfully!");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "Upload failed: " + e.getMessage());
+            return ResponseEntity.badRequest().body("Upload failed: " + e.getMessage());
         }
-        return "redirect:/photos/upload";
     }
 }
+

@@ -32,29 +32,5 @@ public class SecurityController {
     public String home() {
         return "home";
     }
-
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("userCreationDTO", new UserCreationDTO());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute("userCreationDTO") @Valid UserCreationDTO userCreationDTO,
-                               BindingResult result,
-                               RedirectAttributes redirectAttributes) {
-        if (result.hasErrors()) {
-            return "register";
-        }
-
-        try {
-            userService.registerUser(userCreationDTO);
-        } catch (UsernameAlreadyTakenException | EmailAlreadyInUseException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/register";
-        }
-
-        return "redirect:/login";
-    }
 }
 
