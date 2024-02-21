@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import fetchWithToken from '../utils/fetchUtils';
+import '../styles/PhotoUpload.css';
 
 
 const PhotoUpload = () => {
@@ -29,9 +30,9 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div>
-      <h1>Upload Photo</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="photo-upload-container">
+      <h1 className="photo-upload-title">Upload Photo</h1>
+      <form onSubmit={handleSubmit} className="photo-upload-form">
         <div>
           <label htmlFor="title">Title:</label>
           <input
@@ -59,7 +60,7 @@ const handleSubmit = async (e) => {
         </div>
         <button type="submit">Upload</button>
       </form>
-      {message && <div><h3>{message}</h3></div>}
+      {message && <div className="message"><h3>{message}</h3></div>}
     </div>
   );
 };

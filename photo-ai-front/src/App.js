@@ -5,12 +5,14 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute'; 
 import UserProfile from './pages/UserProfile';
 import PhotoUpload from './pages/PhotoUpload';
+import Registration from './pages/Registration';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
         <Route element={<ProtectedRoute />}> {}
           <Route path="/home" element={<Home />} />
           <Route path="/users/:username" element={<UserProfile />} />
