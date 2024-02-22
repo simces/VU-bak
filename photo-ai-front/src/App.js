@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import UserProfile from './pages/UserProfile';
 import PhotoUpload from './pages/PhotoUpload';
 import Registration from './pages/Registration';
+import PhotoDetails from './pages/PhotoDetails';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/users/:username" element={<UserProfile />} />
           <Route path="/photos/upload" element={<PhotoUpload />} /> 
+          <Route path="/photos/:photoId" element={<PhotoDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
