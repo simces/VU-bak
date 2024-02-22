@@ -40,5 +40,5 @@ public interface UserService {
      */
     void changePassword(Long userId, UserPasswordChangeDTO passwordChangeDTO);
 
-    // void deleteUser(Long userId) List<UserProfileDTO> listUsers(int page, int size); void recoverPassword(String email)
+    public UserProfileDTO getUserById(Long id);
 }

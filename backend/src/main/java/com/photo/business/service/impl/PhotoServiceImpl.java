@@ -65,6 +65,8 @@ public class PhotoServiceImpl implements PhotoService {
         return photoMapper.photoDAOToPhotoDTO(photo);
     }
 
+
+
     @Override
     public void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException {
         String fileUrl = uploadFileToS3(file);
@@ -99,4 +101,6 @@ public class PhotoServiceImpl implements PhotoService {
         s3client.putObject(new PutObjectRequest(bucketName, fileName, file.getInputStream(), new ObjectMetadata()));
         return s3client.getUrl(bucketName, fileName).toString(); // URL of the uploaded file
     }
+
+
 }

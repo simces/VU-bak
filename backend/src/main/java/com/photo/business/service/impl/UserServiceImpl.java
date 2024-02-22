@@ -11,6 +11,7 @@ import com.photo.business.service.UserService;
 import com.photo.model.UserCreationDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,6 +37,14 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(UserNotFoundException::new);
         return userMapper.userDAOToUserProfileDTO(user);
     }
+
+    @Override
+    public UserProfileDTO getUserById(Long id) {
+        UserDAO user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        return userMapper.userDAOToUserProfileDTO(user);
+    }
+
 
     @Transactional
     @Override

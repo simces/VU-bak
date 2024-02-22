@@ -1,7 +1,11 @@
 package com.photo.controller;
 
 import com.photo.business.service.PhotoService;
+import com.photo.business.service.UserService;
 import com.photo.model.PhotoDTO;
+import com.photo.model.PhotoResponseDTO;
+import com.photo.model.UserProfileDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,9 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class PhotoController {
 
     private final PhotoService photoService;
+    private final UserService userService;
 
-    public PhotoController(PhotoService photoService) {
+    public PhotoController(PhotoService photoService, UserService userService) {
         this.photoService = photoService;
+        this.userService = userService;
     }
 
     @PostMapping("/upload")
@@ -31,5 +37,20 @@ public class PhotoController {
             return ResponseEntity.badRequest().body("Upload failed: " + e.getMessage());
         }
     }
+
+    @GetMapping("/{photoId}")
+    public ResponseEntity<PhotoResponseDTO> getPhotoById(@PathVariable Long photoId) {
+        try {
+            PhotoDTO photoDTO = photoService.getPhotoById(photoId);
+            UserProfileDTO userProfileDTO = userService.getUserById(photoDTO.getUserId());
+
+            PhotoResponseDTO photoResponseDTO = new PhotoResponseDTO(photoDTO, userProfileDTO);
+
+            return ResponseEntity.ok(photoResponseDTO);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
 

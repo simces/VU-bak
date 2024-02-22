@@ -28,4 +28,12 @@ public class CommentDAO {
 
     @Column(name = "commented_at")
     private Timestamp commentedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private UserDAO user;
+
+    @ManyToOne
+    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
+    private PhotoDAO photo;
 }
