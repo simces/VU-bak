@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -32,4 +34,6 @@ public class PhotoDAO {
     @Column(name = "uploaded_at")
     private Timestamp uploadedAt;
 
+    @OneToMany(mappedBy = "photo")
+    private Set<PhotoTagDAO> photoTags = new HashSet<>();
 }

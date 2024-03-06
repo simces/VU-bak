@@ -12,6 +12,7 @@ public interface PhotoService {
 
     List<PhotoDTO> getPhotosByUserId(Long userId);
     PhotoDTO getPhotoById(Long id);
-
     void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException;
+
+    void tagPhoto(Long photoId);
 }

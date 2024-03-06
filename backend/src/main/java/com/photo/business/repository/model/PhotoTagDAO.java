@@ -26,5 +26,15 @@ public class PhotoTagDAO {
     @Column(name = "confidence")
     private BigDecimal confidence;
 
+    @ManyToOne
+    @MapsId("tagId")
+    @JoinColumn(name = "tag_id", insertable = false, updatable = false)
+    private TagDAO tag;
+
+    @ManyToOne
+    @MapsId("photoId")
+    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
+    private PhotoDAO photo;
 }
+
 

@@ -3,7 +3,7 @@ package com.photo.controller;
 import com.photo.business.handlers.exceptions.EmailAlreadyInUseException;
 import com.photo.business.handlers.exceptions.UsernameAlreadyTakenException;
 import com.photo.business.service.UserService;
-import com.photo.business.service.impl.LoginService;
+import com.photo.business.service.impl.LoginServiceImpl;
 import com.photo.model.AuthResponseDTO;
 import com.photo.model.LoginDTO;
 import com.photo.model.UserCreationDTO;
@@ -29,11 +29,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/auth")
 public class LoginController {
 
-    private final LoginService loginService;
+    private final LoginServiceImpl loginService;
 
     private final UserService userService;
 
-    public LoginController(UserService userService, LoginService loginService) {
+    public LoginController(UserService userService, LoginServiceImpl loginService) {
         this.userService = userService;
         this.loginService = loginService;
     }

@@ -16,7 +16,8 @@ public class TagDAO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 255, nullable = false)
+    @Column(name = "name", length = 255, nullable = false, unique = true)
     private String name;
+
 }
 
