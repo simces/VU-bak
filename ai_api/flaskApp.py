@@ -1,8 +1,10 @@
 import torch
 import json
+import requests
 from torchvision import models, transforms
 from flask import Flask, jsonify, request
 from PIL import Image
+from io import BytesIO
 
 
 # loads the pretrained resnet101 model
@@ -30,36 +32,28 @@ def prepare_image(image):
 app = Flask(__name__)
 
 
-# defines the endpoint
-@app.route('/predict', methods = ['POST'])
+@app.route('/predict', methods=['GET'])
 def predict():
-    # empty request
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file in the request!'})
+    # URL parameter
+    image_url = request.args.get('url')
+    if not image_url:
+        return jsonify({'error': 'No image URL provided!'})
     
-    # retrives the file from the request, if no file throws an error
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'})
+    try:
+        response = requests.get(image_url)
+        image = Image.open(BytesIO(response.content)).convert("RGB")
+    except Exception as e:
+        return jsonify({'error': 'Failed to load image from URL. Error: {}'.format(str(e))})
     
-    # if file is there, opens the image, converts to rgb, prepares it for the model
-    if file:
-        image = Image.open(file.stream).convert("RGB")
-        img_tensor = prepare_image(image)
+    img_tensor = prepare_image(image)
+    with torch.no_grad():
+        outputs = model(img_tensor)
 
-        # the prepared image is then passed on to the model
-        with torch.no_grad():
-            outputs = model(img_tensor)
+    probabilities = torch.nn.functional.softmax(outputs[0], dim=0)
+    top5_prob, top5_catid = torch.topk(probabilities, 3)
+    results = [{"label": labels_map[str(catid.item())][1], "probability": prob.item()} for prob, catid in zip(top5_prob, top5_catid)]
+    
+    return jsonify(results)
 
-        # retrieves top 5 results with propabilities
-        probabilities = torch.nn.functional.softmax(outputs[0], dim=0)
-        top5_prob, top5_catid = torch.topk(probabilities, 3)
-        results = [{"label": labels_map[str(catid.item())][1], "probability": prob.item()} for prob, catid in zip(top5_prob, top5_catid)]
-        
-        # returns the result as a JSON response
-        return jsonify(results)
-
-
-# runs the flask app
 if __name__ == '__main__':
     app.run(debug=True)
