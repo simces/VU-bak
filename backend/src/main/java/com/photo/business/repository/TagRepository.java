@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface TagRepository extends JpaRepository<TagDAO, Long> {
 
     Optional<TagDAO> findByName(String name);
+
 }

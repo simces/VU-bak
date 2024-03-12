@@ -1,9 +1,11 @@
 package com.photo.controller;
 
 import com.photo.business.service.PhotoService;
+import com.photo.business.service.TagService;
 import com.photo.business.service.UserService;
 import com.photo.model.PhotoDTO;
 import com.photo.model.PhotoResponseDTO;
+import com.photo.model.TagDTO;
 import com.photo.model.UserProfileDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,12 @@ public class PhotoController {
 
     private final PhotoService photoService;
     private final UserService userService;
+    private final TagService tagService;
 
-    public PhotoController(PhotoService photoService, UserService userService) {
+    public PhotoController(PhotoService photoService, UserService userService, TagService tagService) {
         this.photoService = photoService;
         this.userService = userService;
+        this.tagService = tagService;
     }
 
     @PostMapping("/upload")
@@ -43,8 +47,9 @@ public class PhotoController {
         try {
             PhotoDTO photoDTO = photoService.getPhotoById(photoId);
             UserProfileDTO userProfileDTO = userService.getUserById(photoDTO.getUserId());
+            TagDTO tagDTO = tagService.getTagByPhotoId(photoId);
 
-            PhotoResponseDTO photoResponseDTO = new PhotoResponseDTO(photoDTO, userProfileDTO);
+            PhotoResponseDTO photoResponseDTO = new PhotoResponseDTO(photoDTO, userProfileDTO, tagDTO);
 
             return ResponseEntity.ok(photoResponseDTO);
         } catch (EntityNotFoundException e) {
