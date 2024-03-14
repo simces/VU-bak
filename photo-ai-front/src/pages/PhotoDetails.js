@@ -10,7 +10,7 @@ const PhotoDetails = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
+            try { 
                 const photoDetailsData = await fetchWithToken(`/api/photos/${photoId}`);
                 setPhotoDetails(photoDetailsData);
                 
@@ -23,12 +23,10 @@ const PhotoDetails = () => {
         fetchData();
     }, [photoId]);
 
-
     const handleCommentSubmit = async (event) => {
         event.preventDefault();
         const commentData = JSON.stringify({
-            userId: "5",
-            comment: newComment
+            comment: newComment // Removed userId from the payload
         });
     
         try {
@@ -40,27 +38,27 @@ const PhotoDetails = () => {
                 }
             });
             setNewComment('');
-            setComments([...comments, newCommentData]); 
+            setComments([...comments, newCommentData]);
         } catch (error) {
             console.error('Error posting comment:', error.message);
         }
     };
     
 
- 
     if (!photoDetails) return <div>Loading...</div>;
 
     return (
         <div>
-            <h2>{photoDetails.title}</h2>
-            <img src={photoDetails.imageUrl} alt={photoDetails.title} style={{ maxWidth: '100%' }} />
-            <p>Description: {photoDetails.description}</p>
+            <h2>{photoDetails.photoDTO.title}</h2>
+            <img src={photoDetails.photoDTO.imageUrl} alt={photoDetails.photoDTO.title} style={{ maxWidth: '100%' }} />
+            <p>Description: {photoDetails.photoDTO.description}</p>
+            <p>Tag: {photoDetails.tagDTO.name}</p>
             
             <p>Uploaded by: 
-                <img src={photoDetails.profilePictureUrl} alt={photoDetails.username} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
-                {photoDetails.username}
+                <img src={photoDetails.userProfileDTO.profilePictureUrl} alt={photoDetails.userProfileDTO.username} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
+                {photoDetails.userProfileDTO.username}
             </p>
-            <p>Uploaded at: {new Date(photoDetails.uploadedAt).toLocaleString()}</p>
+            <p>Uploaded at: {new Date(photoDetails.photoDTO.uploadedAt).toLocaleString()}</p>
 
             <div>
                 <h3>Comments:</h3>
@@ -70,7 +68,6 @@ const PhotoDetails = () => {
                     <p>By: {comment.user?.username || 'Unknown user'} at {comment.commentedAt ? new Date(comment.commentedAt).toLocaleString() : 'Unknown time'}</p>
                 </div>
                 )) : <p>No comments yet.</p>}
-
             </div>
 
             <form onSubmit={handleCommentSubmit}>
