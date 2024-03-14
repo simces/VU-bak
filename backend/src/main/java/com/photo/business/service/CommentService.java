@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CommentService {
 
-    public CommentDAO addCommentToPhoto(CommentDAO comment);
+    List<CommentDAO> getCommentsByPhotoId(Long photoId);
 
-    public List<CommentDAO> getCommentsByPhotoId(Long photoId);
+    CommentDAO addCommentToPhoto(CommentDAO comment);
 }

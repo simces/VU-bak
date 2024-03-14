@@ -1,5 +1,6 @@
 package com.photo.controller;
 
+import com.photo.business.handlers.exceptions.UserNotFoundException;
 import com.photo.business.repository.model.CommentDAO;
 import com.photo.business.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,11 @@ import java.util.List;
 @RequestMapping("/api/photos/{photoId}/comments")
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
+
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
 
     @PostMapping
     public ResponseEntity<CommentDAO> addComment(@PathVariable Long photoId, @RequestBody CommentDAO comment) {
@@ -22,6 +26,7 @@ public class CommentController {
         CommentDAO savedComment = commentService.addCommentToPhoto(comment);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedComment);
     }
+
 
     @GetMapping
     public ResponseEntity<List<CommentDAO>> getCommentsByPhotoId(@PathVariable Long photoId) {
