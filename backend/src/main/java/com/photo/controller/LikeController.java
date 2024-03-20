@@ -2,6 +2,7 @@ package com.photo.controller;
 
 import com.photo.business.repository.model.LikeDAO;
 import com.photo.business.service.LikeService;
+import com.photo.model.LikeDetailDTO;
 import com.photo.model.LikeStatusDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,12 @@ public class LikeController {
     public ResponseEntity<LikeStatusDTO> checkPhotoLikeStatus(@PathVariable Long photoId) {
         LikeStatusDTO likeStatus = likeService.checkLikeStatus(photoId);
         return ResponseEntity.ok(likeStatus);
+    }
+
+    @GetMapping("/{photoId}/likelist")
+    public ResponseEntity<LikeDetailDTO> getPhotoLikes(@PathVariable Long photoId) {
+        LikeDetailDTO likeDetails = likeService.getLikeDetails(photoId);
+        return ResponseEntity.ok(likeDetails);
     }
 }
 

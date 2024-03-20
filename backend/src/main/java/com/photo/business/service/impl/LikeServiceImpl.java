@@ -7,6 +7,7 @@ import com.photo.business.repository.model.LikeDAO;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.LikeService;
+import com.photo.model.LikeDetailDTO;
 import com.photo.model.LikeStatusDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.access.AccessDeniedException;
@@ -15,15 +16,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LikeServiceImpl implements LikeService {
 
     private final LikeRepository likeRepository;
-
     private final PhotoRepository photoRepository;
-
     private final UserRepository userRepository;
 
     public LikeServiceImpl(LikeRepository likeRepository, PhotoRepository photoRepository, UserRepository userRepository) {
@@ -35,7 +36,7 @@ public class LikeServiceImpl implements LikeService {
     @Override
     public LikeDAO likePhoto(Long photoId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName(); // Get username from authentication object
+        String username = authentication.getName();
 
         UserDAO user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
@@ -43,7 +44,6 @@ public class LikeServiceImpl implements LikeService {
         PhotoDAO photo = photoRepository.findById(photoId)
                 .orElseThrow(() -> new EntityNotFoundException("Photo not found with id: " + photoId));
 
-        // Create a new like
         LikeDAO newLike = new LikeDAO();
         newLike.setPhoto(photo);
         newLike.setUser(user);
@@ -81,5 +81,15 @@ public class LikeServiceImpl implements LikeService {
             return new LikeStatusDTO(false, null);
         }
     }
-}
 
+    @Override
+    public LikeDetailDTO getLikeDetails(Long photoId) {
+        List<UserDAO> users = likeRepository.findUsersByLikedPhoto(photoId);
+        List<String> usernames = users.stream()
+                .map(UserDAO::getUsername)
+                .collect(Collectors.toList());
+        int likeCount = usernames.size();
+
+        return new LikeDetailDTO(likeCount, usernames);
+    }
+}
