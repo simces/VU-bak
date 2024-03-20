@@ -1,9 +1,7 @@
 package com.photo.controller;
 
-import com.photo.business.handlers.exceptions.UserNotFoundException;
 import com.photo.business.repository.model.CommentDAO;
 import com.photo.business.service.CommentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

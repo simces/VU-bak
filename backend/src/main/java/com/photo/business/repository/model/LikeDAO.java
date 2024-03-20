@@ -17,12 +17,13 @@ public class LikeDAO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "photo_id", nullable = false)
-    private Long photoId;
+    @ManyToOne
+    @JoinColumn(name = "photo_id", nullable = false)
+    private PhotoDAO photo;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
-
-    // relationship mapping
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserDAO user;
 }
+
 

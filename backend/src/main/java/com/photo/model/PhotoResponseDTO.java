@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PhotoResponseDTO {
+
     private PhotoDTO photoDTO;
     private UserProfileDTO userProfileDTO;
     private TagDTO tagDTO;
