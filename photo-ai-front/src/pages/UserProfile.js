@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/UserProfile.css';
 import Masonry from 'react-masonry-css';
 
@@ -14,7 +14,8 @@ const fetchWithToken = async (url) => {
 };
 
 const UserProfile = () => {
-  const { username } = useParams(); 
+  const { username } = useParams();
+  const navigate = useNavigate(); 
   const [userProfile, setUserProfile] = useState(null);
   const [photos, setPhotos] = useState([]);
 
@@ -32,6 +33,10 @@ const UserProfile = () => {
     fetchData();
   }, [username]);
 
+  const handlePhotoClick = (photoId) => {
+    navigate(`/photos/${photoId}`); 
+  };
+
   if (!userProfile) return <div>Loading...</div>;
 
   const breakpointColumnsObj = {
@@ -42,30 +47,29 @@ const UserProfile = () => {
   };
 
   return (
-  <div className="user-profile">
-   <header className="profile-header">
-    <div className="profile-info">
-    <img className="profile-pic" src={userProfile.profilePictureUrl || 'default-profile-pic-url.jpg'} alt={`${userProfile.username}'s profile`} />
-      <h2>{userProfile.username}</h2>
-      <p className="bio">{userProfile.bio}</p>
-    </div>
-  </header>
+    <div className="user-profile">
+      <header className="profile-header">
+        <div className="profile-info">
+          <img className="profile-pic" src={userProfile.profilePictureUrl || 'default-profile-pic-url.jpg'} alt={`${userProfile.username}'s profile`} />
+          <h2>{userProfile.username}</h2>
+          <p className="bio">{userProfile.bio}</p>
+        </div>
+      </header>
 
-  <section className="gallery">
+      <section className="gallery">
         <h2>Photos</h2>
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column">
           {photos.map((photo, index) => (
-            <div key={index}>
+            <div key={index} onClick={() => handlePhotoClick(photo.id)}>
               <img src={photo.imageUrl} alt={`Content ${index}`} />
             </div>
           ))}
         </Masonry>
       </section>
     </div>
-
   );
 };
 
