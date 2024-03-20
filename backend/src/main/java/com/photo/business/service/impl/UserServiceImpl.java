@@ -13,7 +13,6 @@ import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +22,15 @@ import java.time.Instant;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     // returns user's profile
     @Override
@@ -58,6 +60,11 @@ public class UserServiceImpl implements UserService {
 
         UserDAO newUser = userMapper.userCreationDTOToUserDAO(userCreationDTO);
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+
+        if (newUser.getProfilePictureUrl() == null || newUser.getProfilePictureUrl().isEmpty()) {
+            String defaultProfilePicUrl = "https://photo-ai-bak.s3.eu-north-1.amazonaws.com/4045d3b3-603e-4f4f-9fd5-a78aef4d06f8.png";
+            newUser.setProfilePictureUrl(defaultProfilePicUrl);
+        }
 
         Timestamp now = Timestamp.from(Instant.now());
         newUser.setCreatedAt(now);
