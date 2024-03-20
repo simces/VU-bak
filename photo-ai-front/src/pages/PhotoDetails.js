@@ -8,6 +8,8 @@ const PhotoDetails = () => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [userLike, setUserLike] = useState(null); 
+    const [likeCount, setLikeCount] = useState(0);
+    const [likers, setLikers] = useState([]);   
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,13 +59,22 @@ const PhotoDetails = () => {
     };
 
     const refreshLikeStatus = async () => {
-        const likeStatus = await fetchWithToken(`/api/photos/test/${photoId}`);
-        if (likeStatus.liked) {
-            setUserLike(likeStatus);
-        } else {
-            setUserLike(null);
+        try {
+            const likeDetails = await fetchWithToken(`/api/photos/${photoId}/likelist`);
+            setLikeCount(likeDetails.likeCount);
+            setLikers(likeDetails.likers || []);
+    
+            const likeStatus = await fetchWithToken(`/api/photos/test/${photoId}`);
+            if (likeStatus.liked) {
+                setUserLike(likeStatus);
+            } else {
+                setUserLike(null);
+            }
+        } catch (error) {
+            console.error('Error refreshing like status:', error.message);
         }
     };
+    
     
     const handleLike = async () => {
         try {
@@ -104,11 +115,20 @@ const PhotoDetails = () => {
             </p>
             <p>Uploaded at: {new Date(photoDetails.photoDTO.uploadedAt).toLocaleString()}</p>
     
-            {userLike ? (
-                <button onClick={handleUnlike}>Unlike</button>
-            ) : (
-                <button onClick={handleLike}>Like</button>
-            )}
+            <div>
+                {userLike ? (
+                    <>
+                        <button onClick={handleUnlike}>Unlike</button>
+                        <span> {likeCount} likes</span>
+                    </>
+                ) : (
+                    <>
+                        <button onClick={handleLike}>Like</button>
+                        <span> {likeCount} likes</span>
+                    </>
+                )}
+            </div>
+
 
     
             <div>
