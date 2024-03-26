@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/UserProfile.css';
 import Masonry from 'react-masonry-css';
+import '../styles/UserProfile.css';
 
 const fetchWithToken = async (url) => {
   const token = localStorage.getItem('token');
@@ -15,26 +15,37 @@ const fetchWithToken = async (url) => {
 
 const UserProfile = () => {
   const { username } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [userProfile, setUserProfile] = useState(null);
   const [photos, setPhotos] = useState([]);
+  const [isCurrentUser, setIsCurrentUser] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfileData = async () => {
       try {
         const userProfileData = await fetchWithToken(`/api/users/${username}`);
         setUserProfile(userProfileData.userProfile);
         setPhotos(userProfileData.photos);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching user profile:', error);
       }
     };
 
-    fetchData();
+    const fetchCurrentUserProfile = async () => {
+      try {
+        const currentUserProfileData = await fetchWithToken('/api/users/me');
+        setIsCurrentUser(currentUserProfileData.username === username);
+      } catch (error) {
+        console.error('Error fetching current user profile:', error);
+      }
+    };
+
+    fetchProfileData();
+    fetchCurrentUserProfile();
   }, [username]);
 
   const handlePhotoClick = (photoId) => {
-    navigate(`/photos/${photoId}`); 
+    navigate(`/photos/${photoId}`);
   };
 
   if (!userProfile) return <div>Loading...</div>;
@@ -43,16 +54,23 @@ const UserProfile = () => {
     default: 3,
     1100: 3,
     700: 2,
-    500: 1
+    500: 1,
   };
 
   return (
     <div className="user-profile">
       <header className="profile-header">
         <div className="profile-info">
-          <img className="profile-pic" src={userProfile.profilePictureUrl || 'default-profile-pic-url.jpg'} alt={`${userProfile.username}'s profile`} />
+          <img
+            className="profile-pic"
+            src={userProfile.profilePictureUrl || 'default-profile-pic-url.jpg'}
+            alt={`${userProfile.username}'s profile`}
+          />
           <h2>{userProfile.username}</h2>
           <p className="bio">{userProfile.bio}</p>
+          {isCurrentUser && (
+            <button onClick={() => navigate('/edit-profile')}>Change Details</button>
+          )}
         </div>
       </header>
 
