@@ -40,5 +40,7 @@ public interface UserService {
      */
     void changePassword(Long userId, UserPasswordChangeDTO passwordChangeDTO);
 
-    public UserProfileDTO getUserById(Long id);
+    UserProfileDTO getUserById(Long id);
+
+    UserProfileDTO getCurrentUserProfile();
 }

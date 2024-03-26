@@ -39,5 +39,11 @@ public class UserProfileController {
 
         return ResponseEntity.ok(response); // Return the data as JSON
     }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserProfileDTO> getCurrentUserProfile() {
+        UserProfileDTO userProfile = userService.getCurrentUserProfile();
+        return ResponseEntity.ok(userProfile);
+    }
 }
 

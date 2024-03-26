@@ -13,6 +13,8 @@ import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -103,5 +105,12 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(passwordChangeDTO.getNewPassword()));
 
         userRepository.save(user);
+    }
+
+    @Override
+    public UserProfileDTO getCurrentUserProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        return findByUsername(currentUsername);
     }
 }
