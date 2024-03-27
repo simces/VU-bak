@@ -20,5 +20,8 @@ public class UserPasswordChangeDTO {
     @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter")
     @Pattern(regexp = ".*[0-9].*", message = "Password must contain at least one number")
     private String newPassword;
+
+    @NotBlank(message = "Confirm Password cannot be blank")
+    private String confirmNewPassword;
 }
 

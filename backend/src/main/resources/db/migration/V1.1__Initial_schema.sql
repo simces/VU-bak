@@ -49,11 +49,10 @@ CREATE TABLE notifications (
 );
 
 CREATE TABLE follows (
-                         follower_id BIGINT NOT NULL,
-                         following_id BIGINT NOT NULL,
-                         PRIMARY KEY (follower_id, following_id),
-                         FOREIGN KEY (follower_id) REFERENCES users (id),
-                         FOREIGN KEY (following_id) REFERENCES users (id)
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         followerId BIGINT NOT NULL,
+                         followingId BIGINT NOT NULL,
+                         UNIQUE KEY unique_follow_relationship (followerId, followingId)
 );
 
 CREATE TABLE AiTagFeedback (

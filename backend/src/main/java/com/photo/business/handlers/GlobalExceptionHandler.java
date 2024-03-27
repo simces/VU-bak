@@ -1,9 +1,6 @@
 package com.photo.business.handlers;
 
-import com.photo.business.handlers.exceptions.EmailAlreadyInUseException;
-import com.photo.business.handlers.exceptions.IncorrectPasswordException;
-import com.photo.business.handlers.exceptions.UserNotFoundException;
-import com.photo.business.handlers.exceptions.UsernameAlreadyTakenException;
+import com.photo.business.handlers.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -37,6 +34,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IncorrectPasswordException.class)
     public ResponseEntity<Object> handleIncorrectPasswordException(IncorrectPasswordException ex, WebRequest request) {
+        return buildResponseEntity(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getDescription(false));
+    }
+
+    @ExceptionHandler(PasswordConfirmationException.class)
+    public ResponseEntity<Object> handlePasswordConfirmationException(PasswordConfirmationException ex, WebRequest request) {
         return buildResponseEntity(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getDescription(false));
     }
 

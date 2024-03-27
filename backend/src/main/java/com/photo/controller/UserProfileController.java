@@ -1,15 +1,18 @@
 package com.photo.controller;
 
+import com.photo.business.handlers.exceptions.IncorrectPasswordException;
+import com.photo.business.handlers.exceptions.PasswordConfirmationException;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.UserService;
 import com.photo.model.PhotoDTO;
+import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +40,45 @@ public class UserProfileController {
         response.put("userProfile", userProfile);
         response.put("photos", photos);
 
-        return ResponseEntity.ok(response); // Return the data as JSON
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/me")
     public ResponseEntity<UserProfileDTO> getCurrentUserProfile() {
         UserProfileDTO userProfile = userService.getCurrentUserProfile();
         return ResponseEntity.ok(userProfile);
+    }
+
+    @PutMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(@Validated @RequestBody UserProfileDTO userProfileDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        UserProfileDTO currentUserProfile = userService.findByUsername(currentUsername);
+        if (currentUserProfile == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        UserProfileDTO updatedUserProfile = userService.changeProfileDetails(currentUserProfile.getId(), userProfileDTO);
+        return ResponseEntity.ok(updatedUserProfile);
+    }
+
+    @PutMapping("/change-password")
+    public ResponseEntity<?> changePassword(@Validated @RequestBody UserPasswordChangeDTO passwordChangeDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        UserProfileDTO currentUserProfile = userService.findByUsername(currentUsername);
+        if (currentUserProfile == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        try {
+            userService.changePassword(currentUserProfile.getId(), passwordChangeDTO);
+            return ResponseEntity.ok().build();
+        } catch (PasswordConfirmationException | IncorrectPasswordException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
 

@@ -1,9 +1,6 @@
 package com.photo.business.service.impl;
 
-import com.photo.business.handlers.exceptions.EmailAlreadyInUseException;
-import com.photo.business.handlers.exceptions.IncorrectPasswordException;
-import com.photo.business.handlers.exceptions.UserNotFoundException;
-import com.photo.business.handlers.exceptions.UsernameAlreadyTakenException;
+import com.photo.business.handlers.exceptions.*;
 import com.photo.business.mappers.UserMapper;
 import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.UserDAO;
@@ -95,15 +92,18 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void changePassword(Long userId, UserPasswordChangeDTO passwordChangeDTO) {
+        if (!passwordChangeDTO.getNewPassword().equals(passwordChangeDTO.getConfirmNewPassword())) {
+            throw new PasswordConfirmationException("New Password and Confirm New Password do not match.");
+        }
+
         UserDAO user = userRepository.findById(userId)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
 
         if (!passwordEncoder.matches(passwordChangeDTO.getCurrentPassword(), user.getPassword())) {
-            throw new IncorrectPasswordException();
+            throw new IncorrectPasswordException("Current Password is incorrect.");
         }
 
         user.setPassword(passwordEncoder.encode(passwordChangeDTO.getNewPassword()));
-
         userRepository.save(user);
     }
 
