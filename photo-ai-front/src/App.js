@@ -7,6 +7,7 @@ import UserProfile from './pages/UserProfile';
 import PhotoUpload from './pages/PhotoUpload';
 import Registration from './pages/Registration';
 import PhotoDetails from './pages/PhotoDetails';
+import ChangeDetails from './pages/ChangeDetails';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/users/:username" element={<UserProfile />} />
           <Route path="/photos/upload" element={<PhotoUpload />} /> 
           <Route path="/photos/:photoId" element={<PhotoDetails />} />
+          <Route path="edit-profile" element={<ChangeDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
