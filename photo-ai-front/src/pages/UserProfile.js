@@ -17,11 +17,10 @@ const UserProfile = () => {
 
   const fetchFollowCounts = async (userId) => {
     try {
-      const followersCount = await fetchWithToken(`/api/follows/followers/count/${userId}`);
-      setFollowersCount(followersCount);
-  
-      const followingsCount = await fetchWithToken(`/api/follows/following/count/${userId}`);
-      setFollowingsCount(followingsCount);
+      const followersResponse = await fetchWithToken(`/api/follows/followers/count/${userId}`);
+      const followingsResponse = await fetchWithToken(`/api/follows/following/count/${userId}`);
+      setFollowersCount(followersResponse); 
+      setFollowingsCount(followingsResponse); 
     } catch (error) {
       console.error('Error fetching follow counts:', error);
     }
@@ -30,32 +29,26 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const userProfileData = await fetchWithToken(`/api/users/${username}`);
-        setUserProfile(userProfileData.userProfile);
-        setPhotos(userProfileData.photos);
-  
-        const currentUserProfileData = await fetchWithToken('/api/users/me');
-        const isCurrentUserProfile = currentUserProfileData.username === username;
-        setIsCurrentUser(isCurrentUserProfile);
-  
-        if (userProfileData.userProfile && userProfileData.userProfile.id) {
-          fetchFollowCounts(userProfileData.userProfile.id);
+        const userProfileResponse = await fetchWithToken(`/api/users/${username}`);
+        setUserProfile(userProfileResponse.userProfile);
+        setPhotos(userProfileResponse.photos);
 
-          // Added: Fetch follow status
-          const followStatusResponse = await fetchWithToken(`/api/follows/isFollowing/${userProfileData.userProfile.id}`);
+        const currentUserProfileResponse = await fetchWithToken('/api/users/me');
+        setIsCurrentUser(currentUserProfileResponse.username === username);
+
+        if (userProfileResponse.userProfile && userProfileResponse.userProfile.id) {
+          fetchFollowCounts(userProfileResponse.userProfile.id);
+          const followStatusResponse = await fetchWithToken(`/api/follows/isFollowing/${userProfileResponse.userProfile.id}`);
           setIsFollowing(followStatusResponse.isFollowing);
-          if(followStatusResponse.isFollowing) {
-            setFollowId(followStatusResponse.followId);
-          }
+          setFollowId(followStatusResponse.followId);
         }
-        
       } catch (error) {
         console.error('Error fetching user profile:', error);
       }
     };
-  
+
     fetchProfileData();
-  }, [username]); 
+  }, [username]);
 
   const handleFollow = async () => {
     try {
@@ -70,7 +63,7 @@ const UserProfile = () => {
 
   const handleUnfollow = async () => {
     if (!followId) return;
-  
+
     try {
       await fetchWithToken(`/api/follows/unfollow/${followId}`, { method: 'DELETE' });
       setIsFollowing(false);
@@ -80,9 +73,13 @@ const UserProfile = () => {
       console.error('Error unfollowing user:', error);
     }
   };
-  
+
   const handlePhotoClick = (photoId) => {
     navigate(`/photos/${photoId}`);
+  };
+
+  const editProfile = () => {
+    navigate('/edit-profile');
   };
 
   if (!userProfile) return <div>Loading...</div>;
@@ -108,7 +105,9 @@ const UserProfile = () => {
           <div className="social-counts">
             <span>{followersCount} Followers</span> • <span>{followingsCount} Following</span>
           </div>
-          {!isCurrentUser && (
+          {isCurrentUser ? (
+            <button onClick={editProfile}>Edit Profile</button>
+          ) : (
             isFollowing ? (
               <button onClick={handleUnfollow}>Unfollow</button>
             ) : (
@@ -117,7 +116,6 @@ const UserProfile = () => {
           )}
         </div>
       </header>
-
       <section className="gallery">
         <h2>Photos</h2>
         <Masonry
