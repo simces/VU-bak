@@ -28,25 +28,8 @@ VALUES
     (2, 'comment', 2, 'John commented on your photo');
 
 
-INSERT INTO follows (follower_id, following_id)
-VALUES
-    (1, 2),
-    (2, 1);
-
 
 INSERT INTO AiTagFeedback (photo_tag_id, user_id, feedback)
 VALUES
     (1, 1, 1),
     (2, 2, 0);
-
-
-INSERT INTO tag (name)
-VALUES
-    ('Siamese_cat'),
-    ('Persian_cat');
-
-
-INSERT INTO PhotoTag (photo_id, tag_id, confidence)
-VALUES
-    (1, 1, 0.9999690055847168),
-    (2, 2, 0.9000000000000000);

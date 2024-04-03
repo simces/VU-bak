@@ -3,14 +3,17 @@ package com.photo.business.repository.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "follows", uniqueConstraints = @UniqueConstraint(columnNames = {"followerId", "followingId"}))
+@Table(name = "follows", uniqueConstraints = @UniqueConstraint(columnNames = {"follower_id", "following_id"}))
 public class FollowDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "follower_id")
     private Long followerId;
+
+    @Column(name = "following_id")
     private Long followingId;
 
     // Constructors

@@ -50,9 +50,9 @@ CREATE TABLE notifications (
 
 CREATE TABLE follows (
                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                         followerId BIGINT NOT NULL,
-                         followingId BIGINT NOT NULL,
-                         UNIQUE KEY unique_follow_relationship (followerId, followingId)
+                         follower_id BIGINT NOT NULL,
+                         following_id BIGINT NOT NULL,
+                         UNIQUE KEY unique_follow_relationship (follower_id, following_id)
 );
 
 CREATE TABLE AiTagFeedback (
