@@ -1,0 +1,25 @@
+.form-photo-image {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover; 
+    margin-bottom: 20px; 
+}
+
+.photo-edit-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.photo-edit-form input,
+.photo-edit-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box; 
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
