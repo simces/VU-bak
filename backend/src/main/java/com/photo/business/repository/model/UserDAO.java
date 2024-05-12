@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
 
 import java.sql.Timestamp;
 
@@ -38,4 +39,7 @@ public class UserDAO {
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    @Column(name = "role", length = 50, nullable = false)
+    private String role;
 }

@@ -3,6 +3,7 @@ CREATE TABLE users (
                        username VARCHAR(50) NOT NULL,
                        email VARCHAR(100) NOT NULL,
                        password VARCHAR(100) NOT NULL,
+                       role VARCHAR(20) NOT NULL DEFAULT 'ROLE_USER',
                        profile_picture_url VARCHAR(255),
                        bio TEXT,
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -77,4 +78,15 @@ CREATE TABLE PhotoTag (
                           PRIMARY KEY (photo_id, tag_id),
                           FOREIGN KEY (photo_id) REFERENCES photos(id),
                           FOREIGN KEY (tag_id) REFERENCES tag(id)
+);
+
+CREATE TABLE admin_audit_logs (
+                                  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                  admin_id BIGINT NOT NULL,
+                                  action_type VARCHAR(50) NOT NULL,
+                                  table_name VARCHAR(50) NOT NULL,
+                                  record_id BIGINT NOT NULL,
+                                  data_before JSON NULL,
+                                  data_after JSON NULL,
+                                  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

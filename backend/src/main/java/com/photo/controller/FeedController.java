@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/feed")
 public class FeedController {
 
-    @Autowired
-    private FeedService feedService;
+    private final FeedService feedService;
+
+    public FeedController(FeedService feedService) {
+        this.feedService = feedService;
+    }
 
     @GetMapping
     public ResponseEntity<Page<PhotoResponseDTO>> getFeed(@PageableDefault(size = 10) Pageable pageable) {

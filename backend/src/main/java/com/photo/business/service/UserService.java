@@ -5,6 +5,8 @@ import com.photo.model.UserCreationDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 
+import java.util.List;
+
 public interface UserService {
 
     /**
@@ -43,4 +45,6 @@ public interface UserService {
     UserProfileDTO getUserById(Long id);
 
     UserProfileDTO getCurrentUserProfile();
+
+    List<String> findAllUsernamesByRole(String role);
 }

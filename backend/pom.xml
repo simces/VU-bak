@@ -205,6 +205,14 @@
 			<version>2.3.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>6.4.1.Final</version>
+		</dependency>
+
+
 
 
 	</dependencies>

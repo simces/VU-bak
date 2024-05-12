@@ -17,16 +17,19 @@ import java.util.List;
     @Service
     public class CommentServiceImpl implements CommentService {
 
-        @Autowired
-        private CommentRepository commentRepository;
+        private final CommentRepository commentRepository;
 
-        @Autowired
-        private UserRepository userRepository;
+        private final UserRepository userRepository;
+
+        public CommentServiceImpl(CommentRepository commentRepository, UserRepository userRepository) {
+            this.commentRepository = commentRepository;
+            this.userRepository = userRepository;
+        }
 
         @Override
         public CommentDAO addCommentToPhoto(CommentDAO comment) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String username = authentication.getName(); // Get username from authentication object
+            String username = authentication.getName(); // Get username from auth
 
             UserDAO user = userRepository.findByUsername(username)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));

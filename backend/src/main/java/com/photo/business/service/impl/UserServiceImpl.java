@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -50,6 +52,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserDAO registerUser(UserCreationDTO userCreationDTO) {
+
         if (userRepository.existsByUsername(userCreationDTO.getUsername())) {
             throw new UsernameAlreadyTakenException();
         }
@@ -59,6 +62,7 @@ public class UserServiceImpl implements UserService {
 
         UserDAO newUser = userMapper.userCreationDTOToUserDAO(userCreationDTO);
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        newUser.setRole("ROLE_USER");
 
         if (newUser.getProfilePictureUrl() == null || newUser.getProfilePictureUrl().isEmpty()) {
             String defaultProfilePicUrl = "https://photo-ai-bak.s3.eu-north-1.amazonaws.com/4045d3b3-603e-4f4f-9fd5-a78aef4d06f8.png";
@@ -112,5 +116,10 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         return findByUsername(currentUsername);
+    }
+    @Override
+    public List<String> findAllUsernamesByRole(String role) {
+        List<UserDAO> users = userRepository.findByRole(role);
+        return users.stream().map(UserDAO::getUsername).collect(Collectors.toList());
     }
 }
