@@ -1,9 +1,11 @@
-import torch
+# C:\Python311\python.exe .\flaskApp.py   
+
+import torch 
 import json
-import requests
-from torchvision import models, transforms
-from flask import Flask, jsonify, request
-from PIL import Image
+import requests 
+from torchvision import models, transforms 
+from flask import Flask, jsonify, request 
+from PIL import Image 
 from io import BytesIO
 
 
