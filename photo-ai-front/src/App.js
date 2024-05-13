@@ -11,6 +11,7 @@ import ChangeDetails from './pages/ChangeDetails';
 import Feed from './pages/Feed';
 import HomeScreen from './pages/HomeScreen';
 import Admin from './pages/Admin';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -19,15 +20,16 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/" element={<HomeScreen />} />
-        <Route element={<ProtectedRoute />}> {}
+        <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/users/:username" element={<UserProfile />} />
           <Route path="/photos/upload" element={<PhotoUpload />} /> 
           <Route path="/photos/:photoId" element={<PhotoDetails />} />
-          <Route path="/edit-profile" element={<ChangeDetails />} />\
-          <Route path="/admin" element={<Admin />} />\
+          <Route path="/edit-profile" element={<ChangeDetails />} />
+          <Route path="/admin" element={<Admin />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
