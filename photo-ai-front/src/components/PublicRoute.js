@@ -6,10 +6,10 @@ const useAuth = () => {
   return !!token; // Returns true if token exists (user is authenticated)
 };
 
-// This component will be used for protected routes like /home and /feed
-const ProtectedRoute = () => {
+// This component will be used for public routes like /login, /register, and /
+const PublicRoute = () => {
   const isAuthenticated = useAuth();
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+  return isAuthenticated ? <Navigate to="/home" replace /> : <Outlet />;
 };
 
-export default ProtectedRoute;
+export default PublicRoute;
