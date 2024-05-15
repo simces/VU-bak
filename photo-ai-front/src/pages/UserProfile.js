@@ -9,6 +9,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   const [userProfile, setUserProfile] = useState(null);
   const [photos, setPhotos] = useState([]);
+  const [devices, setDevices] = useState([]);
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const [followId, setFollowId] = useState(null);
@@ -46,6 +47,10 @@ const UserProfile = () => {
             setIsFollowing(false);
             setFollowId(null);
           }
+
+          // Fetch user's devices
+          const userDevicesResponse = await fetchWithToken(`/api/users/${userProfileResponse.userProfile.id}/devices`);
+          setDevices(userDevicesResponse);
         }
       } catch (error) {
         console.error('Error fetching user profile:', error);
@@ -128,6 +133,21 @@ const UserProfile = () => {
           )}
         </div>
       </header>
+
+      {/* Display user's devices */}
+      <section className="user-devices">
+        <h2>Devices</h2>
+        {devices.length > 0 ? (
+          devices.map(device => (
+            <div key={device.id} className="device-item">
+              <strong>{device.type}:</strong> {device.model}
+            </div>
+          ))
+        ) : (
+          <p>No devices added.</p>
+        )}
+      </section>
+
       <section className="gallery">
         <h2>Photos</h2>
         <Masonry

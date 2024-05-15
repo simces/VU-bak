@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import fetchWithToken from '../utils/fetchUtils';
+import Devices from '../components/Devices';
 
 const ChangeDetails = () => {
   const [userDetails, setUserDetails] = useState({
@@ -15,6 +16,8 @@ const ChangeDetails = () => {
     confirmNewPassword: '',
   });
 
+  const [userId, setUserId] = useState(null);
+
   useEffect(() => {
     const fetchCurrentUserDetails = async () => {
       try {
@@ -25,6 +28,7 @@ const ChangeDetails = () => {
           bio: data.bio,
           profilePictureUrl: data.profilePictureUrl,
         });
+        setUserId(data.id);
       } catch (error) {
         console.error('Failed to fetch user details:', error);
       }
@@ -82,19 +86,60 @@ const ChangeDetails = () => {
     <div>
       <h2>Change User Details</h2>
       <form onSubmit={submitUserDetails}>
-        <input type="text" name="username" placeholder="Username" value={userDetails.username} onChange={handleUserDetailsChange} />
-        <input type="email" name="email" placeholder="Email" value={userDetails.email} onChange={handleUserDetailsChange} />
-        <textarea name="bio" placeholder="Bio" value={userDetails.bio} onChange={handleUserDetailsChange} />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={userDetails.username}
+          onChange={handleUserDetailsChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={userDetails.email}
+          onChange={handleUserDetailsChange}
+        />
+        <textarea
+          name="bio"
+          placeholder="Bio"
+          value={userDetails.bio}
+          onChange={handleUserDetailsChange}
+        />
         <button type="submit">Update Profile</button>
       </form>
 
       <h2>Change Password</h2>
       <form onSubmit={submitPasswordChange}>
-        <input type="password" name="currentPassword" placeholder="Current Password" value={password.currentPassword} onChange={handlePasswordChange} />
-        <input type="password" name="newPassword" placeholder="New Password" value={password.newPassword} onChange={handlePasswordChange} />
-        <input type="password" name="confirmNewPassword" placeholder="Confirm New Password" value={password.confirmNewPassword} onChange={handlePasswordChange} />
+        <input
+          type="password"
+          name="currentPassword"
+          placeholder="Current Password"
+          value={password.currentPassword}
+          onChange={handlePasswordChange}
+        />
+        <input
+          type="password"
+          name="newPassword"
+          placeholder="New Password"
+          value={password.newPassword}
+          onChange={handlePasswordChange}
+        />
+        <input
+          type="password"
+          name="confirmNewPassword"
+          placeholder="Confirm New Password"
+          value={password.confirmNewPassword}
+          onChange={handlePasswordChange}
+        />
         <button type="submit">Change Password</button>
       </form>
+
+      {userId && (
+        <div>
+          <Devices userId={userId} />
+        </div>
+      )}
     </div>
   );
 };

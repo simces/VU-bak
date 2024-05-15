@@ -26,21 +26,22 @@ const Devices = ({ userId }) => {
         setNewDevice(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleCatalogSelection = (item) => {
-        setNewDevice(prev => ({
-            ...prev,
-            deviceCatalogId: item.id,
-            type: item.type,
-            model: item.model
-        }));
+    const handleCatalogSelection = (event) => {
+        const selectedModel = event.target.value;
+        const selectedItem = catalog[selectedType + 's'].find(item => item.model === selectedModel);
+        if (selectedItem) {
+            setNewDevice({
+                deviceCatalogId: selectedItem.id,
+                type: selectedItem.type,
+                model: selectedItem.model
+            });
+        }
     };
 
     const handleTypeChange = (event) => {
         const type = event.target.value;
         setSelectedType(type);
-        if (!isCustom) {
-            setNewDevice(prev => ({ ...prev, type: '', model: '', deviceCatalogId: null }));
-        }
+        setNewDevice(prev => ({ ...prev, type: '', model: '', deviceCatalogId: null }));
     };
 
     const submitDevice = async (event) => {
@@ -118,7 +119,7 @@ const Devices = ({ userId }) => {
                                     <option value="Phone">Phone</option>
                                 </select>
                                 {selectedType && (
-                                    <select onChange={(e) => handleCatalogSelection(catalog[selectedType + 's'].find(item => item.model === e.target.value))} required>
+                                    <select value={newDevice.model} onChange={handleCatalogSelection} required>
                                         <option value="">Select Model</option>
                                         {catalog[selectedType + 's'].map(item => (
                                             <option key={item.id} value={item.model}>{item.model}</option>
@@ -128,7 +129,7 @@ const Devices = ({ userId }) => {
                             </>
                         )}
                         <button type="submit">Save</button>
-                        <button type="button" onClick={() => setShowForm(false)}>Cancel</button>
+                        <button type="button" onClick={() => { setShowForm(false); setIsCustom(false); setNewDevice({ deviceCatalogId: null, type: '', model: '' }); setSelectedType(''); }}>Cancel</button>
                     </form>
                 </>
             )}
