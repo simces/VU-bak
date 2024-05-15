@@ -108,6 +108,10 @@ const PhotoDetails = () => {
             </p>
             <p>Uploaded at: {new Date(photoDetails.photo.uploadedAt).toLocaleString()}</p>
 
+            {photoDetails.photo.device && (
+                <p>Device: {photoDetails.photo.device.type} - {photoDetails.photo.device.model}</p>
+            )}
+
             <div>
                 {userLike ? (
                     <button onClick={handleUnlike}>Unlike</button>
