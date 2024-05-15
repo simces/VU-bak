@@ -1,4 +1,4 @@
-package com.photo.model;
+package com.photo.model.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

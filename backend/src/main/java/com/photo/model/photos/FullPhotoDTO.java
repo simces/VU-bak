@@ -1,5 +1,6 @@
-package com.photo.model;
+package com.photo.model.photos;
 
+import com.photo.model.tags.TagDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

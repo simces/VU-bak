@@ -1,7 +1,11 @@
 package com.photo.business.mappers;
 
 import com.photo.business.repository.model.UserDAO;
-import com.photo.model.*;
+import com.photo.model.audits.AuditUserDTO;
+import com.photo.model.users.UserBasicDetailsDTO;
+import com.photo.model.users.UserCreationDTO;
+import com.photo.model.users.UserDTO;
+import com.photo.model.users.UserProfileDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -21,5 +25,7 @@ public interface UserMapper {
     UserDTO userDAOToUserDTO(UserDAO userDAO);
 
     AuditUserDTO userDAOToAuditUserDTO(UserDAO userDAO);
+
+    UserBasicDetailsDTO userDAOToUserBasicDetailsDTO(UserDAO userDAO);
 }
 

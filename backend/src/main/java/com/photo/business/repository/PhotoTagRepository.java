@@ -5,9 +5,10 @@ import com.photo.business.repository.model.PhotoTagDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 public interface PhotoTagRepository extends JpaRepository<PhotoTagDAO, PhotoTagId> {
 
-    Optional<PhotoTagDAO> findByPhotoId(Long photoId);
+    List<PhotoTagDAO> findByPhotoId(Long photoId);
 }

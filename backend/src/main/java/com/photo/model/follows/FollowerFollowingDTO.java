@@ -1,14 +1,16 @@
-package com.photo.model;
+package com.photo.model.follows;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowStatusDTO {
+public class FollowerFollowingDTO {
 
-    private boolean isFollowing;
-    private Long followId;
+    private List<Long> userIds;
 }
+

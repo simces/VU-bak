@@ -2,17 +2,17 @@ package com.photo.business.service.impl;
 
 import com.photo.business.repository.PhotoTagRepository;
 import com.photo.business.repository.TagRepository;
-import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.PhotoTagDAO;
 import com.photo.business.repository.model.TagDAO;
 import com.photo.business.service.TagService;
-import com.photo.model.TagDTO;
+import com.photo.model.tags.TagDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TagServiceImpl implements TagService {
@@ -27,15 +27,13 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public TagDTO getTagByPhotoId(Long photoId) {
-        Optional<PhotoTagDAO> photoTag = photoTagRepository.findByPhotoId(photoId);
-        if (!photoTag.isPresent()) {
-            throw new EntityNotFoundException("Tag not found for photoId: " + photoId);
+    public List<TagDTO> getTagsByPhotoId(Long photoId) {
+        List<PhotoTagDAO> photoTags = photoTagRepository.findByPhotoId(photoId);
+        if (photoTags.isEmpty()) {
+            throw new EntityNotFoundException("Tags not found for photoId: " + photoId);
         }
-        Long tagId = photoTag.get().getTagId();
-
-        TagDAO tagDAO = tagRepository.findById(tagId)
-                .orElseThrow(() -> new EntityNotFoundException("Tag not found with id: " + tagId));
-        return new TagDTO(tagDAO.getId(), tagDAO.getName());
+        return photoTags.stream()
+                .map(photoTag -> new TagDTO(photoTag.getTag().getId(), photoTag.getTag().getName()))
+                .collect(Collectors.toList());
     }
 }

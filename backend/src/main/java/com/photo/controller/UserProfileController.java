@@ -4,10 +4,10 @@ import com.photo.business.handlers.exceptions.IncorrectPasswordException;
 import com.photo.business.handlers.exceptions.PasswordConfirmationException;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.UserService;
-import com.photo.model.PhotoDTO;
-import com.photo.model.UserDTO;
-import com.photo.model.UserPasswordChangeDTO;
-import com.photo.model.UserProfileDTO;
+import com.photo.model.photos.PhotoDTO;
+import com.photo.model.users.UserDTO;
+import com.photo.model.users.UserPasswordChangeDTO;
+import com.photo.model.users.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -32,9 +32,11 @@ public class UserProfileController {
     @GetMapping("/{username}")
     public ResponseEntity<?> userProfile(@PathVariable String username) {
         UserProfileDTO userProfile = userService.findByUsername(username);
+
         if (userProfile == null) {
             return ResponseEntity.notFound().build(); // Return 404 if user not found
         }
+
         List<PhotoDTO> photos = photoService.getPhotosByUserId(userProfile.getId());
 
         Map<String, Object> response = new HashMap<>();

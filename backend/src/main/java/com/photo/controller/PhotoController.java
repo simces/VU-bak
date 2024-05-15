@@ -3,10 +3,10 @@ package com.photo.controller;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.TagService;
 import com.photo.business.service.UserService;
-import com.photo.model.PhotoDTO;
-import com.photo.model.PhotoResponseDTO;
-import com.photo.model.TagDTO;
-import com.photo.model.UserProfileDTO;
+import com.photo.model.photos.FullPhotoDTO;
+import com.photo.model.photos.PhotoDTO;
+import com.photo.model.photos.PhotoResponseDTO;
+import com.photo.model.users.UserBasicDetailsDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,17 +45,21 @@ public class PhotoController {
     @GetMapping("/{photoId}")
     public ResponseEntity<PhotoResponseDTO> getPhotoById(@PathVariable Long photoId) {
         try {
-            PhotoDTO photoDTO = photoService.getPhotoById(photoId);
-            UserProfileDTO userProfileDTO = userService.getUserById(photoDTO.getUserId());
-            TagDTO tagDTO = tagService.getTagByPhotoId(photoId);
-
-            PhotoResponseDTO photoResponseDTO = new PhotoResponseDTO(photoDTO, userProfileDTO, tagDTO);
-
+            PhotoResponseDTO photoResponseDTO = photoService.getPhotoResponseById(photoId);
             return ResponseEntity.ok(photoResponseDTO);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
+    @GetMapping("/full/{photoId}")
+    public ResponseEntity<FullPhotoDTO> getFullPhotoById(@PathVariable Long photoId) {
+        try {
+            FullPhotoDTO fullPhotoDTO = photoService.getFullPhotoById(photoId);
+            return ResponseEntity.ok(fullPhotoDTO);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 

@@ -1,4 +1,4 @@
-package com.photo.model;
+package com.photo.model.follows;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PhotoUpdateDTO {
+public class FollowStatusDTO {
 
-    private String title;
-    private String description;
+    private boolean isFollowing;
+    private Long followId;
 }
-

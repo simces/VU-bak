@@ -1,16 +1,15 @@
-package com.photo.model;
+package com.photo.model.photos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowerFollowingDTO {
+public class PhotoUpdateDTO {
 
-    private List<Long> userIds;
+    private String title;
+    private String description;
 }
 

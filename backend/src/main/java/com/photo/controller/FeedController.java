@@ -1,8 +1,7 @@
 package com.photo.controller;
 
 import com.photo.business.service.FeedService;
-import com.photo.model.PhotoResponseDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.photo.model.photos.PhotoResponseDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

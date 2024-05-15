@@ -34,6 +34,4 @@ public class PhotoDAO {
     @Column(name = "uploaded_at")
     private Timestamp uploadedAt;
 
-    @OneToMany(mappedBy = "photo")
-    private Set<PhotoTagDAO> photoTags = new HashSet<>();
 }

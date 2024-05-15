@@ -4,12 +4,18 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.photo.business.mappers.PhotoMapper;
+import com.photo.business.mappers.UserMapper;
 import com.photo.business.repository.PhotoRepository;
 import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.PhotoService;
-import com.photo.model.PhotoDTO;
+import com.photo.business.service.TagService;
+import com.photo.model.photos.FullPhotoDTO;
+import com.photo.model.photos.PhotoDTO;
+import com.photo.model.photos.PhotoResponseDTO;
+import com.photo.model.tags.TagDTO;
+import com.photo.model.users.UserBasicDetailsDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
@@ -40,28 +46,47 @@ public class PhotoServiceImpl implements PhotoService {
     private final UserRepository userRepository;
     private final AmazonS3 s3client;
     private final PhotoTaggingService photoTaggingService;
+    private final TagService tagService;
+    private final UserMapper userMapper;
 
     @Autowired
-    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService) {
+    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper) {
         this.photoRepository = photoRepository;
         this.photoMapper = photoMapper;
         this.userRepository = userRepository;
         this.s3client = s3client;
         this.photoTaggingService = photoTaggingService;
+        this.tagService = tagService;
+        this.userMapper = userMapper;
+    }
+
+
+    @Override
+    public FullPhotoDTO getFullPhotoById(Long id) {
+        PhotoDAO photo = photoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Photo not found"));
+
+        List<TagDTO> tags = tagService.getTagsByPhotoId(id);
+        FullPhotoDTO fullPhotoDTO = photoMapper.photoDAOToFullPhotoDTO(photo);
+        fullPhotoDTO.setTags(tags);
+
+        return fullPhotoDTO;
+    }
+
+    @Override
+    public PhotoResponseDTO getPhotoResponseById(Long id) {
+        FullPhotoDTO fullPhotoDTO = getFullPhotoById(id);
+        UserBasicDetailsDTO userBasicDetailsDTO = userMapper.userDAOToUserBasicDetailsDTO(
+                userRepository.findById(fullPhotoDTO.getUserId())
+                        .orElseThrow(() -> new EntityNotFoundException("User not found"))
+        );
+        return new PhotoResponseDTO(fullPhotoDTO, userBasicDetailsDTO);
     }
 
     @Override
     public List<PhotoDTO> getPhotosByUserId(Long userId) {
         List<PhotoDAO> photos = photoRepository.findByUserId(userId);
         return photos.stream().map(photoMapper::photoDAOToPhotoDTO).collect(Collectors.toList());
-    }
-
-
-    @Override
-    public PhotoDTO getPhotoById(Long id) {
-        PhotoDAO photo = photoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Photo not found"));
-        return photoMapper.photoDAOToPhotoDTO(photo);
     }
 
 

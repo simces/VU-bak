@@ -1,12 +1,9 @@
 package com.photo.business.service;
 
-import com.photo.model.FollowRequestDTO;
-import com.photo.model.FollowResponseDTO;
-import com.photo.model.FollowStatusDTO;
-import com.photo.model.FollowerFollowingDTO;
-
-import java.util.List;
-import java.util.Map;
+import com.photo.model.follows.FollowRequestDTO;
+import com.photo.model.follows.FollowResponseDTO;
+import com.photo.model.follows.FollowStatusDTO;
+import com.photo.model.follows.FollowerFollowingDTO;
 
 public interface FollowService {
 

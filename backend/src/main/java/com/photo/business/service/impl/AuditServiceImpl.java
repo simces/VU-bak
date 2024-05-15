@@ -4,7 +4,7 @@ import com.photo.business.mappers.AuditMapper;
 import com.photo.business.repository.AuditRepository;
 import com.photo.business.repository.model.AuditDAO;
 import com.photo.business.service.AuditService;
-import com.photo.model.AuditDTO;
+import com.photo.model.audits.AuditDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.photo.business.mappers;
 
 import com.photo.business.repository.model.AuditDAO;
-import com.photo.model.AuditDTO;
+import com.photo.model.audits.AuditDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

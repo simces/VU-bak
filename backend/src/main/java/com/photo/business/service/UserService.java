@@ -1,12 +1,10 @@
 package com.photo.business.service;
 
 import com.photo.business.repository.model.UserDAO;
-import com.photo.model.UserCreationDTO;
-import com.photo.model.UserDTO;
-import com.photo.model.UserPasswordChangeDTO;
-import com.photo.model.UserProfileDTO;
-
-import java.util.List;
+import com.photo.model.users.UserCreationDTO;
+import com.photo.model.users.UserDTO;
+import com.photo.model.users.UserPasswordChangeDTO;
+import com.photo.model.users.UserProfileDTO;
 
 public interface UserService {
 

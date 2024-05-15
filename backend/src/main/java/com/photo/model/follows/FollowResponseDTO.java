@@ -1,4 +1,4 @@
-package com.photo.model;
+package com.photo.model.follows;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.photo.model;
+package com.photo.model.follows;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TagDTO {
+public class FollowRequestDTO {
 
-    private Long id;
-    private String name;
+    private Long followingId;
 }

@@ -1,10 +1,10 @@
 package com.photo.controller;
 
 import com.photo.business.service.AdminService;
-import com.photo.model.PhotoDTO;
-import com.photo.model.PhotoUpdateDTO;
-import com.photo.model.UserDTO;
-import com.photo.model.UserUpdateDTO;
+import com.photo.model.photos.PhotoDTO;
+import com.photo.model.photos.PhotoUpdateDTO;
+import com.photo.model.users.UserDTO;
+import com.photo.model.users.UserUpdateDTO;
 import com.photo.model.comments.CommentDetailDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

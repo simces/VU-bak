@@ -1,4 +1,4 @@
-package com.photo.model;
+package com.photo.model.auth;
 
 public class AuthResponseDTO {
     private String token;

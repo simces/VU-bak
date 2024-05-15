@@ -1,16 +1,13 @@
 package com.photo.controller;
 
 import com.photo.business.service.FollowService;
-import com.photo.model.FollowRequestDTO;
-import com.photo.model.FollowResponseDTO;
-import com.photo.model.FollowStatusDTO;
-import com.photo.model.FollowerFollowingDTO;
+import com.photo.model.follows.FollowRequestDTO;
+import com.photo.model.follows.FollowResponseDTO;
+import com.photo.model.follows.FollowStatusDTO;
+import com.photo.model.follows.FollowerFollowingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/follows")

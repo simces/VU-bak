@@ -1,5 +1,6 @@
-package com.photo.model;
+package com.photo.model.users;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -10,18 +11,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPasswordChangeDTO {
+public class UserCreationDTO {
 
-    private String currentPassword;
+    @NotBlank(message = "Username cannot be blank")
+    @Size(max = 50, message = "Username cannot be longer than 50 characters")
+    private String username;
+
+    @Email(message = "Invalid email format")
+    private String email;
 
     @NotBlank(message = "Password cannot be blank")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter")
     @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter")
     @Pattern(regexp = ".*[0-9].*", message = "Password must contain at least one number")
-    private String newPassword;
+    private String password;
 
-    @NotBlank(message = "Confirm Password cannot be blank")
-    private String confirmNewPassword;
 }
-

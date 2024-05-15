@@ -1,11 +1,10 @@
 package com.photo.business.service;
 
-import com.photo.business.repository.model.PhotoDAO;
-import com.photo.model.TagDTO;
+import com.photo.model.tags.TagDTO;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public interface TagService {
 
-    TagDTO getTagByPhotoId(Long photoId);
+    List<TagDTO> getTagsByPhotoId(Long photoId);
 }
