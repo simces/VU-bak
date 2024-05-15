@@ -31,10 +31,11 @@ public class PhotoTagDAO {
     @JoinColumn(name = "tag_id", insertable = false, updatable = false)
     private TagDAO tag;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @MapsId("photoId")
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
     private PhotoDAO photo;
 }
+
 
 

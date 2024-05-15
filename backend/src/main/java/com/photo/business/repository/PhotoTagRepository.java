@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface PhotoTagRepository extends JpaRepository<PhotoTagDAO, PhotoTagId> {
 
     List<PhotoTagDAO> findByPhotoId(Long photoId);
+
+    void deleteByPhotoId(Long photoId);
 }

@@ -31,6 +31,7 @@ CREATE TABLE photos (
                         description TEXT,
                         image_url VARCHAR(255) NOT NULL,
                         uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        device_id BIGINT,
                         FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

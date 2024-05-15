@@ -8,14 +8,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.photo.business.mappers.CommentMapper;
 import com.photo.business.mappers.PhotoMapper;
 import com.photo.business.mappers.UserMapper;
-import com.photo.business.repository.CommentRepository;
-import com.photo.business.repository.PhotoRepository;
-import com.photo.business.repository.UserRepository;
+import com.photo.business.repository.*;
 import com.photo.business.repository.model.CommentDAO;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.AdminService;
 import com.photo.business.service.AuditService;
+import com.photo.model.photos.FullPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoUpdateDTO;
 import com.photo.model.users.UserDTO;
@@ -44,8 +43,10 @@ public class AdminServiceImpl implements AdminService {
     private final UserMapper userMapper;
     private final PhotoMapper photoMapper;
     private final CommentMapper commentMapper;
+    private final PhotoTagRepository photoTagRepository;
+    private final LikeRepository likeRepository;
 
-    public AdminServiceImpl(UserRepository userRepository, AuditService auditService, PhotoRepository photoRepository, CommentRepository commentRepository, UserMapper userMapper, PhotoMapper photoMapper, CommentMapper commentMapper) {
+    public AdminServiceImpl(UserRepository userRepository, AuditService auditService, PhotoRepository photoRepository, CommentRepository commentRepository, UserMapper userMapper, PhotoMapper photoMapper, CommentMapper commentMapper, PhotoTagRepository photoTagRepository, LikeRepository likeRepository) {
         this.userRepository = userRepository;
         this.auditService = auditService;
         this.photoRepository = photoRepository;
@@ -53,6 +54,8 @@ public class AdminServiceImpl implements AdminService {
         this.userMapper = userMapper;
         this.photoMapper = photoMapper;
         this.commentMapper = commentMapper;
+        this.photoTagRepository = photoTagRepository;
+        this.likeRepository = likeRepository;
     }
 
     @Override
@@ -113,11 +116,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<PhotoDTO> getAllPhotos() {
+    public List<FullPhotoDTO> getAllPhotos() {
         return photoRepository.findAll().stream()
-                .map(photoMapper::photoDAOToPhotoDTO)
+                .map(photoMapper::photoDAOToFullPhotoDTO)
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public PhotoDTO updatePhoto(Long id, PhotoUpdateDTO photoDetails) {
@@ -142,6 +146,7 @@ public class AdminServiceImpl implements AdminService {
         return photoMapper.photoDAOToPhotoDTO(updatedPhoto);
     }
 
+    @Transactional
     @Override
     public void deletePhoto(Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -153,11 +158,15 @@ public class AdminServiceImpl implements AdminService {
 
         String dataBefore = convertToJson(photoToDelete);
 
+        // Delete related likes and tags first to avoid constraint violations
+        likeRepository.deleteByPhotoId(photoToDelete.getId());
+        photoTagRepository.deleteByPhotoId(photoToDelete.getId());
+        commentRepository.deleteByPhotoId(photoToDelete.getId());
+
         photoRepository.delete(photoToDelete);
 
         auditService.logChange(currentUser.getId(), "DELETE", "photos", photoToDelete.getId(), dataBefore, "{}");
     }
-
     @Override
     public List<CommentDetailDTO> getAllComments() {
         return commentRepository.findAll().stream()

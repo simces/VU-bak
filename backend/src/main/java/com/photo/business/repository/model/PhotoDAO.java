@@ -34,4 +34,7 @@ public class PhotoDAO {
     @Column(name = "uploaded_at")
     private Timestamp uploadedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "device_id", nullable = true)
+    private UserDeviceDAO device;
 }

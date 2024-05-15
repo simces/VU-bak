@@ -1,7 +1,7 @@
 package com.photo.controller;
 
 import com.photo.business.service.DeviceCatalogService;
-import com.photo.model.DeviceCatalogDTO;
+import com.photo.model.devices.DeviceCatalogDTO;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.photo.business.mappers;
 
 import com.photo.business.repository.model.DeviceCatalogDAO;
-import com.photo.model.DeviceCatalogDTO;
+import com.photo.model.devices.DeviceCatalogDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,6 +1,6 @@
 package com.photo.business.service;
 
-import com.photo.model.UserDeviceDTO;
+import com.photo.model.devices.UserDeviceDTO;
 
 import java.util.List;
 

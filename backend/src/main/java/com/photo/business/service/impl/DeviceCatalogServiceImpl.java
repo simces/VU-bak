@@ -4,7 +4,7 @@ import com.photo.business.mappers.DeviceCatalogMapper;
 import com.photo.business.repository.DeviceCatalogRepository;
 import com.photo.business.repository.model.DeviceCatalogDAO;
 import com.photo.business.service.DeviceCatalogService;
-import com.photo.model.DeviceCatalogDTO;
+import com.photo.model.devices.DeviceCatalogDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

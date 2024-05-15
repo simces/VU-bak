@@ -1,7 +1,7 @@
 package com.photo.business.service;
 
 import java.util.List;
-import com.photo.model.DeviceCatalogDTO;
+import com.photo.model.devices.DeviceCatalogDTO;
 
 public interface DeviceCatalogService {
 

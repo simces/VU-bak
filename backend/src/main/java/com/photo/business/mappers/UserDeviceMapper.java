@@ -1,7 +1,7 @@
 package com.photo.business.mappers;
 
 import com.photo.business.repository.model.UserDeviceDAO;
-import com.photo.model.UserDeviceDTO;
+import com.photo.model.devices.UserDeviceDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

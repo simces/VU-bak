@@ -6,9 +6,11 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.photo.business.mappers.PhotoMapper;
 import com.photo.business.mappers.UserMapper;
 import com.photo.business.repository.PhotoRepository;
+import com.photo.business.repository.UserDeviceRepository;
 import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
+import com.photo.business.repository.model.UserDeviceDAO;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.TagService;
 import com.photo.model.photos.FullPhotoDTO;
@@ -48,9 +50,10 @@ public class PhotoServiceImpl implements PhotoService {
     private final PhotoTaggingService photoTaggingService;
     private final TagService tagService;
     private final UserMapper userMapper;
+    private final UserDeviceRepository userDeviceRepository;
 
     @Autowired
-    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper) {
+    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper, UserDeviceRepository userDeviceRepository) {
         this.photoRepository = photoRepository;
         this.photoMapper = photoMapper;
         this.userRepository = userRepository;
@@ -58,6 +61,7 @@ public class PhotoServiceImpl implements PhotoService {
         this.photoTaggingService = photoTaggingService;
         this.tagService = tagService;
         this.userMapper = userMapper;
+        this.userDeviceRepository = userDeviceRepository;
     }
 
 
@@ -90,8 +94,8 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
 
-    @Override
     @Transactional
+    @Override
     public void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException {
         logger.info("Starting upload process for user {}", photoDTO.getUserId());
 
@@ -107,15 +111,28 @@ public class PhotoServiceImpl implements PhotoService {
         photoDTO.setUploadedAt(new Timestamp(System.currentTimeMillis()));
 
         PhotoDAO photo = photoMapper.photoDTOToPhotoDAO(photoDTO);
+
+        if (photoDTO.getDeviceId() != null) {
+            logger.info("Device ID provided: {}", photoDTO.getDeviceId());
+            UserDeviceDAO device = userDeviceRepository.findById(photoDTO.getDeviceId())
+                    .orElseThrow(() -> new IllegalArgumentException("Device not found with id: " + photoDTO.getDeviceId()));
+            photo.setDevice(device);
+            logger.info("Device set: {} - {}", device.getType(), device.getModel());
+        } else {
+            logger.info("No device ID provided");
+        }
+
         photo = photoRepository.save(photo);
         logger.info("Photo uploaded successfully for user {} with ID {}", photoDTO.getUserId(), photo.getId());
 
-        if(photo.getId() != null) {
+        if (photo.getId() != null) {
             tagPhoto(photo.getId());
         } else {
             logger.warn("Photo ID is null after save operation");
         }
     }
+
+
 
     @Override
     public void tagPhoto(Long photoId) {

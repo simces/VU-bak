@@ -6,7 +6,6 @@ import com.photo.business.service.UserService;
 import com.photo.model.photos.FullPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoResponseDTO;
-import com.photo.model.users.UserBasicDetailsDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,17 +27,19 @@ public class PhotoController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file,
-                                              @RequestParam("title") String title,
-                                              @RequestParam("description") String description) {
+    public ResponseEntity<?> uploadPhoto(@RequestParam("title") String title,
+                                         @RequestParam("description") String description,
+                                         @RequestParam("file") MultipartFile file,
+                                         @RequestParam(value = "deviceId", required = false) Long deviceId) {
         try {
             PhotoDTO photoDTO = new PhotoDTO();
             photoDTO.setTitle(title);
             photoDTO.setDescription(description);
+            photoDTO.setDeviceId(deviceId);
             photoService.uploadPhotoFile(photoDTO, file);
-            return ResponseEntity.ok().body("Photo uploaded successfully!");
+            return ResponseEntity.ok("Photo uploaded successfully");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Upload failed: " + e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

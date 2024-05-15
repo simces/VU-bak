@@ -14,5 +14,7 @@ public interface CommentRepository extends JpaRepository<CommentDAO, Long> {
 
     @EntityGraph(attributePaths = {"user", "photo"})
     Optional<CommentDAO> findById(Long id);
+
+    void deleteByPhotoId(Long photoId);
 }
 

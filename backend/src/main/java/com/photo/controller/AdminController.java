@@ -1,6 +1,7 @@
 package com.photo.controller;
 
 import com.photo.business.service.AdminService;
+import com.photo.model.photos.FullPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoUpdateDTO;
 import com.photo.model.users.UserDTO;
@@ -61,8 +62,8 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/photos")
-    public ResponseEntity<List<PhotoDTO>> getAllPhotos() {
-        List<PhotoDTO> photos = adminService.getAllPhotos();
+    public ResponseEntity<List<FullPhotoDTO>> getAllPhotos() {
+        List<FullPhotoDTO> photos = adminService.getAllPhotos();
         return ResponseEntity.ok(photos);
     }
 

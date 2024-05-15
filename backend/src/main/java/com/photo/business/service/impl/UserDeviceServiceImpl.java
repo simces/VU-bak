@@ -7,7 +7,7 @@ import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.repository.model.UserDeviceDAO;
 import com.photo.business.service.UserDeviceService;
-import com.photo.model.UserDeviceDTO;
+import com.photo.model.devices.UserDeviceDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

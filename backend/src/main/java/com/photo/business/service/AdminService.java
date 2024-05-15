@@ -1,5 +1,6 @@
 package com.photo.business.service;
 
+import com.photo.model.photos.FullPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoUpdateDTO;
 import com.photo.model.users.UserDTO;
@@ -18,7 +19,7 @@ public interface AdminService {
 
     void deleteUser(Long id);
 
-    List<PhotoDTO> getAllPhotos();
+    List<FullPhotoDTO> getAllPhotos();
 
     PhotoDTO updatePhoto(Long id, PhotoUpdateDTO photoDetails);
 

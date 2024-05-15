@@ -2,7 +2,7 @@ package com.photo.controller;
 
 import com.photo.business.handlers.exceptions.UserNotFoundException;
 import com.photo.business.service.UserDeviceService;
-import com.photo.model.UserDeviceDTO;
+import com.photo.model.devices.UserDeviceDTO;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;

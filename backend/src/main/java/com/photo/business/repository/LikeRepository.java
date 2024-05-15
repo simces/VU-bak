@@ -16,4 +16,5 @@ public interface LikeRepository extends JpaRepository<LikeDAO, Long> {
     @Query("SELECT l.user FROM LikeDAO l WHERE l.photo.id = :photoId")
     List<UserDAO> findUsersByLikedPhoto(@Param("photoId") Long photoId);
 
+    void deleteByPhotoId(Long photoId);
 }

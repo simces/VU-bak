@@ -17,6 +17,7 @@ public class PhotoDTO {
     private String description;
     private String imageUrl;
     private Timestamp uploadedAt;
+    private Long deviceId;
 
 }
 
