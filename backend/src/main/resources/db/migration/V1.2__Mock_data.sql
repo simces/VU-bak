@@ -26,3 +26,39 @@ VALUES
     (2, 2, 1.00),
     (3, 3, 0.82),
     (4, 4, 0.99);
+
+-- V2__Insert_device_catalog.sql
+
+INSERT INTO device_catalog (type, model)
+VALUES
+('Phone', 'Apple iPhone 13 Pro'),
+('Phone', 'Samsung Galaxy S21 Ultra'),
+('Phone', 'Google Pixel 6 Pro'),
+('Phone', 'OnePlus 9 Pro'),
+('Phone', 'Xiaomi Mi 11 Ultra'),
+('Phone', 'Sony Xperia 1 III'),
+('Phone', 'Oppo Find X3 Pro'),
+('Phone', 'Asus ROG Phone 5'),
+('Phone', 'Huawei P50 Pro'),
+('Phone', 'Motorola Edge Plus'),
+('Phone', 'Nokia 8.3 5G'),
+('Phone', 'Apple iPhone SE (2020)'),
+('Phone', 'Samsung Galaxy Note 20 Ultra'),
+('Phone', 'Google Pixel 5'),
+('Phone', 'LG Velvet'),
+
+('Camera', 'Canon EOS R5'),
+('Camera', 'Nikon Z7 II'),
+('Camera', 'Sony Alpha 1'),
+('Camera', 'Fujifilm X-T4'),
+('Camera', 'Panasonic Lumix S1R'),
+('Camera', 'Leica Q2'),
+('Camera', 'Olympus OM-D E-M1 Mark III'),
+('Camera', 'Canon EOS R6'),
+('Camera', 'Nikon D850'),
+('Camera', 'Sony Alpha 7R IV'),
+('Camera', 'Pentax K-1 Mark II'),
+('Camera', 'Canon EOS 90D'),
+('Camera', 'Nikon Z6 II'),
+('Camera', 'Sony Alpha 7S III'),
+('Camera', 'Panasonic Lumix GH5');

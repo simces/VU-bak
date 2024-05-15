@@ -13,6 +13,5 @@ public interface PhotoMapper {
 
     PhotoDAO photoDTOToPhotoDAO(PhotoDTO photoDTO);
 
-    //new
     FullPhotoDTO photoDAOToFullPhotoDTO(PhotoDAO photoDAO);
 }

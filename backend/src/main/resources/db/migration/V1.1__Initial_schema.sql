@@ -10,6 +10,20 @@ CREATE TABLE users (
                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE user_devices (
+                              id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                              user_id BIGINT NOT NULL,
+                              type VARCHAR(50),
+                              model VARCHAR(100),
+                              FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE device_catalog (
+                                id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                type VARCHAR(50) NOT NULL,
+                                model VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE photos (
                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
                         user_id BIGINT NOT NULL,
