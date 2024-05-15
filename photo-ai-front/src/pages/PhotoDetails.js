@@ -34,10 +34,10 @@ const PhotoDetails = () => {
             try {
                 const photoDetailsData = await fetchWithToken(`/api/photos/${photoId}`);
                 setPhotoDetails(photoDetailsData);
-                
+
                 const commentsData = await fetchWithToken(`/api/photos/${photoId}/comments`);
                 setComments(commentsData);
-                
+
                 await refreshLikeStatusAndDetails();
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -45,21 +45,17 @@ const PhotoDetails = () => {
         };
         fetchData();
     }, [photoId, refreshLikeStatusAndDetails]);
-    
-    
-    
-    
+
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
-    
 
     const handleCommentSubmit = async (event) => {
         event.preventDefault();
         const commentData = JSON.stringify({
             comment: newComment 
         });
-    
+
         try {
             const newCommentData = await fetchWithToken(`/api/photos/${photoId}/comments`, {
                 method: 'POST',
@@ -74,8 +70,7 @@ const PhotoDetails = () => {
             console.error('Error posting comment:', error.message);
         }
     };
-    
-    
+
     const handleLike = async () => {
         try {
             await fetchWithToken(`/api/photos/${photoId}/likes`, {
@@ -87,7 +82,7 @@ const PhotoDetails = () => {
             console.error('Error liking the photo:', error.message);
         }
     };
-    
+
     const handleUnlike = async () => {
         if (!userLike || !userLike.likeId) return;
         try {
@@ -97,24 +92,22 @@ const PhotoDetails = () => {
             console.error('Error unliking the photo:', error.message);
         }
     };
-    
 
     if (!photoDetails) return <div>Loading...</div>;
-    
 
     return (
         <div>
-            <h2>{photoDetails.photoDTO.title}</h2>
-            <img src={photoDetails.photoDTO.imageUrl} alt={photoDetails.photoDTO.title} style={{ maxWidth: '100%' }} />
-            <p>Description: {photoDetails.photoDTO.description}</p>
-            <p>Tag: {photoDetails.tagDTO.name}</p>
-            
+            <h2>{photoDetails.photo.title}</h2>
+            <img src={photoDetails.photo.imageUrl} alt={photoDetails.photo.title} style={{ maxWidth: '100%' }} />
+            <p>Description: {photoDetails.photo.description}</p>
+            <p>Tag: {photoDetails.photo.tags.map(tag => `#${tag.name}`).join(', ')}</p>
+
             <p>Uploaded by: 
-                <img src={photoDetails.userProfileDTO.profilePictureUrl} alt={photoDetails.userProfileDTO.username} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
-                {photoDetails.userProfileDTO.username}
+                <img src={photoDetails.user.profilePictureUrl} alt={photoDetails.user.username} style={{ width: '50px', height: '50px', borderRadius: '50%', marginRight: '10px' }} />
+                {photoDetails.user.username}
             </p>
-            <p>Uploaded at: {new Date(photoDetails.photoDTO.uploadedAt).toLocaleString()}</p>
-    
+            <p>Uploaded at: {new Date(photoDetails.photo.uploadedAt).toLocaleString()}</p>
+
             <div>
                 {userLike ? (
                     <button onClick={handleUnlike}>Unlike</button>
@@ -160,11 +153,11 @@ const PhotoDetails = () => {
                 {comments.length > 0 ? comments.map((comment) => (
                 <div key={comment.id}>
                     <p>{comment.comment}</p>
-                    <p>By: {comment.user?.username || 'Unknown user'} at {new Date(comment.commentedAt).toLocaleString()}</p>
+                    <p>By: {comment.username || 'Unknown user'} at {new Date(comment.commentedAt).toLocaleString()}</p>
                 </div>
                 )) : <p>No comments yet.</p>}
             </div>
-    
+
             <form onSubmit={handleCommentSubmit}>
                 <input 
                     type="text" 

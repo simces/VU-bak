@@ -1,8 +1,6 @@
-// src/components/CommentsTab.js
-
 import React, { useState, useEffect } from 'react';
-import fetchWithToken from '../utils/fetchUtils';
-import '../styles/CommentsTab.css';
+import fetchWithToken from '../../utils/fetchUtils';
+import '../../styles/CommentsTab.css';
 
 const CommentsTab = () => {
     const [comments, setComments] = useState([]);
@@ -45,6 +43,7 @@ const CommentsTab = () => {
                             <p>User ID: {comment.userId}</p>
                             <p>Photo ID: {comment.photoId}</p>
                             <p>Content: {comment.comment || 'No Content'}</p>
+                            <p>Posted by: {comment.username}</p>
                             <p>Commented At: {new Date(comment.commentedAt).toLocaleString()}</p>
                             <button onClick={() => handleDelete(comment.id)} className="button delete-button">Delete</button>
                         </div>

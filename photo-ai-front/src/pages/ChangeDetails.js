@@ -82,7 +82,6 @@ const ChangeDetails = () => {
     <div>
       <h2>Change User Details</h2>
       <form onSubmit={submitUserDetails}>
-        {/* profile pic change */}
         <input type="text" name="username" placeholder="Username" value={userDetails.username} onChange={handleUserDetailsChange} />
         <input type="email" name="email" placeholder="Email" value={userDetails.email} onChange={handleUserDetailsChange} />
         <textarea name="bio" placeholder="Bio" value={userDetails.bio} onChange={handleUserDetailsChange} />

@@ -19,8 +19,8 @@ const UserProfile = () => {
     try {
       const followersResponse = await fetchWithToken(`/api/follows/followers/count/${userId}`);
       const followingsResponse = await fetchWithToken(`/api/follows/following/count/${userId}`);
-      setFollowersCount(followersResponse); 
-      setFollowingsCount(followingsResponse); 
+      setFollowersCount(followersResponse);
+      setFollowingsCount(followingsResponse);
     } catch (error) {
       console.error('Error fetching follow counts:', error);
     }
@@ -39,8 +39,13 @@ const UserProfile = () => {
         if (userProfileResponse.userProfile && userProfileResponse.userProfile.id) {
           fetchFollowCounts(userProfileResponse.userProfile.id);
           const followStatusResponse = await fetchWithToken(`/api/follows/isFollowing/${userProfileResponse.userProfile.id}`);
-          setIsFollowing(followStatusResponse.isFollowing);
-          setFollowId(followStatusResponse.followId);
+          if (followStatusResponse.following) {
+            setIsFollowing(true);
+            setFollowId(followStatusResponse.followId);
+          } else {
+            setIsFollowing(false);
+            setFollowId(null);
+          }
         }
       } catch (error) {
         console.error('Error fetching user profile:', error);
@@ -52,9 +57,16 @@ const UserProfile = () => {
 
   const handleFollow = async () => {
     try {
-      const response = await fetchWithToken(`/api/follows/follow/${userProfile.id}`, { method: 'POST' });
+      const followRequestDTO = { followingId: userProfile.id };
+      const followResponseDTO = await fetchWithToken(`/api/follows/follow`, {
+        method: 'POST',
+        body: JSON.stringify(followRequestDTO),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       setIsFollowing(true);
-      setFollowId(response.followId); 
+      setFollowId(followResponseDTO.followId); // Ensure correct field name
       fetchFollowCounts(userProfile.id);
     } catch (error) {
       console.error('Error following user:', error);
