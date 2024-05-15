@@ -7,6 +7,5 @@ import java.math.BigDecimal;
 
 public interface TagService {
 
-    void saveTag(String tagName, PhotoDAO photo, BigDecimal confidence);
     TagDTO getTagByPhotoId(Long photoId);
 }

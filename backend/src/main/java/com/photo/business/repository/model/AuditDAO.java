@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "admin_audit_logs")
+@Table(name = "audits")
 public class AuditDAO {
 
     @Id

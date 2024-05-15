@@ -2,6 +2,8 @@ package com.photo.controller;
 
 import com.photo.business.repository.model.CommentDAO;
 import com.photo.business.service.CommentService;
+import com.photo.model.comments.CommentDTO;
+import com.photo.model.comments.CommentDetailDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,16 +21,15 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentDAO> addComment(@PathVariable Long photoId, @RequestBody CommentDAO comment) {
-        comment.setPhotoId(photoId);
-        CommentDAO savedComment = commentService.addCommentToPhoto(comment);
+    public ResponseEntity<CommentDetailDTO> addComment(@PathVariable Long photoId, @RequestBody CommentDTO commentDTO) {
+        commentDTO.setPhotoId(photoId);  // Set the photo ID from the path variable
+        CommentDetailDTO savedComment = commentService.addCommentToPhoto(commentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedComment);
     }
 
-
     @GetMapping
-    public ResponseEntity<List<CommentDAO>> getCommentsByPhotoId(@PathVariable Long photoId) {
-        List<CommentDAO> comments = commentService.getCommentsByPhotoId(photoId);
+    public ResponseEntity<List<CommentDetailDTO>> getCommentsByPhotoId(@PathVariable Long photoId) {
+        List<CommentDetailDTO> comments = commentService.getCommentsByPhotoId(photoId);
         return ResponseEntity.ok(comments);
     }
 }

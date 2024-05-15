@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "phototag")
+@Table(name = "photo_tag")
 @IdClass(PhotoTagId.class)
 public class PhotoTagDAO {
 

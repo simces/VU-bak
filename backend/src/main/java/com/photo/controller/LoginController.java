@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
 public class LoginController {
 
     private final LoginServiceImpl loginService;
-
     private final UserService userService;
 
     public LoginController(UserService userService, LoginServiceImpl loginService) {

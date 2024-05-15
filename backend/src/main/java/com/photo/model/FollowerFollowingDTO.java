@@ -1,15 +1,16 @@
 package com.photo.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class LikeDetailDTO {
+public class FollowerFollowingDTO {
 
-    private int likeCount;
-
-    private List<String> usernames;
-
+    private List<Long> userIds;
 }
+

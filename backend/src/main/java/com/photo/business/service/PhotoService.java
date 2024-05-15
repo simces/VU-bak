@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface PhotoService {
 
-    PhotoDTO uploadPhoto(PhotoDTO photoDTO);
-
     List<PhotoDTO> getPhotosByUserId(Long userId);
     PhotoDTO getPhotoById(Long id);
     void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException;

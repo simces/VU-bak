@@ -5,6 +5,7 @@ import com.photo.business.handlers.exceptions.PasswordConfirmationException;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.UserService;
 import com.photo.model.PhotoDTO;
+import com.photo.model.UserDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,8 @@ public class UserProfileController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<UserProfileDTO> getCurrentUserProfile() {
-        UserProfileDTO userProfile = userService.getCurrentUserProfile();
+    public ResponseEntity<UserDTO> getCurrentUserProfile() {
+        UserDTO userProfile = userService.getCurrentUserProfileWithRole();
         return ResponseEntity.ok(userProfile);
     }
 

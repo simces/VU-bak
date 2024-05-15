@@ -6,6 +6,7 @@ import com.photo.business.repository.UserRepository;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.UserService;
 import com.photo.model.UserCreationDTO;
+import com.photo.model.UserDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,8 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -112,14 +111,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserProfileDTO getCurrentUserProfile() {
+    public UserDTO getCurrentUserProfileWithRole() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
-        return findByUsername(currentUsername);
-    }
-    @Override
-    public List<String> findAllUsernamesByRole(String role) {
-        List<UserDAO> users = userRepository.findByRole(role);
-        return users.stream().map(UserDAO::getUsername).collect(Collectors.toList());
+        UserDAO user = userRepository.findByUsername(currentUsername)
+                .orElseThrow(UserNotFoundException::new);
+        return userMapper.userDAOToUserDTO(user);
     }
 }

@@ -1,6 +1,10 @@
 package com.photo.controller;
 
 import com.photo.business.service.FollowService;
+import com.photo.model.FollowRequestDTO;
+import com.photo.model.FollowResponseDTO;
+import com.photo.model.FollowStatusDTO;
+import com.photo.model.FollowerFollowingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +23,10 @@ public class FollowController {
         this.followService = followService;
     }
 
-    @PostMapping("/follow/{followingId}")
-    public ResponseEntity<?> followUser(@PathVariable Long followingId) {
-        followService.followUser(followingId);
-        return ResponseEntity.ok("User followed successfully.");
+    @PostMapping("/follow")
+    public ResponseEntity<FollowResponseDTO> followUser(@RequestBody FollowRequestDTO followRequestDTO) {
+        FollowResponseDTO followResponseDTO = followService.followUser(followRequestDTO);
+        return ResponseEntity.ok(followResponseDTO);
     }
 
     @DeleteMapping("/unfollow/{followId}")
@@ -32,20 +36,20 @@ public class FollowController {
     }
 
     @GetMapping("/isFollowing/{followingId}")
-    public ResponseEntity<?> checkFollowing(@PathVariable Long followingId) {
-        Map<String, Object> followStatus = followService.checkFollowing(followingId);
+    public ResponseEntity<FollowStatusDTO> checkFollowing(@PathVariable Long followingId) {
+        FollowStatusDTO followStatus = followService.checkFollowing(followingId);
         return ResponseEntity.ok(followStatus);
     }
 
     @GetMapping("/followers/{userId}")
-    public ResponseEntity<List<Long>> getFollowers(@PathVariable Long userId) {
-        List<Long> followers = followService.getFollowers(userId);
+    public ResponseEntity<FollowerFollowingDTO> getFollowers(@PathVariable Long userId) {
+        FollowerFollowingDTO followers = followService.getFollowers(userId);
         return ResponseEntity.ok(followers);
     }
 
     @GetMapping("/following/{userId}")
-    public ResponseEntity<List<Long>> getFollowing(@PathVariable Long userId) {
-        List<Long> following = followService.getFollowing(userId);
+    public ResponseEntity<FollowerFollowingDTO> getFollowing(@PathVariable Long userId) {
+        FollowerFollowingDTO following = followService.getFollowing(userId);
         return ResponseEntity.ok(following);
     }
 
@@ -61,4 +65,3 @@ public class FollowController {
         return ResponseEntity.ok(count);
     }
 }
-

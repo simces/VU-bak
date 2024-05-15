@@ -2,6 +2,7 @@ package com.photo.controller;
 
 import com.photo.business.repository.model.AuditDAO;
 import com.photo.business.service.AuditService;
+import com.photo.model.AuditDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,8 @@ public class AuditController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
-    public ResponseEntity<List<AuditDAO>> getAllAudits() {
-        List<AuditDAO> audits = auditService.getAllAudits();
+    public ResponseEntity<List<AuditDTO>> getAllAudits() {
+        List<AuditDTO> audits = auditService.getAllAudits();
         return ResponseEntity.ok(audits);
     }
 }

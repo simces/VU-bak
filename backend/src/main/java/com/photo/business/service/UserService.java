@@ -2,6 +2,7 @@ package com.photo.business.service;
 
 import com.photo.business.repository.model.UserDAO;
 import com.photo.model.UserCreationDTO;
+import com.photo.model.UserDTO;
 import com.photo.model.UserPasswordChangeDTO;
 import com.photo.model.UserProfileDTO;
 
@@ -44,7 +45,6 @@ public interface UserService {
 
     UserProfileDTO getUserById(Long id);
 
-    UserProfileDTO getCurrentUserProfile();
+    UserDTO getCurrentUserProfileWithRole();
 
-    List<String> findAllUsernamesByRole(String role);
 }

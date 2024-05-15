@@ -18,26 +18,12 @@ import java.util.Optional;
 public class TagServiceImpl implements TagService {
 
     private final TagRepository tagRepository;
-
     private final PhotoTagRepository photoTagRepository;
 
     @Autowired
     public TagServiceImpl(TagRepository tagRepository, PhotoTagRepository photoTagRepository) {
         this.tagRepository = tagRepository;
         this.photoTagRepository = photoTagRepository;
-    }
-
-    @Override
-    public void saveTag(String tagName, PhotoDAO photo, BigDecimal confidence) {
-        TagDAO tag = tagRepository.findByName(tagName)
-                .orElseGet(() -> tagRepository.save(new TagDAO(null, tagName)));
-
-        PhotoTagDAO photoTag = new PhotoTagDAO();
-        photoTag.setPhoto(photo);
-        photoTag.setTag(tag);
-        photoTag.setConfidence(confidence);
-
-        photoTagRepository.save(photoTag);
     }
 
     @Override

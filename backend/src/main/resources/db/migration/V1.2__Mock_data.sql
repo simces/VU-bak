@@ -6,4 +6,23 @@ VALUES
     ('Test3', 'test3@test3.com', '$2a$10$vPEyk8e4zQObj3FHFe87XeLPbFNJz25swU6VHXVJXbfkX2Vp5HpvK', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/4045d3b3-603e-4f4f-9fd5-a78aef4d06f8.png', 'User Test3', 'ROLE_USER'),
     ('admin', 'admin@admin.com', '$2a$10$KuD57DnnTv4SPtZUXBREfOlzpDkdAbI4olH4LVu8QAFhoY66SMwPu', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/4045d3b3-603e-4f4f-9fd5-a78aef4d06f8.png', 'Administrator', 'ROLE_ADMIN');
 
+INSERT INTO photos (user_id, title, description, image_url, uploaded_at)
+VALUES
+    (5, 'Telecaster', 'Cool new pickguard', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/c201a10f-4ea3-4fd5-a4a1-27b885cf65d6.png', '2024-05-15 01:55:34'),
+    (5, 'Apollo', 'My African Grey!', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/8e365b32-c086-44c0-850c-64abfe0ced2d.jpg', '2024-05-15 02:00:18'),
+    (5, 'Williams at Monaco!', 'Just took this pic yesterday', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/0b8f831d-6e0c-457a-89ef-29b1a98d5a00.png', '2024-05-15 02:04:24'),
+    (5, 'Mano katukas Kipriukas', 'Nu jis labai mielas', 'https://photo-ai-bak.s3.eu-north-1.amazonaws.com/0b6ddbf2-44f0-4308-ba85-c002fb44458d.jpg', '2024-05-15 02:49:01');
 
+INSERT INTO tag (id, name)
+VALUES
+    (1, 'electric_guitar'),
+    (2, 'African_grey'),
+    (3, 'racer'),
+    (4, 'Siamese_cat');
+
+INSERT INTO photo_tag (photo_id, tag_id, confidence)
+VALUES
+    (1, 1, 0.99),
+    (2, 2, 1.00),
+    (3, 3, 0.82),
+    (4, 4, 0.99);

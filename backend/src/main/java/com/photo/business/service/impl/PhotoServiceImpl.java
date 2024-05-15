@@ -51,14 +51,6 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public PhotoDTO uploadPhoto(PhotoDTO photoDTO) {
-        PhotoDAO photo = photoMapper.photoDTOToPhotoDAO(photoDTO);
-        photo.setUploadedAt(new Timestamp(System.currentTimeMillis()));
-        PhotoDAO savedPhoto = photoRepository.save(photo);
-        return photoMapper.photoDAOToPhotoDTO(savedPhoto);
-    }
-
-    @Override
     public List<PhotoDTO> getPhotosByUserId(Long userId) {
         List<PhotoDAO> photos = photoRepository.findByUserId(userId);
         return photos.stream().map(photoMapper::photoDAOToPhotoDTO).collect(Collectors.toList());
@@ -107,16 +99,6 @@ public class PhotoServiceImpl implements PhotoService {
         photoTaggingService.tagPhoto(photo);
     }
 
-    private String generateFileName(MultipartFile file) {
-        String originalFileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        String fileExtension = Optional.of(originalFileName)
-                .filter(f -> f.contains("."))
-                .map(f -> f.substring(originalFileName.lastIndexOf(".") + 1))
-                .orElse("");
-        return UUID.randomUUID().toString() + "." + fileExtension;
-    }
-
-
     private String uploadFileToS3(MultipartFile file, PhotoDTO photoDTO) throws IOException {
         String fileName = generateFileName(file);
         String bucketName = "photo-ai-bak";
@@ -128,4 +110,12 @@ public class PhotoServiceImpl implements PhotoService {
         return fileUrl;
     }
 
+    private String generateFileName(MultipartFile file) {
+        String originalFileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        String fileExtension = Optional.of(originalFileName)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(originalFileName.lastIndexOf(".") + 1))
+                .orElse("");
+        return UUID.randomUUID() + "." + fileExtension;
+    }
 }

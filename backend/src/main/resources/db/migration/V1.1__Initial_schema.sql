@@ -38,16 +38,6 @@ CREATE TABLE comments (
                         FOREIGN KEY (photo_id) REFERENCES photos (id)
 );
 
-CREATE TABLE notifications (
-                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                        user_id BIGINT NOT NULL,
-                        type VARCHAR(50),
-                        type_id BIGINT NOT NULL,
-                        message TEXT,
-                        read_status BIT NOT NULL DEFAULT 0,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        FOREIGN KEY (user_id) REFERENCES users (id)
-);
 
 CREATE TABLE follows (
                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -56,22 +46,13 @@ CREATE TABLE follows (
                          UNIQUE KEY unique_follow_relationship (follower_id, following_id)
 );
 
-CREATE TABLE AiTagFeedback (
-                               id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                               photo_tag_id BIGINT NOT NULL,
-                               user_id BIGINT NOT NULL,
-                               feedback BIT NOT NULL,
-                               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                               FOREIGN KEY (photo_tag_id) REFERENCES photos(id),
-                               FOREIGN KEY (user_id) REFERENCES users(id)
-);
 
 CREATE TABLE tag (
                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
                      name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE PhotoTag (
+CREATE TABLE photo_tag (
                           photo_id BIGINT NOT NULL,
                           tag_id BIGINT NOT NULL,
                           confidence DECIMAL(10, 9),
@@ -80,7 +61,7 @@ CREATE TABLE PhotoTag (
                           FOREIGN KEY (tag_id) REFERENCES tag(id)
 );
 
-CREATE TABLE admin_audit_logs (
+CREATE TABLE audits (
                                   id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                   admin_id BIGINT NOT NULL,
                                   action_type VARCHAR(50) NOT NULL,

@@ -17,23 +17,17 @@ public class CommentDAO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserDAO user;
 
-    @Column(name = "photo_id")
-    private Long photoId;
+    @ManyToOne
+    @JoinColumn(name = "photo_id", nullable = false)
+    private PhotoDAO photo;
 
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
 
     @Column(name = "commented_at")
     private Timestamp commentedAt;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private UserDAO user;
-
-    @ManyToOne
-    @JoinColumn(name = "photo_id", insertable = false, updatable = false)
-    private PhotoDAO photo;
 }

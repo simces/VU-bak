@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
 
     private final AuthenticationManager authenticationManager;
-
     private final JwtGenerator jwtGenerator;
 
     public LoginServiceImpl(AuthenticationManager authenticationManager, JwtGenerator jwtGenerator) {

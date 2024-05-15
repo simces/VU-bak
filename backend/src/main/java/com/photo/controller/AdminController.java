@@ -1,11 +1,12 @@
 package com.photo.controller;
 
-import com.photo.business.repository.model.PhotoDAO;
-import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.AdminService;
-import com.photo.model.CommentDTO;
+import com.photo.model.PhotoDTO;
+import com.photo.model.PhotoUpdateDTO;
+import com.photo.model.UserDTO;
+import com.photo.model.UserUpdateDTO;
+import com.photo.model.comments.CommentDetailDTO;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,7 +19,6 @@ import java.util.List;
 @RequestMapping("/api/admin")
 public class AdminController {
 
-    @Autowired
     private final AdminService adminService;
 
     public AdminController(AdminService adminService) {
@@ -27,20 +27,23 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
-    public List<UserDAO> getAllUsers() {
-        return adminService.getAllUsers();
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        List<UserDTO> users = adminService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
-    public UserDAO getUserById(@PathVariable Long id) {
-        return adminService.getUserById(id);
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        UserDTO user = adminService.getUserById(id);
+        return ResponseEntity.ok(user);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
-    public UserDAO updateUser(@PathVariable Long id, @RequestBody UserDAO userDetails) {
-        return adminService.updateUser(id, userDetails);
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserUpdateDTO userDetails) {
+        UserDTO updatedUser = adminService.updateUser(id, userDetails);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -58,16 +61,16 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/photos")
-    public ResponseEntity<List<PhotoDAO>> getAllPhotos() {
-        List<PhotoDAO> photos = adminService.getAllPhotos();
+    public ResponseEntity<List<PhotoDTO>> getAllPhotos() {
+        List<PhotoDTO> photos = adminService.getAllPhotos();
         return ResponseEntity.ok(photos);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/photos/{id}")
-    public ResponseEntity<PhotoDAO> updatePhoto(@PathVariable Long id, @RequestBody PhotoDAO photoDetails) {
+    public ResponseEntity<PhotoDTO> updatePhoto(@PathVariable Long id, @RequestBody PhotoUpdateDTO photoDetails) {
         try {
-            PhotoDAO updatedPhoto = adminService.updatePhoto(id, photoDetails);
+            PhotoDTO updatedPhoto = adminService.updatePhoto(id, photoDetails);
             return ResponseEntity.ok(updatedPhoto);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
@@ -91,8 +94,8 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/comments")
-    public ResponseEntity<List<CommentDTO>> getAllComments() {
-        List<CommentDTO> comments = adminService.getAllComments();
+    public ResponseEntity<List<CommentDetailDTO>> getAllComments() {
+        List<CommentDetailDTO> comments = adminService.getAllComments();
         return ResponseEntity.ok(comments);
     }
 
@@ -108,5 +111,4 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting comment: " + e.getMessage());
         }
     }
-
 }

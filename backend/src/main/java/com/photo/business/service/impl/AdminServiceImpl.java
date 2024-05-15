@@ -1,11 +1,13 @@
 package com.photo.business.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.photo.business.mappers.CommentMapper;
+import com.photo.business.mappers.PhotoMapper;
+import com.photo.business.mappers.UserMapper;
 import com.photo.business.repository.CommentRepository;
 import com.photo.business.repository.PhotoRepository;
 import com.photo.business.repository.UserRepository;
@@ -14,7 +16,11 @@ import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.AdminService;
 import com.photo.business.service.AuditService;
-import com.photo.model.CommentDTO;
+import com.photo.model.PhotoDTO;
+import com.photo.model.PhotoUpdateDTO;
+import com.photo.model.UserDTO;
+import com.photo.model.UserUpdateDTO;
+import com.photo.model.comments.CommentDetailDTO;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.Authentication;
@@ -35,27 +41,36 @@ public class AdminServiceImpl implements AdminService {
     private final AuditService auditService;
     private final PhotoRepository photoRepository;
     private final CommentRepository commentRepository;
+    private final UserMapper userMapper;
+    private final PhotoMapper photoMapper;
+    private final CommentMapper commentMapper;
 
-    public AdminServiceImpl(UserRepository userRepository, AuditService auditService, PhotoRepository photoRepository, CommentRepository commentRepository) {
+    public AdminServiceImpl(UserRepository userRepository, AuditService auditService, PhotoRepository photoRepository, CommentRepository commentRepository, UserMapper userMapper, PhotoMapper photoMapper, CommentMapper commentMapper) {
         this.userRepository = userRepository;
         this.auditService = auditService;
         this.photoRepository = photoRepository;
         this.commentRepository = commentRepository;
+        this.userMapper = userMapper;
+        this.photoMapper = photoMapper;
+        this.commentMapper = commentMapper;
     }
 
     @Override
-    public List<UserDAO> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(userMapper::userDAOToUserDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public UserDAO getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+    public UserDTO getUserById(Long id) {
+        UserDAO userDAO = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+        return userMapper.userDAOToUserDTO(userDAO);
     }
 
     @Override
-    public UserDAO updateUser(Long id, UserDAO userDetails) {
-
+    public UserDTO updateUser(Long id, UserUpdateDTO userDetails) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDAO currentUser = userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
@@ -63,7 +78,7 @@ public class AdminServiceImpl implements AdminService {
         UserDAO existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
 
-        String dataBefore = convertToJson(existingUser);
+        String dataBefore = convertToJson(userMapper.userDAOToAuditUserDTO(existingUser));
 
         existingUser.setUsername(userDetails.getUsername());
         existingUser.setEmail(userDetails.getEmail());
@@ -74,28 +89,11 @@ public class AdminServiceImpl implements AdminService {
 
         UserDAO updatedUser = userRepository.save(existingUser);
 
-        String dataAfter = convertToJson(updatedUser);
+        String dataAfter = convertToJson(userMapper.userDAOToAuditUserDTO(updatedUser));
 
         auditService.logChange(currentUser.getId(), "UPDATE", "users", existingUser.getId(), dataBefore, dataAfter);
 
-        return updatedUser;
-    }
-
-    private String convertToJson(Object obj) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule());
-            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-            return mapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Failed to convert to JSON: " + e.getMessage(), e);
-        }
-    }
-
-
-    @JsonIgnoreProperties("password")  // ignore password field
-    abstract static class UserDAOMixin {
+        return userMapper.userDAOToUserDTO(updatedUser);
     }
 
     @Override
@@ -107,107 +105,97 @@ public class AdminServiceImpl implements AdminService {
         UserDAO userToDelete = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
 
-        String dataBefore = convertToJson(userToDelete);
+        String dataBefore = convertToJson(userMapper.userDAOToAuditUserDTO(userToDelete));
 
         userRepository.delete(userToDelete);
 
         auditService.logChange(currentUser.getId(), "DELETE", "users", userToDelete.getId(), dataBefore, "{}");
-
     }
 
     @Override
-    public List<PhotoDAO> getAllPhotos() {
-        return photoRepository.findAll();
-    }
-
-    @Override
-    public PhotoDAO updatePhoto(Long id, PhotoDAO photoDetails) {
-        // Authenticate current user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDAO currentUser = userRepository.findByUsername(authentication.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
-
-        // Find the photo to be updated
-        PhotoDAO existingPhoto = photoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Photo not found with id: " + id));
-
-        // Store the data before changes
-        String dataBefore = convertToJson(existingPhoto);
-
-        // Update the fields that are allowed to be changed
-        existingPhoto.setTitle(photoDetails.getTitle());
-        existingPhoto.setDescription(photoDetails.getDescription());
-
-        // Save the updated photo
-        PhotoDAO updatedPhoto = photoRepository.save(existingPhoto);
-
-        // Store the data after changes
-        String dataAfter = convertToJson(updatedPhoto);
-
-        // Log the update action
-        auditService.logChange(currentUser.getId(), "UPDATE", "photos", existingPhoto.getId(), dataBefore, dataAfter);
-
-        return updatedPhoto;
-    }
-
-    // Delete Photo Method
-    @Override
-    public void deletePhoto(Long id) {
-        // Authenticate current user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDAO currentUser = userRepository.findByUsername(authentication.getName())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
-
-        // Find the photo to be deleted
-        PhotoDAO photoToDelete = photoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Photo not found with id: " + id));
-
-        // Store the data before deletion
-        String dataBefore = convertToJson(photoToDelete);
-
-        // Delete the photo
-        photoRepository.delete(photoToDelete);
-
-        // Log the delete action
-        auditService.logChange(currentUser.getId(), "DELETE", "photos", photoToDelete.getId(), dataBefore, "{}");
-    }
-
-    public List<CommentDTO> getAllComments() {
-        return commentRepository.findAll().stream()
-                .map(this::toCommentDTO)
+    public List<PhotoDTO> getAllPhotos() {
+        return photoRepository.findAll().stream()
+                .map(photoMapper::photoDAOToPhotoDTO)
                 .collect(Collectors.toList());
     }
 
-    private CommentDTO toCommentDTO(CommentDAO comment) {
-        CommentDTO dto = new CommentDTO();
-        dto.setId(comment.getId());
-        dto.setUserId(comment.getUserId());
-        dto.setPhotoId(comment.getPhotoId());
-        dto.setComment(comment.getComment());
-        dto.setCommentedAt(comment.getCommentedAt().toLocalDateTime());
-        return dto;
+    @Override
+    public PhotoDTO updatePhoto(Long id, PhotoUpdateDTO photoDetails) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDAO currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
+
+        PhotoDAO existingPhoto = photoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Photo not found with id: " + id));
+
+        String dataBefore = convertToJson(existingPhoto);
+
+        existingPhoto.setTitle(photoDetails.getTitle());
+        existingPhoto.setDescription(photoDetails.getDescription());
+
+        PhotoDAO updatedPhoto = photoRepository.save(existingPhoto);
+
+        String dataAfter = convertToJson(updatedPhoto);
+
+        auditService.logChange(currentUser.getId(), "UPDATE", "photos", existingPhoto.getId(), dataBefore, dataAfter);
+
+        return photoMapper.photoDAOToPhotoDTO(updatedPhoto);
     }
 
+    @Override
+    public void deletePhoto(Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDAO currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
+
+        PhotoDAO photoToDelete = photoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Photo not found with id: " + id));
+
+        String dataBefore = convertToJson(photoToDelete);
+
+        photoRepository.delete(photoToDelete);
+
+        auditService.logChange(currentUser.getId(), "DELETE", "photos", photoToDelete.getId(), dataBefore, "{}");
+    }
+
+    @Override
+    public List<CommentDetailDTO> getAllComments() {
+        return commentRepository.findAll().stream()
+                .map(comment -> {
+                    CommentDetailDTO dto = commentMapper.toDetailDTO(comment);
+                    dto.setUsername(comment.getUser().getUsername());
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
 
     @Override
     @Transactional
     public void deleteComment(Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDAO currentUser = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
+
+        CommentDAO commentToDelete = commentRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
+
+        CommentDetailDTO commentToDeleteDTO = commentMapper.toDetailDTO(commentToDelete);
+        commentToDeleteDTO.setUsername(commentToDelete.getUser().getUsername());
+        String dataBefore = convertToJson(commentToDeleteDTO);
+
+        commentRepository.delete(commentToDelete);
+        auditService.logChange(currentUser.getId(), "DELETE", "comments", commentToDelete.getId(), dataBefore, "{}");
+    }
+
+    private String convertToJson(Object obj) {
         try {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            UserDAO currentUser = userRepository.findByUsername(authentication.getName())
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + authentication.getName()));
-
-            CommentDAO commentToDelete = commentRepository.findById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Comment not found with id: " + id));
-
-            CommentDTO commentToDeleteDTO = toCommentDTO(commentToDelete);
-            String dataBefore = convertToJson(commentToDeleteDTO);
-
-            commentRepository.delete(commentToDelete);
-            auditService.logChange(currentUser.getId(), "DELETE", "comments", commentToDelete.getId(), dataBefore, "{}");
-        } catch (Exception e) {
-            System.err.println("Error during comment deletion: " + e.getMessage());
-            throw e;
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+            return mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Failed to convert to JSON: " + e.getMessage(), e);
         }
     }
 }

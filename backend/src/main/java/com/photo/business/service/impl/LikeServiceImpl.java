@@ -1,5 +1,6 @@
 package com.photo.business.service.impl;
 
+import com.photo.business.mappers.LikeMapper;
 import com.photo.business.repository.LikeRepository;
 import com.photo.business.repository.PhotoRepository;
 import com.photo.business.repository.UserRepository;
@@ -7,9 +8,11 @@ import com.photo.business.repository.model.LikeDAO;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.service.LikeService;
-import com.photo.model.LikeDetailDTO;
-import com.photo.model.LikeStatusDTO;
+import com.photo.model.likes.LikeDTO;
+import com.photo.model.likes.LikeDetailDTO;
+import com.photo.model.likes.LikeStatusDTO;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,15 +29,20 @@ public class LikeServiceImpl implements LikeService {
     private final LikeRepository likeRepository;
     private final PhotoRepository photoRepository;
     private final UserRepository userRepository;
+    private final LikeMapper likeMapper;
 
-    public LikeServiceImpl(LikeRepository likeRepository, PhotoRepository photoRepository, UserRepository userRepository) {
+
+    @Autowired
+    public LikeServiceImpl(LikeRepository likeRepository, PhotoRepository photoRepository, UserRepository userRepository, LikeMapper likeMapper) {
         this.likeRepository = likeRepository;
         this.photoRepository = photoRepository;
         this.userRepository = userRepository;
+        this.likeMapper = likeMapper;
     }
 
+
     @Override
-    public LikeDAO likePhoto(Long photoId) {
+    public LikeDTO likePhoto(Long photoId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
@@ -48,7 +56,9 @@ public class LikeServiceImpl implements LikeService {
         newLike.setPhoto(photo);
         newLike.setUser(user);
 
-        return likeRepository.save(newLike);
+        LikeDAO savedLike = likeRepository.save(newLike);
+
+        return likeMapper.toDTO(savedLike);
     }
 
     @Override
@@ -75,11 +85,7 @@ public class LikeServiceImpl implements LikeService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         Optional<LikeDAO> likeOpt = likeRepository.findByPhotoIdAndUserId(photoId, user.getId());
-        if (likeOpt.isPresent()) {
-            return new LikeStatusDTO(true, likeOpt.get().getId());
-        } else {
-            return new LikeStatusDTO(false, null);
-        }
+        return likeOpt.map(likeDAO -> new LikeStatusDTO(true, likeDAO.getId())).orElseGet(() -> new LikeStatusDTO(false, null));
     }
 
     @Override

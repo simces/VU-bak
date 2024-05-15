@@ -8,5 +8,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface FeedService {
 
-    public Page<PhotoResponseDTO> getFeed(Pageable pageable);
+    Page<PhotoResponseDTO> getFeed(Pageable pageable);
 }

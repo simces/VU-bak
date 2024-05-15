@@ -1,12 +1,15 @@
 package com.photo.business.service;
 
 import com.photo.business.repository.model.CommentDAO;
+import com.photo.model.comments.CommentDTO;
+import com.photo.model.comments.CommentDetailDTO;
 
 import java.util.List;
 
 public interface CommentService {
 
-    List<CommentDAO> getCommentsByPhotoId(Long photoId);
+    CommentDetailDTO addCommentToPhoto(CommentDTO commentDTO);
 
-    CommentDAO addCommentToPhoto(CommentDAO comment);
+    List<CommentDetailDTO> getCommentsByPhotoId(Long photoId);
+
 }

@@ -1,19 +1,23 @@
 package com.photo.business.service;
 
+import com.photo.model.FollowRequestDTO;
+import com.photo.model.FollowResponseDTO;
+import com.photo.model.FollowStatusDTO;
+import com.photo.model.FollowerFollowingDTO;
+
 import java.util.List;
 import java.util.Map;
 
 public interface FollowService {
 
-    void followUser(Long followingId);
-
+    FollowResponseDTO followUser(FollowRequestDTO followRequestDTO);
     void unfollowUser(Long followId);
 
-    Map<String, Object> checkFollowing(Long followingId);
+    FollowStatusDTO checkFollowing(Long followingId);
 
-    List<Long> getFollowers(Long userId);
+    FollowerFollowingDTO getFollowers(Long userId);
 
-    List<Long> getFollowing(Long userId);
+    FollowerFollowingDTO getFollowing(Long userId);
 
     long getFollowersCount(Long userId);
 

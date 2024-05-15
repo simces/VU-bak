@@ -26,15 +26,10 @@ import java.util.stream.Collectors;
 public class FeedServiceImpl implements FeedService {
 
     private final FollowRepository followRepository;
-
     private final PhotoRepository photoRepository;
-
     private final UserRepository userRepository;
-
     private final UserService userService;
-
     private final TagService tagService;
-
     private final PhotoMapper photoMapper;
 
     public FeedServiceImpl(FollowRepository followRepository, PhotoRepository photoRepository, UserRepository userRepository, UserService userService, TagService tagService, PhotoMapper photoMapper) {
