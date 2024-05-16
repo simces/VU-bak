@@ -51,9 +51,10 @@ public class PhotoServiceImpl implements PhotoService {
     private final TagService tagService;
     private final UserMapper userMapper;
     private final UserDeviceRepository userDeviceRepository;
+    private final GeocodingService geocodingService;
 
     @Autowired
-    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper, UserDeviceRepository userDeviceRepository) {
+    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper, UserDeviceRepository userDeviceRepository, GeocodingService geocodingService) {
         this.photoRepository = photoRepository;
         this.photoMapper = photoMapper;
         this.userRepository = userRepository;
@@ -62,6 +63,7 @@ public class PhotoServiceImpl implements PhotoService {
         this.tagService = tagService;
         this.userMapper = userMapper;
         this.userDeviceRepository = userDeviceRepository;
+        this.geocodingService = geocodingService;
     }
 
 
@@ -73,6 +75,11 @@ public class PhotoServiceImpl implements PhotoService {
         List<TagDTO> tags = tagService.getTagsByPhotoId(id);
         FullPhotoDTO fullPhotoDTO = photoMapper.photoDAOToFullPhotoDTO(photo);
         fullPhotoDTO.setTags(tags);
+
+        if (fullPhotoDTO.getLatitude() != null && fullPhotoDTO.getLongitude() != null) {
+            String location = geocodingService.getLocation(fullPhotoDTO.getLatitude(), fullPhotoDTO.getLongitude());
+            fullPhotoDTO.setLocation(location);
+        }
 
         return fullPhotoDTO;
     }
@@ -97,10 +104,9 @@ public class PhotoServiceImpl implements PhotoService {
     @Transactional
     @Override
     public void uploadPhotoFile(PhotoDTO photoDTO, MultipartFile file) throws IOException {
-        logger.info("Starting upload process for user {}", photoDTO.getUserId());
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+
         UserDAO user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
@@ -112,6 +118,7 @@ public class PhotoServiceImpl implements PhotoService {
 
         PhotoDAO photo = photoMapper.photoDTOToPhotoDAO(photoDTO);
 
+        // Only set the device if deviceId is not null
         if (photoDTO.getDeviceId() != null) {
             logger.info("Device ID provided: {}", photoDTO.getDeviceId());
             UserDeviceDAO device = userDeviceRepository.findById(photoDTO.getDeviceId())
@@ -120,7 +127,12 @@ public class PhotoServiceImpl implements PhotoService {
             logger.info("Device set: {} - {}", device.getType(), device.getModel());
         } else {
             logger.info("No device ID provided");
+            photo.setDevice(null); // Ensure the device field is explicitly set to null
         }
+
+        // Set latitude and longitude
+        photo.setLatitude(photoDTO.getLatitude());
+        photo.setLongitude(photoDTO.getLongitude());
 
         photo = photoRepository.save(photo);
         logger.info("Photo uploaded successfully for user {} with ID {}", photoDTO.getUserId(), photo.getId());
@@ -131,6 +143,8 @@ public class PhotoServiceImpl implements PhotoService {
             logger.warn("Photo ID is null after save operation");
         }
     }
+
+
 
 
 

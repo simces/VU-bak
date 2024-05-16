@@ -3,13 +3,17 @@ package com.photo.controller;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.TagService;
 import com.photo.business.service.UserService;
+import com.photo.business.service.impl.GeocodingService;
 import com.photo.model.photos.FullPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoResponseDTO;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 @RestController
 @RequestMapping("/api/photos")
@@ -17,28 +21,34 @@ import org.springframework.web.multipart.MultipartFile;
 public class PhotoController {
 
     private final PhotoService photoService;
-    private final UserService userService;
-    private final TagService tagService;
 
-    public PhotoController(PhotoService photoService, UserService userService, TagService tagService) {
+    private static final Logger logger = LogManager.getLogger(PhotoController.class);
+
+    public PhotoController(PhotoService photoService, UserService userService, TagService tagService, GeocodingService geocodingService) {
         this.photoService = photoService;
-        this.userService = userService;
-        this.tagService = tagService;
     }
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadPhoto(@RequestParam("title") String title,
                                          @RequestParam("description") String description,
                                          @RequestParam("file") MultipartFile file,
-                                         @RequestParam(value = "deviceId", required = false) Long deviceId) {
+                                         @RequestParam(value = "deviceId", required = false) Long deviceId,
+                                         @RequestParam(value = "latitude", required = false) Double latitude,
+                                         @RequestParam(value = "longitude", required = false) Double longitude) {
         try {
+            logger.info("Received upload request: title={}, description={}, deviceId={}, latitude={}, longitude={}",
+                    title, description, deviceId, latitude, longitude);
+
             PhotoDTO photoDTO = new PhotoDTO();
             photoDTO.setTitle(title);
             photoDTO.setDescription(description);
             photoDTO.setDeviceId(deviceId);
+            photoDTO.setLatitude(latitude);
+            photoDTO.setLongitude(longitude);
             photoService.uploadPhotoFile(photoDTO, file);
             return ResponseEntity.ok("Photo uploaded successfully");
         } catch (Exception e) {
+            logger.error("Error during photo upload", e);
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

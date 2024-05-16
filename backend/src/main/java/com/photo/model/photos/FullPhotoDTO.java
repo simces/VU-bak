@@ -20,7 +20,11 @@ public class FullPhotoDTO {
     private String description;
     private String imageUrl;
     private Timestamp uploadedAt;
-    private List<TagDTO> tags;
+    private Double latitude;
+    private Double longitude;
+    private String location;
     private DeviceDTO device;
+    private List<TagDTO> tags;
+
 }
 

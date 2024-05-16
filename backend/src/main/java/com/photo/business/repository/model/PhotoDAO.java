@@ -37,4 +37,10 @@ public class PhotoDAO {
     @ManyToOne
     @JoinColumn(name = "device_id", nullable = true)
     private UserDeviceDAO device;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
 }

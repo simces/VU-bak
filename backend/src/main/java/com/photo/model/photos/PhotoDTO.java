@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PhotoDTO {
-
     private Long id;
     private Long userId;
     private String title;
@@ -18,6 +17,7 @@ public class PhotoDTO {
     private String imageUrl;
     private Timestamp uploadedAt;
     private Long deviceId;
-
+    private Double latitude;
+    private Double longitude;
 }
 
