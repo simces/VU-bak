@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import fetchWithToken from '../utils/fetchUtils';
 import '../styles/Feed.css';
 import timeSince from '../utils/timeCalc';
+import LocationMapModal from '../components/LocationMapModal';
 
 const Feed = () => {
   const [feedData, setFeedData] = useState({ content: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({ latitude: null, longitude: null, location: '' });
 
   useEffect(() => {
     const fetchFeedData = async () => {
@@ -23,6 +26,11 @@ const Feed = () => {
 
     fetchFeedData();
   }, []);
+
+  const toggleMapModal = (latitude, longitude, location) => {
+    setSelectedLocation({ latitude, longitude, location });
+    setIsMapModalOpen(!isMapModalOpen);
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching feed: {error}</p>;
@@ -47,10 +55,24 @@ const Feed = () => {
               {photo.device && (
                 <p className="deviceInfo">Taken with: {photo.device.type} - {photo.device.model}</p>
               )}
+              {photo.location && (
+                <p className="location">
+                  Location: <button onClick={() => toggleMapModal(photo.latitude, photo.longitude, photo.location)} style={{ background: 'none', color: 'blue', border: 'none', padding: 0, cursor: 'pointer' }}>
+                    {photo.location}
+                  </button>
+                </p>
+              )}
             </div>
           </div>
         ))}
       </div>
+      <LocationMapModal
+        isOpen={isMapModalOpen}
+        toggleModal={() => setIsMapModalOpen(false)}
+        latitude={selectedLocation.latitude}
+        longitude={selectedLocation.longitude}
+        location={selectedLocation.location}
+      />
     </div>
   );
 };

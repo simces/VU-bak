@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import fetchWithToken from '../utils/fetchUtils';
+import MapComponent from '../components/Map';
+import PlacesAutocomplete from '../components/PlacesAutocomplete';
 import '../styles/PhotoUpload.css';
 
 const PhotoUpload = () => {
@@ -7,25 +9,32 @@ const PhotoUpload = () => {
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
   const [deviceId, setDeviceId] = useState('');
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [devices, setDevices] = useState([]);
   const [message, setMessage] = useState('');
   const [userId, setUserId] = useState(null);
+  const [mapCenter, setMapCenter] = useState({ lat: 51.505, lng: -0.09 });
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const userData = await fetchWithToken('/api/users/me');
         setUserId(userData.id);
-
         const devicesData = await fetchWithToken(`/api/users/${userData.id}/devices`);
         setDevices(devicesData);
       } catch (error) {
         console.error('Failed to fetch user data:', error);
       }
     };
-
     fetchUserData();
   }, []);
+
+  const handleLocationSelect = ({ lat, lng }) => {
+    setLatitude(lat);
+    setLongitude(lng);
+    setMapCenter({ lat, lng });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,18 +42,16 @@ const PhotoUpload = () => {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('file', file);
-    if (deviceId) {
-      formData.append('deviceId', deviceId);
-    }
-
-    console.log('Submitting form with deviceId:', deviceId);
+    if (deviceId) formData.append('deviceId', deviceId);
+    if (latitude !== null) formData.append('latitude', latitude);
+    if (longitude !== null) formData.append('longitude', longitude);
 
     try {
-      const result = await fetchWithToken('http://localhost:8080/api/photos/upload', {
+      const result = await fetchWithToken('/api/photos/upload', {
         method: 'POST',
         body: formData,
       });
-      setMessage(result.message || result); // Display the message from JSON or text directly
+      setMessage(result.message || result); 
     } catch (error) {
       setMessage('Upload failed: ' + error.message);
     }
@@ -99,6 +106,8 @@ const PhotoUpload = () => {
             </select>
           </div>
         )}
+        <PlacesAutocomplete onPlaceSelected={handleLocationSelect} />
+        <MapComponent onLocationSelect={handleLocationSelect} center={mapCenter} />
         <button type="submit">Upload</button>
       </form>
       {message && <div className="message"><h3>{message}</h3></div>}
