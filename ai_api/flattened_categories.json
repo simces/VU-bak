@@ -1,0 +1,4123 @@
+{
+  "Egyptian_cat": [
+    "Animals",
+    "Mammals",
+    "cat"
+  ],
+  "Persian_cat": [
+    "Animals",
+    "Mammals",
+    "cat"
+  ],
+  "Siamese_cat": [
+    "Animals",
+    "Mammals",
+    "cat"
+  ],
+  "tabby": [
+    "Animals",
+    "Mammals",
+    "cat"
+  ],
+  "armadillo": [
+    "Animals",
+    "Mammals",
+    "armadillo"
+  ],
+  "badger": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "black-footed_ferret": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "mink": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "otter": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "polecat": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "skunk": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "weasel": [
+    "Animals",
+    "Mammals",
+    "ferret"
+  ],
+  "baboon": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "capuchin": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "chimpanzee": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "colobus": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "gibbon": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "gorilla": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "guenon": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "howler_monkey": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "indri": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "langur": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "macaque": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "marmoset": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "orangutan": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "patas": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "proboscis_monkey": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "siamang": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "spider_monkey": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "squirrel_monkey": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "titi": [
+    "Animals",
+    "Mammals",
+    "primate"
+  ],
+  "Madagascar_cat": [
+    "Animals",
+    "Mammals",
+    "mongoose"
+  ],
+  "meerkat": [
+    "Animals",
+    "Mammals",
+    "mongoose"
+  ],
+  "mongoose": [
+    "Animals",
+    "Mammals",
+    "mongoose"
+  ],
+  "Angora": [
+    "Animals",
+    "Mammals",
+    "rabbit"
+  ],
+  "hare": [
+    "Animals",
+    "Mammals",
+    "rabbit"
+  ],
+  "wood_rabbit": [
+    "Animals",
+    "Mammals",
+    "rabbit"
+  ],
+  "beaver": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "fox_squirrel": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "guinea_pig": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "hamster": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "marmot": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "mouse": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "porcupine": [
+    "Animals",
+    "Mammals",
+    "rodent"
+  ],
+  "sloth_bear": [
+    "Animals",
+    "Mammals",
+    "sloth"
+  ],
+  "three-toed_sloth": [
+    "Animals",
+    "Mammals",
+    "sloth"
+  ],
+  "African_elephant": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "Arabian_camel": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "Indian_elephant": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "bighorn": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "bison": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "gazelle": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "hartebeest": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "hippopotamus": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "ibex": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "impala": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "llama": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "ox": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "ram": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "tusker": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "zebra": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "water_buffalo": [
+    "Animals",
+    "Mammals",
+    "ungulate"
+  ],
+  "cheetah": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "cougar": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "jaguar": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "leopard": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "lion": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "lynx": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "snow_leopard": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "tiger": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "tiger_cat": [
+    "Animals",
+    "Mammals",
+    "wild cat"
+  ],
+  "Arctic_fox": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "coyote": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "dingo": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "grey_fox": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "hyena": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "kit_fox": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "red_fox": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "red_wolf": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "timber_wolf": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "white_wolf": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "dhole": [
+    "Animals",
+    "Mammals",
+    "wild dog"
+  ],
+  "Afghan_hound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "African_hunting_dog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Airedale": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "American_Staffordshire_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Appenzeller": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Australian_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Bedlington_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Bernese_mountain_dog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Blenheim_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Border_collie": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Border_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Boston_bull": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Bouvier_des_Flandres": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Brabancon_griffon": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Brittany_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Cardigan": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Chesapeake_Bay_retriever": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Chihuahua": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Dandie_Dinmont": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Doberman": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "English_foxhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "English_setter": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "English_springer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "EntleBucher": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Eskimo_dog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "French_bulldog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "German_shepherd": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "German_short-haired_pointer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Gordon_setter": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Great_Dane": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Great_Pyrenees": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Greater_Swiss_Mountain_dog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Ibizan_hound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Irish_setter": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Irish_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Irish_water_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Irish_wolfhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Italian_greyhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Japanese_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Kerry_blue_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Labrador_retriever": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Lakeland_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Leonberg": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Lhasa": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Maltese_dog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Mexican_hairless": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Newfoundland": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Norfolk_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Norwegian_elkhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Norwich_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Old_English_sheepdog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Pekinese": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Pembroke": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Pomeranian": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Rhodesian_ridgeback": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Rottweiler": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Saint_Bernard": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Saluki": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Samoyed": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Scotch_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Scottish_deerhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Sealyham_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Shetland_sheepdog": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Shih-Tzu": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Siberian_husky": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Staffordshire_bullterrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Sussex_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Tibetan_mastiff": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Tibetan_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Walker_hound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Weimaraner": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Welsh_springer_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "West_Highland_white_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "Yorkshire_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "affenpinscher": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "basenji": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "basset": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "beagle": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "black-and-tan_coonhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "bloodhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "bluetick": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "borzoi": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "boxer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "briard": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "bull_mastiff": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "cairn": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "chow": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "clumber": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "cocker_spaniel": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "collie": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "curly-coated_retriever": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "dalmatian": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "flat-coated_retriever": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "giant_schnauzer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "golden_retriever": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "groenendael": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "keeshond": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "kelpie": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "komondor": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "kuvasz": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "malamute": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "malinois": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "miniature_pinscher": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "miniature_poodle": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "miniature_schnauzer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "otterhound": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "papillon": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "pug": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "redbone": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "schipperke": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "silky_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "soft-coated_wheaten_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "standard_poodle": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "standard_schnauzer": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "toy_poodle": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "toy_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "vizsla": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "whippet": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "wire-haired_fox_terrier": [
+    "Animals",
+    "Mammals",
+    "dog"
+  ],
+  "dugong": [
+    "Animals",
+    "Mammals",
+    "marine mammals"
+  ],
+  "sea_lion": [
+    "Animals",
+    "Mammals",
+    "marine mammals"
+  ],
+  "grey_whale": [
+    "Animals",
+    "Mammals",
+    "marine mammals"
+  ],
+  "killer_whale": [
+    "Animals",
+    "Mammals",
+    "marine mammals"
+  ],
+  "hog": [
+    "Animals",
+    "Mammals",
+    "hog"
+  ],
+  "warthog": [
+    "Animals",
+    "Mammals",
+    "hog"
+  ],
+  "wild_boar": [
+    "Animals",
+    "Mammals",
+    "hog"
+  ],
+  "echidna": [
+    "Animals",
+    "Mammals",
+    "monotreme"
+  ],
+  "platypus": [
+    "Animals",
+    "Mammals",
+    "monotreme"
+  ],
+  "American_black_bear": [
+    "Animals",
+    "Mammals",
+    "bear"
+  ],
+  "brown_bear": [
+    "Animals",
+    "Mammals",
+    "bear"
+  ],
+  "ice_bear": [
+    "Animals",
+    "Mammals",
+    "bear"
+  ],
+  "giant_panda": [
+    "Animals",
+    "Mammals",
+    "bear"
+  ],
+  "lesser_panda": [
+    "Animals",
+    "Mammals",
+    "bear"
+  ],
+  "koala": [
+    "Animals",
+    "Mammals",
+    "marsupial"
+  ],
+  "wallaby": [
+    "Animals",
+    "Mammals",
+    "marsupial"
+  ],
+  "wombat": [
+    "Animals",
+    "Mammals",
+    "marsupial"
+  ],
+  "African_grey": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "American_coot": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "American_egret": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "European_gallinule": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "albatross": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "bald_eagle": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "bee_eater": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "bittern": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "black_grouse": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "black_stork": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "black_swan": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "brambling": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "bulbul": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "bustard": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "chickadee": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "cock": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "coucal": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "crane (bird)": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "dowitcher": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "drake": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "flamingo": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "goldfinch": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "goose": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "great_grey_owl": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "hen": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "hornbill": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "house_finch": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "hummingbird": [
+    "Animals",
+    "Birds",
+    "bird"
+  ],
+  "coho": [
+    "Animals",
+    "Fish",
+    "shark"
+  ],
+  "great_white_shark": [
+    "Animals",
+    "Fish",
+    "shark"
+  ],
+  "hammerhead": [
+    "Animals",
+    "Fish",
+    "shark"
+  ],
+  "tiger_shark": [
+    "Animals",
+    "Fish",
+    "shark"
+  ],
+  "anemone_fish": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "barracouta": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "eel": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "electric_ray": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "gar": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "goldfish": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "lionfish": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "puffer": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "sea_snake": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "sturgeon": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "tench": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "jellyfish": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "stingray": [
+    "Animals",
+    "Fish",
+    "fish"
+  ],
+  "Indian_cobra": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "boa_constrictor": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "diamondback": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "garter_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "green_mamba": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "green_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "hognose_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "horned_viper": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "king_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "night_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "ringneck_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "rock_python": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "sidewinder": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "thunder_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "vine_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "water_snake": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "snake"
+  ],
+  "European_fire_salamander": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "salamander"
+  ],
+  "axolotl": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "salamander"
+  ],
+  "common_newt": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "salamander"
+  ],
+  "eft": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "salamander"
+  ],
+  "spotted_salamander": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "salamander"
+  ],
+  "African_crocodile": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "crocodile"
+  ],
+  "American_alligator": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "crocodile"
+  ],
+  "box_turtle": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "turtle"
+  ],
+  "leatherback_turtle": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "turtle"
+  ],
+  "loggerhead": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "turtle"
+  ],
+  "mud_turtle": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "turtle"
+  ],
+  "terrapin": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "turtle"
+  ],
+  "African_chameleon": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "American_chameleon": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "Gila_monster": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "Komodo_dragon": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "agama": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "alligator_lizard": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "banded_gecko": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "common_iguana": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "frilled_lizard": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "green_lizard": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "whiptail": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "lizard"
+  ],
+  "bullfrog": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "frog"
+  ],
+  "tailed_frog": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "frog"
+  ],
+  "tree_frog": [
+    "Animals",
+    "Reptiles & Amphibians",
+    "frog"
+  ],
+  "ant": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "bee": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "centipede": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "cicada": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "cockroach": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "cricket": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "damselfly": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "dragonfly": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "flatworm": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "fly": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "grasshopper": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "ground_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "lacewing": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "ladybug": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "long-horned_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "mantis": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "nematode": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "rhinoceros_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "tick": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "tiger_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "weevil": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "dung_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "leaf_beetle": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "leafhopper": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "walking_stick": [
+    "Animals",
+    "Insects & Arachnids",
+    "bug"
+  ],
+  "admiral": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "cabbage_butterfly": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "lycaenid": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "monarch": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "ringlet": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "sulphur_butterfly": [
+    "Animals",
+    "Insects & Arachnids",
+    "butterfly"
+  ],
+  "barn_spider": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "black_and_gold_garden_spider": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "black_widow": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "garden_spider": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "harvestman": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "scorpion": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "tarantula": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "wolf_spider": [
+    "Animals",
+    "Insects & Arachnids",
+    "arachnid"
+  ],
+  "chambered_nautilus": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "chiton": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "conch": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "sea_slug": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "slug": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "snail": [
+    "Animals",
+    "Marine Invertebrates",
+    "mollusk"
+  ],
+  "American_lobster": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "Dungeness_crab": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "crayfish": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "fiddler_crab": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "hermit_crab": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "isopod": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "king_crab": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "rock_crab": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "spiny_lobster": [
+    "Animals",
+    "Marine Invertebrates",
+    "crustacean"
+  ],
+  "sea_cucumber": [
+    "Animals",
+    "Marine Invertebrates",
+    "echinoderms"
+  ],
+  "sea_urchin": [
+    "Animals",
+    "Marine Invertebrates",
+    "echinoderms"
+  ],
+  "starfish": [
+    "Animals",
+    "Marine Invertebrates",
+    "echinoderms"
+  ],
+  "trilobite": [
+    "Animals",
+    "Extinct Animals",
+    "trilobite"
+  ],
+  "triceratops": [
+    "Animals",
+    "Extinct Animals",
+    "dinosaur"
+  ],
+  "brain_coral": [
+    "Living Organisms",
+    "coral"
+  ],
+  "coral_fungus": [
+    "Living Organisms",
+    "coral"
+  ],
+  "coral_reef": [
+    "Living Organisms",
+    "coral"
+  ],
+  "rock_beauty": [
+    "Living Organisms",
+    "coral"
+  ],
+  "sea_anemone": [
+    "Living Organisms",
+    "coral"
+  ],
+  "cardoon": [
+    "Living Organisms",
+    "flower"
+  ],
+  "daisy": [
+    "Living Organisms",
+    "flower"
+  ],
+  "hip": [
+    "Living Organisms",
+    "flower"
+  ],
+  "rapeseed": [
+    "Living Organisms",
+    "flower"
+  ],
+  "yellow_lady's_slipper": [
+    "Living Organisms",
+    "flower"
+  ],
+  "Granny_Smith": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "acorn_squash": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "banana": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "custard_apple": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "fig": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "jack-o'-lantern": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "jackfruit": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "lemon": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "orange": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "pineapple": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "pomegranate": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "spaghetti_squash": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "strawberry": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "zucchini": [
+    "Living Organisms",
+    "fruit"
+  ],
+  "agaric": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "bolete": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "earthstar": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "gyromitra": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "hen-of-the-woods": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "mushroom": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "stinkhorn": [
+    "Living Organisms",
+    "fungus"
+  ],
+  "ballplayer": [
+    "Living Organisms",
+    "person"
+  ],
+  "groom": [
+    "Living Organisms",
+    "person"
+  ],
+  "pirate": [
+    "Living Organisms",
+    "person"
+  ],
+  "scuba_diver": [
+    "Living Organisms",
+    "person"
+  ],
+  "acorn": [
+    "Living Organisms",
+    "plant"
+  ],
+  "buckeye": [
+    "Living Organisms",
+    "plant"
+  ],
+  "sorrel": [
+    "Living Organisms",
+    "plant"
+  ],
+  "artichoke": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "bell_pepper": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "broccoli": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "butternut_squash": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "cauliflower": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "cucumber": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "head_cabbage": [
+    "Living Organisms",
+    "vegetable"
+  ],
+  "Windsor_tie": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "backpack": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "bolo_tie": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "bow_tie": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "buckle": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "feather_boa": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "gasmask": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "hair_slide": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "handkerchief": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "lipstick": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "mailbag": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "neck_brace": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "necklace": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "purse": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "sleeping_bag": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "stole": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "umbrella": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "wallet": [
+    "Clothing & Accessories",
+    "accessory"
+  ],
+  "Loafer": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "abaya": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "academic_gown": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "apron": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "bib": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "bikini": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "brassiere": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "breastplate": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "bulletproof_vest": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "cardigan": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "chain_mail": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "cloak": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "clog": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "cowboy_boot": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "cowboy_hat": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "cuirass": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "diaper": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "fur_coat": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "gown": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "hoopskirt": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "jean": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "jersey": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "kimono": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "knee_pad": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "lab_coat": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "maillot": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "mask": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "military_uniform": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "miniskirt": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "mitten": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "overskirt": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "oxygen_mask": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "pajama": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "poncho": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "running_shoe": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "sandal": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "sarong": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "ski_mask": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "sock": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "suit": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "sunglasses": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "sweatshirt": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "swimming_trunks": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "trench_coat": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "vestment": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "wig": [
+    "Clothing & Accessories",
+    "clothing"
+  ],
+  "bathing_cap": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "bearskin": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "bonnet": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "crash_helmet": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "mortarboard": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "shower_cap": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "sombrero": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "pickelhaube": [
+    "Clothing & Accessories",
+    "hat"
+  ],
+  "airliner": [
+    "Vehicles & Transportation",
+    "aircraft"
+  ],
+  "airship": [
+    "Vehicles & Transportation",
+    "aircraft"
+  ],
+  "parachute": [
+    "Vehicles & Transportation",
+    "aircraft"
+  ],
+  "space_shuttle": [
+    "Vehicles & Transportation",
+    "aircraft"
+  ],
+  "warplane": [
+    "Vehicles & Transportation",
+    "aircraft"
+  ],
+  "aircraft_carrier": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "canoe": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "catamaran": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "container_ship": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "fireboat": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "gondola": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "lifeboat": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "liner": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "paddlewheel": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "schooner": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "speedboat": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "submarine": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "trimaran": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "wreck": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "yawl": [
+    "Vehicles & Transportation",
+    "boat"
+  ],
+  "bullet_train": [
+    "Vehicles & Transportation",
+    "train"
+  ],
+  "electric_locomotive": [
+    "Vehicles & Transportation",
+    "train"
+  ],
+  "freight_car": [
+    "Vehicles & Transportation",
+    "train"
+  ],
+  "steam_locomotive": [
+    "Vehicles & Transportation",
+    "train"
+  ],
+  "Model_T": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "ambulance": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "amphibian": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "beach_wagon": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "bicycle-built-for-two": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "bobsled": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "cab": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "convertible": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "crane": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "dogsled": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "fire_engine": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "forklift": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "garbage_truck": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "go-kart": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "golfcart": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "grille": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "half_track": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "harvester": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "horse_cart": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "jeep": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "jinrikisha": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "lawn_mower": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "limousine": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "minibus": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "minivan": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "moped": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "motor_scooter": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "mountain_bike": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "moving_van": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "oxcart": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "passenger_car": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "pickup": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "plow": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "police_van": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "racer": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "recreational_vehicle": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "school_bus": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "snowmobile": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "snowplow": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "sports_car": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "streetcar": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "tank": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "thresher": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "tow_truck": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "tractor": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "trailer_truck": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "tricycle": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "trolleybus": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "unicycle": [
+    "Vehicles & Transportation",
+    "vehicle"
+  ],
+  "baseball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "basketball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "croquet_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "golf_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "ping-pong_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "rugby_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "soccer_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "tennis_ball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "volleyball": [
+    "Objects & Tools",
+    "ball"
+  ],
+  "barrel": [
+    "Objects & Tools",
+    "container"
+  ],
+  "carton": [
+    "Objects & Tools",
+    "container"
+  ],
+  "chest": [
+    "Objects & Tools",
+    "container"
+  ],
+  "crate": [
+    "Objects & Tools",
+    "container"
+  ],
+  "medicine_chest": [
+    "Objects & Tools",
+    "container"
+  ],
+  "milk_can": [
+    "Objects & Tools",
+    "container"
+  ],
+  "packet": [
+    "Objects & Tools",
+    "container"
+  ],
+  "pill_bottle": [
+    "Objects & Tools",
+    "container"
+  ],
+  "plastic_bag": [
+    "Objects & Tools",
+    "container"
+  ],
+  "rain_barrel": [
+    "Objects & Tools",
+    "container"
+  ],
+  "safe": [
+    "Objects & Tools",
+    "container"
+  ],
+  "shopping_basket": [
+    "Objects & Tools",
+    "container"
+  ],
+  "shopping_cart": [
+    "Objects & Tools",
+    "container"
+  ],
+  "vault": [
+    "Objects & Tools",
+    "container"
+  ],
+  "washbasin": [
+    "Objects & Tools",
+    "container"
+  ],
+  "water_bottle": [
+    "Objects & Tools",
+    "container"
+  ],
+  "water_jug": [
+    "Objects & Tools",
+    "container"
+  ],
+  "whiskey_jug": [
+    "Objects & Tools",
+    "container"
+  ],
+  "French_horn": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "accordion": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "acoustic_guitar": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "banjo": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "bassoon": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "cello": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "chime": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "cornet": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "drum": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "drumstick": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "electric_guitar": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "flute": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "gong": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "grand_piano": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "harmonica": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "harp": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "maraca": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "marimba": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "oboe": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "ocarina": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "organ": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "panpipe": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "pick": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "sax": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "steel_drum": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "trombone": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "upright": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "violin": [
+    "Objects & Tools",
+    "instrument"
+  ],
+  "Petri_dish": [
+    "Objects & Tools",
+    "lab equipment"
+  ],
+  "beaker": [
+    "Objects & Tools",
+    "lab equipment"
+  ],
+  "ballpoint": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "barrow": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "binoculars": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "broom": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "bucket": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "can_opener": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "candle": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "carpenter's_kit": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "chain": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "chain_saw": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "crutch": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "dumbbell": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "fountain_pen": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "hammer": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "hatchet": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "hook": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "iron": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "letter_opener": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "lighter": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "loupe": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "magnetic_compass": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "matchstick": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "nail": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "paintbrush": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "pencil_sharpener": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "plane": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "plunger": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "potter's_wheel": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "quill": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "rubber_eraser": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "rule": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "safety_pin": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "screw": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "screwdriver": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "shield": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "shovel": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "stethoscope": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "sunglass": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "swab": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "syringe": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "thimble": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "torch": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "whistle": [
+    "Objects & Tools",
+    "tool"
+  ],
+  "assault_rifle": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "bow": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "cannon": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "guillotine": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "holster": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "missile": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "projectile": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "revolver": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "rifle": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "scabbard": [
+    "Objects & Tools",
+    "weapon"
+  ],
+  "balloon": [
+    "Objects & Tools",
+    "toy"
+  ],
+  "pinwheel": [
+    "Objects & Tools",
+    "toy"
+  ],
+  "swing": [
+    "Objects & Tools",
+    "toy"
+  ],
+  "teddy": [
+    "Objects & Tools",
+    "toy"
+  ],
+  "balance_beam": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "barbell": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "football_helmet": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "horizontal_bar": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "paddle": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "parallel_bars": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "pole": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "puck": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "punching_bag": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "racket": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "scoreboard": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "ski": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "snorkel": [
+    "Objects & Tools",
+    "sports equipment"
+  ],
+  "bakery": [
+    "Household items",
+    "building"
+  ],
+  "barbershop": [
+    "Household items",
+    "building"
+  ],
+  "barn": [
+    "Household items",
+    "building"
+  ],
+  "beacon": [
+    "Household items",
+    "building"
+  ],
+  "bell_cote": [
+    "Household items",
+    "building"
+  ],
+  "boathouse": [
+    "Household items",
+    "building"
+  ],
+  "bookshop": [
+    "Household items",
+    "building"
+  ],
+  "butcher_shop": [
+    "Household items",
+    "building"
+  ],
+  "carousel": [
+    "Household items",
+    "building"
+  ],
+  "castle": [
+    "Household items",
+    "building"
+  ],
+  "church": [
+    "Household items",
+    "building"
+  ],
+  "cinema": [
+    "Household items",
+    "building"
+  ],
+  "cliff_dwelling": [
+    "Household items",
+    "building"
+  ],
+  "confectionery": [
+    "Household items",
+    "building"
+  ],
+  "dome": [
+    "Household items",
+    "building"
+  ],
+  "greenhouse": [
+    "Household items",
+    "building"
+  ],
+  "grocery_store": [
+    "Household items",
+    "building"
+  ],
+  "home_theater": [
+    "Household items",
+    "building"
+  ],
+  "library": [
+    "Household items",
+    "building"
+  ],
+  "lumbermill": [
+    "Household items",
+    "building"
+  ],
+  "mobile_home": [
+    "Household items",
+    "building"
+  ],
+  "monastery": [
+    "Household items",
+    "building"
+  ],
+  "mosque": [
+    "Household items",
+    "building"
+  ],
+  "mountain_tent": [
+    "Household items",
+    "building"
+  ],
+  "obelisk": [
+    "Household items",
+    "building"
+  ],
+  "palace": [
+    "Household items",
+    "building"
+  ],
+  "patio": [
+    "Household items",
+    "building"
+  ],
+  "planetarium": [
+    "Household items",
+    "building"
+  ],
+  "prison": [
+    "Household items",
+    "building"
+  ],
+  "restaurant": [
+    "Household items",
+    "building"
+  ],
+  "shoe_shop": [
+    "Household items",
+    "building"
+  ],
+  "stupa": [
+    "Household items",
+    "building"
+  ],
+  "thatch": [
+    "Household items",
+    "building"
+  ],
+  "tile_roof": [
+    "Household items",
+    "building"
+  ],
+  "tobacco_shop": [
+    "Household items",
+    "building"
+  ],
+  "toyshop": [
+    "Household items",
+    "building"
+  ],
+  "yurt": [
+    "Household items",
+    "building"
+  ],
+  "Crock_Pot": [
+    "Household items",
+    "cooking"
+  ],
+  "Dutch_oven": [
+    "Household items",
+    "cooking"
+  ],
+  "caldron": [
+    "Household items",
+    "cooking"
+  ],
+  "cleaver": [
+    "Household items",
+    "cooking"
+  ],
+  "cocktail_shaker": [
+    "Household items",
+    "cooking"
+  ],
+  "coffee_mug": [
+    "Household items",
+    "cooking"
+  ],
+  "coffeepot": [
+    "Household items",
+    "cooking"
+  ],
+  "corkscrew": [
+    "Household items",
+    "cooking"
+  ],
+  "cup": [
+    "Household items",
+    "cooking"
+  ],
+  "espresso_maker": [
+    "Household items",
+    "cooking"
+  ],
+  "frying_pan": [
+    "Household items",
+    "cooking"
+  ],
+  "goblet": [
+    "Household items",
+    "cooking"
+  ],
+  "hot_pot": [
+    "Household items",
+    "cooking"
+  ],
+  "ladle": [
+    "Household items",
+    "cooking"
+  ],
+  "measuring_cup": [
+    "Household items",
+    "cooking"
+  ],
+  "mixing_bowl": [
+    "Household items",
+    "cooking"
+  ],
+  "mortar": [
+    "Household items",
+    "cooking"
+  ],
+  "pitcher": [
+    "Household items",
+    "cooking"
+  ],
+  "plate": [
+    "Household items",
+    "cooking"
+  ],
+  "pot": [
+    "Household items",
+    "cooking"
+  ],
+  "rotisserie": [
+    "Household items",
+    "cooking"
+  ],
+  "soup_bowl": [
+    "Household items",
+    "cooking"
+  ],
+  "spatula": [
+    "Household items",
+    "cooking"
+  ],
+  "strainer": [
+    "Household items",
+    "cooking"
+  ],
+  "teapot": [
+    "Household items",
+    "cooking"
+  ],
+  "wok": [
+    "Household items",
+    "cooking"
+  ],
+  "wooden_spoon": [
+    "Household items",
+    "cooking"
+  ],
+  "Christmas_stocking": [
+    "Household items",
+    "decor"
+  ],
+  "analog_clock": [
+    "Household items",
+    "decor"
+  ],
+  "bath_towel": [
+    "Household items",
+    "decor"
+  ],
+  "brass": [
+    "Household items",
+    "decor"
+  ],
+  "dishrag": [
+    "Household items",
+    "decor"
+  ],
+  "doormat": [
+    "Household items",
+    "decor"
+  ],
+  "hamper": [
+    "Household items",
+    "decor"
+  ],
+  "lampshade": [
+    "Household items",
+    "decor"
+  ],
+  "piggy_bank": [
+    "Household items",
+    "decor"
+  ],
+  "pillow": [
+    "Household items",
+    "decor"
+  ],
+  "plate_rack": [
+    "Household items",
+    "decor"
+  ],
+  "prayer_rug": [
+    "Household items",
+    "decor"
+  ],
+  "quilt": [
+    "Household items",
+    "decor"
+  ],
+  "screen": [
+    "Household items",
+    "decor"
+  ],
+  "shower_curtain": [
+    "Household items",
+    "decor"
+  ],
+  "soap_dispenser": [
+    "Household items",
+    "decor"
+  ],
+  "table_lamp": [
+    "Household items",
+    "decor"
+  ],
+  "theater_curtain": [
+    "Household items",
+    "decor"
+  ],
+  "tray": [
+    "Household items",
+    "decor"
+  ],
+  "vase": [
+    "Household items",
+    "decor"
+  ],
+  "window_screen": [
+    "Household items",
+    "decor"
+  ],
+  "window_shade": [
+    "Household items",
+    "decor"
+  ],
+  "CD_player": [
+    "Household items",
+    "electronics"
+  ],
+  "Polaroid_camera": [
+    "Household items",
+    "electronics"
+  ],
+  "cassette_player": [
+    "Household items",
+    "electronics"
+  ],
+  "cellular_telephone": [
+    "Household items",
+    "electronics"
+  ],
+  "computer_keyboard": [
+    "Household items",
+    "electronics"
+  ],
+  "desktop_computer": [
+    "Household items",
+    "electronics"
+  ],
+  "dial_telephone": [
+    "Household items",
+    "electronics"
+  ],
+  "digital_clock": [
+    "Household items",
+    "electronics"
+  ],
+  "digital_watch": [
+    "Household items",
+    "electronics"
+  ],
+  "dishwasher": [
+    "Household items",
+    "electronics"
+  ],
+  "electric_fan": [
+    "Household items",
+    "electronics"
+  ],
+  "hand-held_computer": [
+    "Household items",
+    "electronics"
+  ],
+  "hand_blower": [
+    "Household items",
+    "electronics"
+  ],
+  "hard_disc": [
+    "Household items",
+    "electronics"
+  ],
+  "iPod": [
+    "Household items",
+    "electronics"
+  ],
+  "joystick": [
+    "Household items",
+    "electronics"
+  ],
+  "laptop": [
+    "Household items",
+    "electronics"
+  ],
+  "loudspeaker": [
+    "Household items",
+    "electronics"
+  ],
+  "microphone": [
+    "Household items",
+    "electronics"
+  ],
+  "microwave": [
+    "Household items",
+    "electronics"
+  ],
+  "modem": [
+    "Household items",
+    "electronics"
+  ],
+  "monitor": [
+    "Household items",
+    "electronics"
+  ],
+  "odometer": [
+    "Household items",
+    "electronics"
+  ],
+  "oscilloscope": [
+    "Household items",
+    "electronics"
+  ],
+  "parking_meter": [
+    "Household items",
+    "electronics"
+  ],
+  "pay-phone": [
+    "Household items",
+    "electronics"
+  ],
+  "photocopier": [
+    "Household items",
+    "electronics"
+  ],
+  "power_drill": [
+    "Household items",
+    "electronics"
+  ],
+  "printer": [
+    "Household items",
+    "electronics"
+  ],
+  "projector": [
+    "Household items",
+    "electronics"
+  ],
+  "radiator": [
+    "Household items",
+    "electronics"
+  ],
+  "radio": [
+    "Household items",
+    "electronics"
+  ],
+  "reflex_camera": [
+    "Household items",
+    "electronics"
+  ],
+  "remote_control": [
+    "Household items",
+    "electronics"
+  ],
+  "scale": [
+    "Household items",
+    "electronics"
+  ],
+  "slot": [
+    "Household items",
+    "electronics"
+  ],
+  "space_bar": [
+    "Household items",
+    "electronics"
+  ],
+  "space_heater": [
+    "Household items",
+    "electronics"
+  ],
+  "spotlight": [
+    "Household items",
+    "electronics"
+  ],
+  "stopwatch": [
+    "Household items",
+    "electronics"
+  ],
+  "switch": [
+    "Household items",
+    "electronics"
+  ],
+  "tape_player": [
+    "Household items",
+    "electronics"
+  ],
+  "television": [
+    "Household items",
+    "electronics"
+  ],
+  "toaster": [
+    "Household items",
+    "electronics"
+  ],
+  "traffic_light": [
+    "Household items",
+    "electronics"
+  ],
+  "typewriter_keyboard": [
+    "Household items",
+    "electronics"
+  ],
+  "vacuum": [
+    "Household items",
+    "electronics"
+  ],
+  "waffle_iron": [
+    "Household items",
+    "electronics"
+  ],
+  "washer": [
+    "Household items",
+    "electronics"
+  ],
+  "chainlink_fence": [
+    "Household items",
+    "fence"
+  ],
+  "picket_fence": [
+    "Household items",
+    "fence"
+  ],
+  "worm_fence": [
+    "Household items",
+    "fence"
+  ],
+  "altar": [
+    "Household items",
+    "furniture"
+  ],
+  "ashcan": [
+    "Household items",
+    "furniture"
+  ],
+  "bannister": [
+    "Household items",
+    "furniture"
+  ],
+  "barber_chair": [
+    "Household items",
+    "furniture"
+  ],
+  "bassinet": [
+    "Household items",
+    "furniture"
+  ],
+  "bathtub": [
+    "Household items",
+    "furniture"
+  ],
+  "bookcase": [
+    "Household items",
+    "furniture"
+  ],
+  "chiffonier": [
+    "Household items",
+    "furniture"
+  ],
+  "china_cabinet": [
+    "Household items",
+    "furniture"
+  ],
+  "cradle": [
+    "Household items",
+    "furniture"
+  ],
+  "crib": [
+    "Household items",
+    "furniture"
+  ],
+  "desk": [
+    "Household items",
+    "furniture"
+  ],
+  "dining_table": [
+    "Household items",
+    "furniture"
+  ],
+  "entertainment_center": [
+    "Household items",
+    "furniture"
+  ],
+  "file": [
+    "Household items",
+    "furniture"
+  ],
+  "fire_screen": [
+    "Household items",
+    "furniture"
+  ],
+  "folding_chair": [
+    "Household items",
+    "furniture"
+  ],
+  "four-poster": [
+    "Household items",
+    "furniture"
+  ],
+  "mailbox": [
+    "Household items",
+    "furniture"
+  ],
+  "park_bench": [
+    "Household items",
+    "furniture"
+  ],
+  "pedestal": [
+    "Household items",
+    "furniture"
+  ],
+  "pool_table": [
+    "Household items",
+    "furniture"
+  ],
+  "refrigerator": [
+    "Household items",
+    "furniture"
+  ],
+  "rocking_chair": [
+    "Household items",
+    "furniture"
+  ],
+  "shoji": [
+    "Household items",
+    "furniture"
+  ],
+  "sliding_door": [
+    "Household items",
+    "furniture"
+  ],
+  "stage": [
+    "Household items",
+    "furniture"
+  ],
+  "stove": [
+    "Household items",
+    "furniture"
+  ],
+  "stretcher": [
+    "Household items",
+    "furniture"
+  ],
+  "studio_couch": [
+    "Household items",
+    "furniture"
+  ],
+  "throne": [
+    "Household items",
+    "furniture"
+  ],
+  "toilet_seat": [
+    "Household items",
+    "furniture"
+  ],
+  "tub": [
+    "Household items",
+    "furniture"
+  ],
+  "wardrobe": [
+    "Household items",
+    "furniture"
+  ],
+  "French_loaf": [
+    "Food items"
+  ],
+  "bagel": [
+    "Food items"
+  ],
+  "beer_bottle": [
+    "Food items"
+  ],
+  "beer_glass": [
+    "Food items"
+  ],
+  "burrito": [
+    "Food items"
+  ],
+  "carbonara": [
+    "Food items"
+  ],
+  "cheeseburger": [
+    "Food items"
+  ],
+  "chocolate_sauce": [
+    "Food items"
+  ],
+  "consomme": [
+    "Food items"
+  ],
+  "corn": [
+    "Food items"
+  ],
+  "dough": [
+    "Food items"
+  ],
+  "ear": [
+    "Food items"
+  ],
+  "eggnog": [
+    "Food items"
+  ],
+  "espresso": [
+    "Food items"
+  ],
+  "guacamole": [
+    "Food items"
+  ],
+  "hotdog": [
+    "Food items"
+  ],
+  "ice_cream": [
+    "Food items"
+  ],
+  "ice_lolly": [
+    "Food items"
+  ],
+  "mashed_potato": [
+    "Food items"
+  ],
+  "meat_loaf": [
+    "Food items"
+  ],
+  "pizza": [
+    "Food items"
+  ],
+  "pop_bottle": [
+    "Food items"
+  ],
+  "potpie": [
+    "Food items"
+  ],
+  "pretzel": [
+    "Food items"
+  ],
+  "red_wine": [
+    "Food items"
+  ],
+  "saltshaker": [
+    "Food items"
+  ],
+  "trifle": [
+    "Food items"
+  ],
+  "wine_bottle": [
+    "Food items"
+  ],
+  "binder": [
+    "Paper items"
+  ],
+  "book_jacket": [
+    "Paper items"
+  ],
+  "comic_book": [
+    "Paper items"
+  ],
+  "crossword_puzzle": [
+    "Paper items"
+  ],
+  "envelope": [
+    "Paper items"
+  ],
+  "jigsaw_puzzle": [
+    "Paper items"
+  ],
+  "menu": [
+    "Paper items"
+  ],
+  "notebook": [
+    "Paper items"
+  ],
+  "paper_towel": [
+    "Paper items"
+  ],
+  "abacus": [
+    "Tech & Electronics"
+  ],
+  "barometer": [
+    "Tech & Electronics"
+  ],
+  "car_mirror": [
+    "Tech & Electronics"
+  ],
+  "car_wheel": [
+    "Tech & Electronics"
+  ],
+  "cash_machine": [
+    "Tech & Electronics"
+  ],
+  "cassette": [
+    "Tech & Electronics"
+  ],
+  "coil": [
+    "Tech & Electronics"
+  ],
+  "combination_lock": [
+    "Tech & Electronics"
+  ],
+  "disk_brake": [
+    "Tech & Electronics"
+  ],
+  "gas_pump": [
+    "Tech & Electronics"
+  ],
+  "hourglass": [
+    "Tech & Electronics"
+  ],
+  "lens_cap": [
+    "Tech & Electronics"
+  ],
+  "mousetrap": [
+    "Tech & Electronics"
+  ],
+  "oil_filter": [
+    "Tech & Electronics"
+  ],
+  "padlock": [
+    "Tech & Electronics"
+  ],
+  "radio_telescope": [
+    "Tech & Electronics"
+  ],
+  "reel": [
+    "Tech & Electronics"
+  ],
+  "seat_belt": [
+    "Tech & Electronics"
+  ],
+  "sewing_machine": [
+    "Tech & Electronics"
+  ],
+  "slide_rule": [
+    "Tech & Electronics"
+  ],
+  "solar_dish": [
+    "Tech & Electronics"
+  ],
+  "spindle": [
+    "Tech & Electronics"
+  ],
+  "tripod": [
+    "Tech & Electronics"
+  ],
+  "turnstile": [
+    "Tech & Electronics"
+  ],
+  "vending_machine": [
+    "Tech & Electronics"
+  ],
+  "wall_clock": [
+    "Tech & Electronics"
+  ],
+  "web_site": [
+    "Tech & Electronics"
+  ],
+  "alp": [
+    "Outdoor scenes"
+  ],
+  "apiary": [
+    "Outdoor scenes"
+  ],
+  "birdhouse": [
+    "Outdoor scenes"
+  ],
+  "breakwater": [
+    "Outdoor scenes"
+  ],
+  "cliff": [
+    "Outdoor scenes"
+  ],
+  "dam": [
+    "Outdoor scenes"
+  ],
+  "dock": [
+    "Outdoor scenes"
+  ],
+  "drilling_platform": [
+    "Outdoor scenes"
+  ],
+  "flagpole": [
+    "Outdoor scenes"
+  ],
+  "fountain": [
+    "Outdoor scenes"
+  ],
+  "geyser": [
+    "Outdoor scenes"
+  ],
+  "lakeside": [
+    "Outdoor scenes"
+  ],
+  "manhole_cover": [
+    "Outdoor scenes"
+  ],
+  "maypole": [
+    "Outdoor scenes"
+  ],
+  "maze": [
+    "Outdoor scenes"
+  ],
+  "megalith": [
+    "Outdoor scenes"
+  ],
+  "pier": [
+    "Outdoor scenes"
+  ],
+  "promontory": [
+    "Outdoor scenes"
+  ],
+  "sandbar": [
+    "Outdoor scenes"
+  ],
+  "seashore": [
+    "Outdoor scenes"
+  ],
+  "spider_web": [
+    "Outdoor scenes"
+  ],
+  "steel_arch_bridge": [
+    "Outdoor scenes"
+  ],
+  "stone_wall": [
+    "Outdoor scenes"
+  ],
+  "street_sign": [
+    "Outdoor scenes"
+  ],
+  "sundial": [
+    "Outdoor scenes"
+  ],
+  "suspension_bridge": [
+    "Outdoor scenes"
+  ],
+  "totem_pole": [
+    "Outdoor scenes"
+  ],
+  "triumphal_arch": [
+    "Outdoor scenes"
+  ],
+  "valley": [
+    "Outdoor scenes"
+  ],
+  "viaduct": [
+    "Outdoor scenes"
+  ],
+  "volcano": [
+    "Outdoor scenes"
+  ],
+  "water_tower": [
+    "Outdoor scenes"
+  ],
+  "Band_Aid": [
+    "Other items"
+  ],
+  "bottlecap": [
+    "Other items"
+  ],
+  "bubble": [
+    "Other items"
+  ],
+  "face_powder": [
+    "Other items"
+  ],
+  "hair_spray": [
+    "Other items"
+  ],
+  "hay": [
+    "Other items"
+  ],
+  "honeycomb": [
+    "Other items"
+  ],
+  "knot": [
+    "Other items"
+  ],
+  "lotion": [
+    "Other items"
+  ],
+  "mosquito_net": [
+    "Other items"
+  ],
+  "muzzle": [
+    "Other items"
+  ],
+  "nipple": [
+    "Other items"
+  ],
+  "pencil_box": [
+    "Other items"
+  ],
+  "perfume": [
+    "Other items"
+  ],
+  "sunscreen": [
+    "Other items"
+  ],
+  "toilet_tissue": [
+    "Other items"
+  ],
+  "velvet": [
+    "Other items"
+  ],
+  "wing": [
+    "Other items"
+  ],
+  "wool": [
+    "Other items"
+  ]
+}
