@@ -35,7 +35,8 @@ public class PhotoTagDAO {
     @MapsId("photoId")
     @JoinColumn(name = "photo_id", insertable = false, updatable = false)
     private PhotoDAO photo;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryDAO category;
 }
-
-
-
