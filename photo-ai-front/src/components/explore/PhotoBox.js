@@ -11,14 +11,14 @@ const PhotoBox = ({ imageUrl, photoId }) => {
 
   return (
     <Card 
-      sx={{ minWidth: 150, minHeight: 200, m: 1, borderRadius: 2, cursor: 'pointer' }}
+      sx={{ Width: 250, Height: 150, m: 1, borderRadius: 2, cursor: 'pointer' }}
       onClick={handleClick}
     >
       <CardMedia
         component="img"
         image={imageUrl}
         alt="Photo"
-        sx={{ height: '200px', width: '150px', objectFit: 'cover', borderRadius: 2 }}
+        sx={{ height: '150px', width: '250px', objectFit: 'cover', borderRadius: 2 }}
       />
     </Card>
   );

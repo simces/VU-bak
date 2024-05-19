@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const SeeMoreBox = ({ onClick, loading }) => (
   <Card
-    sx={{ minWidth: 150, minHeight: 200, m: 1, borderRadius: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}
+    sx={{  width: 250, height: 150, m: 1, borderRadius: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }}
     onClick={onClick}
   >
     <CardContent>
