@@ -39,7 +39,11 @@ const HotContent = () => {
       <Grid container spacing={2}>
         {hotPhotos.map((photo, index) => (
           <Grid item key={index}>
-            <ContentBox imageUrl={photo.imageUrl} likeCount={photo.likeCount} />
+            <ContentBox 
+              id={photo.id}
+              imageUrl={photo.imageUrl} 
+              likeCount={photo.likeCount} 
+            />
           </Grid>
         ))}
         <Grid item>
