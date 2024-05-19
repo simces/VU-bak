@@ -7,18 +7,11 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PhotoDTO {
+@NoArgsConstructor
+public class NewPhotoDTO {
+
     private Long id;
-    private Long userId;
-    private String title;
-    private String description;
     private String imageUrl;
     private Timestamp uploadedAt;
-    private Long deviceId;
-    private Double latitude;
-    private Double longitude;
-
 }
-

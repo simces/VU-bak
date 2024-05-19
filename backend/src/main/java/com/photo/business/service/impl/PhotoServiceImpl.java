@@ -5,27 +5,22 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.photo.business.mappers.PhotoMapper;
 import com.photo.business.mappers.UserMapper;
-import com.photo.business.repository.LikeRepository;
-import com.photo.business.repository.PhotoRepository;
-import com.photo.business.repository.UserDeviceRepository;
-import com.photo.business.repository.UserRepository;
+import com.photo.business.repository.*;
 import com.photo.business.repository.model.PhotoDAO;
 import com.photo.business.repository.model.UserDAO;
 import com.photo.business.repository.model.UserDeviceDAO;
 import com.photo.business.service.PhotoService;
 import com.photo.business.service.TagService;
-import com.photo.model.photos.FullPhotoDTO;
-import com.photo.model.photos.HotPhotoDTO;
-import com.photo.model.photos.PhotoDTO;
-import com.photo.model.photos.PhotoResponseDTO;
+import com.photo.model.photos.*;
 import com.photo.model.tags.TagDTO;
 import com.photo.model.users.UserBasicDetailsDTO;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
@@ -59,9 +54,10 @@ public class PhotoServiceImpl implements PhotoService {
     private final UserDeviceRepository userDeviceRepository;
     private final GeocodingService geocodingService;
     private final LikeRepository likeRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
-    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper, UserDeviceRepository userDeviceRepository, GeocodingService geocodingService, LikeRepository likeRepository) {
+    public PhotoServiceImpl(PhotoRepository photoRepository, PhotoMapper photoMapper, UserRepository userRepository, AmazonS3 s3client, PhotoTaggingService photoTaggingService, TagService tagService, UserMapper userMapper, UserDeviceRepository userDeviceRepository, GeocodingService geocodingService, LikeRepository likeRepository, CommentRepository commentRepository) {
         this.photoRepository = photoRepository;
         this.photoMapper = photoMapper;
         this.userRepository = userRepository;
@@ -72,6 +68,7 @@ public class PhotoServiceImpl implements PhotoService {
         this.userDeviceRepository = userDeviceRepository;
         this.geocodingService = geocodingService;
         this.likeRepository = likeRepository;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -182,16 +179,54 @@ public class PhotoServiceImpl implements PhotoService {
     @Override
     public List<HotPhotoDTO> getHotPhotos(int page, int size) {
         LocalDateTime cutoffTime = LocalDateTime.now().minusHours(24);
-        Pageable pageable = PageRequest.of(page, size);
 
-        List<PhotoDAO> recentPhotos = photoRepository.findRecentPhotos(cutoffTime, pageable);
+        List<PhotoDAO> recentPhotos = photoRepository.findRecentPhotos(cutoffTime);
 
-        return recentPhotos.stream()
+        List<HotPhotoDTO> hotPhotoDTOs = recentPhotos.stream()
                 .map(photo -> {
                     Long likeCount = likeRepository.countByPhotoId(photo.getId());
                     return new HotPhotoDTO(photo.getId(), photo.getImageUrl(), likeCount);
                 })
                 .sorted((p1, p2) -> Long.compare(p2.getLikeCount(), p1.getLikeCount()))
                 .collect(Collectors.toList());
+
+        int start = Math.min(page * size, hotPhotoDTOs.size());
+        int end = Math.min((page * size) + size, hotPhotoDTOs.size());
+        return hotPhotoDTOs.subList(start, end);
+    }
+
+    @Override
+    public Page<PhotoRankDTO> getTopRankedPhotos(Pageable pageable) {
+        List<PhotoDAO> allPhotos = photoRepository.findAll();
+        List<PhotoRankDTO> photoRankDTOs = allPhotos.stream().map(photo -> {
+            Long likeCount = likeRepository.countByPhotoId(photo.getId());
+            Long commentCount = commentRepository.countByPhotoId(photo.getId());
+            return new PhotoRankDTO(photo.getId(), photo.getImageUrl(), likeCount, commentCount);
+        }).toList();
+
+        List<PhotoRankDTO> sortedPhotoRankDTOs = photoRankDTOs.stream()
+                .sorted((a, b) -> {
+                    Long aTotal = a.getLikeCount() + a.getCommentCount();
+                    Long bTotal = b.getLikeCount() + b.getCommentCount();
+                    return bTotal.compareTo(aTotal);
+                })
+                .collect(Collectors.toList());
+
+        int start = Math.min((int) pageable.getOffset(), sortedPhotoRankDTOs.size());
+        int end = Math.min((start + pageable.getPageSize()), sortedPhotoRankDTOs.size());
+        List<PhotoRankDTO> paginatedList = sortedPhotoRankDTOs.subList(start, end);
+
+        return new PageImpl<>(paginatedList, pageable, sortedPhotoRankDTOs.size());
+    }
+
+    @Override
+    public Page<NewPhotoDTO> getNewPhotos(Pageable pageable) {
+        Page<PhotoDAO> photos = photoRepository.findAllByOrderByUploadedAtDesc(pageable);
+        List<NewPhotoDTO> photoDTOs = photos.stream().map(photo -> new NewPhotoDTO(
+                photo.getId(),
+                photo.getImageUrl(),
+                photo.getUploadedAt()
+        )).collect(Collectors.toList());
+        return new PageImpl<>(photoDTOs, pageable, photos.getTotalElements());
     }
 }

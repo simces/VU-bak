@@ -1,13 +1,14 @@
 package com.photo.controller;
 
 import com.photo.business.service.PhotoService;
-import com.photo.model.photos.FullPhotoDTO;
-import com.photo.model.photos.HotPhotoDTO;
-import com.photo.model.photos.PhotoDTO;
-import com.photo.model.photos.PhotoResponseDTO;
+import com.photo.model.photos.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,5 +78,18 @@ public class PhotoController {
     public List<HotPhotoDTO> getHotPhotos(@RequestParam int page, @RequestParam int size) {
         return photoService.getHotPhotos(page, size);
     }
-}
 
+    @GetMapping("/top")
+    public ResponseEntity<Page<PhotoRankDTO>> getTopRankedPhotos(@RequestParam int page, @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<PhotoRankDTO> topRankedPhotos = photoService.getTopRankedPhotos(pageable);
+        return new ResponseEntity<>(topRankedPhotos, HttpStatus.OK);
+    }
+
+    @GetMapping("/new")
+    public ResponseEntity<Page<NewPhotoDTO>> getNewPhotos(@RequestParam int page, @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<NewPhotoDTO> newPhotos = photoService.getNewPhotos(pageable);
+        return new ResponseEntity<>(newPhotos, HttpStatus.OK);
+    }
+}

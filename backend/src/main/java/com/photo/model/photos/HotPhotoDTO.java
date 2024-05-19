@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HotPhotoDTO {
 
-    private Long photoId;
+    private Long id;
     private String imageUrl;
     private Long likeCount;
 }

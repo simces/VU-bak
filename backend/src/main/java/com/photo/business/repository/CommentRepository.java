@@ -16,5 +16,7 @@ public interface CommentRepository extends JpaRepository<CommentDAO, Long> {
     Optional<CommentDAO> findById(Long id);
 
     void deleteByPhotoId(Long photoId);
+
+    Long countByPhotoId(Long photoId);
 }
 
