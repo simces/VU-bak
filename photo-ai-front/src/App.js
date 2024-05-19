@@ -13,6 +13,7 @@ import Feed from './pages/Feed';
 import HomeScreen from './pages/HomeScreen';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
+import Explore from './pages/Explore';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/photos/:photoId" element={<PhotoDetails />} />
           <Route path="/edit-profile" element={<ChangeDetails />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/explore" element={<Explore />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

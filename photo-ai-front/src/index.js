@@ -11,9 +11,13 @@ const root = ReactDOM.createRoot(rootElement);
 Modal.setAppElement(rootElement);
 
 root.render(
-  <React.StrictMode>
+  
+  // otherwise, for some reason, renders the initial 
+  // cards twice in the /explore page
+
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 reportWebVitals();
