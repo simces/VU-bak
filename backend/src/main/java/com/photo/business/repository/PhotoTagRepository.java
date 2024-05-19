@@ -3,6 +3,7 @@ package com.photo.business.repository;
 import com.photo.business.repository.keys.PhotoTagId;
 import com.photo.business.repository.model.CategoryDAO;
 import com.photo.business.repository.model.PhotoTagDAO;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,5 +17,5 @@ public interface PhotoTagRepository extends JpaRepository<PhotoTagDAO, PhotoTagI
 
     int countByCategory(CategoryDAO category);
 
-    List<PhotoTagDAO> findByCategoryIdIn(List<Long> categoryIds, Pageable pageable);
+    Page<PhotoTagDAO> findByCategoryIdIn(List<Long> categoryIds, Pageable pageable);
 }

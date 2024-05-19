@@ -3,7 +3,6 @@ package com.photo.controller;
 import com.photo.business.service.impl.CategoryService;
 import com.photo.model.CategoryWithCountDTO;
 import com.photo.model.photos.SimplePhotoDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,17 +11,23 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/top-level")
-    public List<CategoryWithCountDTO> getTopLevelCategories(@RequestParam int page, @RequestParam int size) {
+    public List<CategoryWithCountDTO> getTopLevelCategories(@RequestParam int page,
+                                                            @RequestParam int size) {
         return categoryService.getTopLevelCategoriesWithCounts(page, size);
     }
 
     @GetMapping("/{parentCategoryName}/subcategories")
-    public Object getSubcategories(@PathVariable String parentCategoryName) {
-        return categoryService.getPhotosOrSubcategories(parentCategoryName, 0, 10);
+    public Object getSubcategories(@PathVariable String parentCategoryName,
+                                   @RequestParam int page,
+                                   @RequestParam int size) {
+        return categoryService.getPhotosOrSubcategories(parentCategoryName, page, size);
     }
 
     @GetMapping("/{categoryName}/content")
@@ -31,15 +36,4 @@ public class CategoryController {
                                           @RequestParam int size) {
         return categoryService.getAllPhotosByCategory(categoryName, page, size);
     }
-
-    @GetMapping("/{categoryName}/all-photos")
-    public List<SimplePhotoDTO> getAllPhotos(@PathVariable String categoryName,
-                                             @RequestParam int page,
-                                             @RequestParam int size) {
-        return categoryService.getAllPhotosByCategory(categoryName, page, size);
-    }
 }
-
-
-
-

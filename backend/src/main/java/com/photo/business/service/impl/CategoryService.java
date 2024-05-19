@@ -29,26 +29,38 @@ public class CategoryService {
     }
 
     public List<CategoryWithCountDTO> getTopLevelCategoriesWithCounts(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<CategoryDAO> topLevelCategories = categoryRepository.findByParentIsNull(pageable);
-        return topLevelCategories.stream()
-                .map(this::mapToCategoryWithCountDTO)
-                .sorted(Comparator.comparing(CategoryWithCountDTO::getPhotoCount).reversed())
-                .collect(Collectors.toList());
-    }
+        List<CategoryDAO> topLevelCategories = categoryRepository.findTopLevelCategories();
 
+        List<CategoryWithCountDTO> categoryWithCountDTOs = topLevelCategories.stream()
+                .map(this::mapToCategoryWithCountDTO)
+                .sorted(Comparator.comparingInt(CategoryWithCountDTO::getPhotoCount).reversed())
+                .collect(Collectors.toList());
+
+        int start = Math.min(page * size, categoryWithCountDTOs.size());
+        int end = Math.min((page + 1) * size, categoryWithCountDTOs.size());
+
+        return categoryWithCountDTOs.subList(start, end);
+    }
 
     public Object getPhotosOrSubcategories(String categoryName, int page, int size) {
         CategoryDAO category = findCategoryByName(categoryName);
-        List<CategoryDAO> subcategories = categoryRepository.findByParent(category);
+        List<CategoryDAO> subcategories = categoryRepository.findSubcategories(category);
 
         if (subcategories.isEmpty()) {
             return getAllPhotosByCategory(categoryName, page, size);
         } else {
-            return subcategories.stream()
+            List<CategoryWithCountDTO> results = new ArrayList<>();
+            int totalPhotoCount = countPhotosInCategory(category);
+            results.add(new CategoryWithCountDTO("View All", totalPhotoCount)); // Add "View All" card
+            results.addAll(subcategories.stream()
                     .map(this::mapToCategoryWithCountDTO)
-                    .sorted(Comparator.comparing(CategoryWithCountDTO::getPhotoCount).reversed())
-                    .collect(Collectors.toList());
+                    .sorted(Comparator.comparingInt(CategoryWithCountDTO::getPhotoCount).reversed())
+                    .collect(Collectors.toList()));
+
+            int start = Math.min(page * size, results.size());
+            int end = Math.min((page + 1) * size, results.size());
+
+            return results.subList(start, end);
         }
     }
 
@@ -56,7 +68,7 @@ public class CategoryService {
         CategoryDAO category = findCategoryByName(categoryName);
         List<Long> categoryIds = getCategoryIdsIncludingSubcategories(category);
         Pageable pageable = PageRequest.of(page, size);
-        List<PhotoTagDAO> photoTags = photoTagRepository.findByCategoryIdIn(categoryIds, pageable);
+        Page<PhotoTagDAO> photoTags = photoTagRepository.findByCategoryIdIn(categoryIds, pageable);
         return photoTags.stream()
                 .map(photoTag -> new SimplePhotoDTO(photoTag.getPhoto()))
                 .collect(Collectors.toList());

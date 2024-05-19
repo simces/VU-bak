@@ -19,7 +19,9 @@ public interface CategoryRepository extends JpaRepository<CategoryDAO, Long> {
 
     Optional<CategoryDAO> findByName(String name);
 
-    Page<CategoryDAO> findByParentIsNull(Pageable pageable);
+    @Query("SELECT c FROM CategoryDAO c WHERE c.parent IS NULL")
+    List<CategoryDAO> findTopLevelCategories();
 
-    List<CategoryDAO> findByParent(CategoryDAO parent);
+    @Query("SELECT c FROM CategoryDAO c WHERE c.parent = :parent")
+    List<CategoryDAO> findSubcategories(@Param("parent") CategoryDAO parent);
 }
