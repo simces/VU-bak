@@ -1,10 +1,8 @@
 package com.photo.controller;
 
 import com.photo.business.service.PhotoService;
-import com.photo.business.service.TagService;
-import com.photo.business.service.UserService;
-import com.photo.business.service.impl.GeocodingService;
 import com.photo.model.photos.FullPhotoDTO;
+import com.photo.model.photos.HotPhotoDTO;
 import com.photo.model.photos.PhotoDTO;
 import com.photo.model.photos.PhotoResponseDTO;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 
 @RestController
@@ -24,7 +24,7 @@ public class PhotoController {
 
     private static final Logger logger = LogManager.getLogger(PhotoController.class);
 
-    public PhotoController(PhotoService photoService, UserService userService, TagService tagService, GeocodingService geocodingService) {
+    public PhotoController(PhotoService photoService) {
         this.photoService = photoService;
     }
 
@@ -71,6 +71,11 @@ public class PhotoController {
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/hot")
+    public List<HotPhotoDTO> getHotPhotos(@RequestParam int page, @RequestParam int size) {
+        return photoService.getHotPhotos(page, size);
     }
 }
 

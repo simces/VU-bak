@@ -17,4 +17,7 @@ public interface LikeRepository extends JpaRepository<LikeDAO, Long> {
     List<UserDAO> findUsersByLikedPhoto(@Param("photoId") Long photoId);
 
     void deleteByPhotoId(Long photoId);
+
+    @Query("SELECT COUNT(l) FROM LikeDAO l WHERE l.photo.id = :photoId")
+    Long countByPhotoId(Long photoId);
 }
