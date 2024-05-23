@@ -32,6 +32,8 @@ CREATE TABLE photos (
                         image_url VARCHAR(255) NOT NULL,
                         uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         device_id BIGINT,
+                        latitude VARCHAR(20),
+                        longitude VARCHAR(20),
                         FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -71,9 +73,15 @@ CREATE TABLE photo_tag (
                           photo_id BIGINT NOT NULL,
                           tag_id BIGINT NOT NULL,
                           confidence DECIMAL(10, 9),
+                          category_id BIGINT NOT NULL,
                           PRIMARY KEY (photo_id, tag_id),
                           FOREIGN KEY (photo_id) REFERENCES photos(id),
                           FOREIGN KEY (tag_id) REFERENCES tag(id)
+);
+
+CREATE TABLE tag_hierarchy (
+                        tag_id BIGINT NOT NULL,
+                        path_element VARCHAR(50)
 );
 
 CREATE TABLE audits (
@@ -86,3 +94,9 @@ CREATE TABLE audits (
                                   data_after JSON NULL,
                                   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE category (
+                                  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                  name VARCHAR (50) NOT NULL,
+                                  parent_id BIGINT
+)
