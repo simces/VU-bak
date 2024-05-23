@@ -1,0 +1,63 @@
+.admin-container {
+    width: 90vw; 
+    margin: 0 auto; 
+}
+
+.admin-header, .tab-list, .tab-content {
+    width: 100%; 
+}
+
+.admin-header {
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logged-in-as {
+    text-align: center;
+    font-size: 16px;
+    color: grey;
+    margin-bottom: 20px; 
+}
+
+.tab-list {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.tab {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    background-color: #333; 
+    border: none;
+    transition: background-color 0.3s;
+    min-width: 100px; 
+    white-space: nowrap; 
+}
+
+.tab.active {
+    background-color: #555; 
+    font-weight: bold; 
+}
+
+.tab-content {
+    padding: 20px;  
+    background-color: white;
+    color: black;
+    border-top: 1px solid #ccc;
+    min-height: 500px;
+    overflow-y: auto; 
+    box-sizing: border-box; 
+    width: 100%; 
+    max-height: 750px;
+}
+

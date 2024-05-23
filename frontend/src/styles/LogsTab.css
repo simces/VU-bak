@@ -1,0 +1,42 @@
+.logs-container {
+    margin: 20px;
+    font-size: 0.9rem;
+    overflow-y: auto;  
+    max-height: 90vh;  
+}
+
+
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.toggle-details {
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.log-details {
+    background-color: #f9f9f9;
+}
+
+
+.log-details td {
+    padding: 15px;
+    border-top: 2px solid #ddd;
+    white-space: pre-wrap; 
+}

@@ -1,0 +1,51 @@
+.diff-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    gap: 0 1%;
+    align-items: start;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.field-name {
+    font-weight: bold;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+.before, .after {
+    padding: 8px;
+    border: 1px solid #ccc;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.unchanged { 
+    background-color: transparent;
+}
+
+.changed-before { 
+    background-color: #f0f0f0;
+}
+
+.added { 
+    background-color: #ddffdd;
+}
+
+.removed { 
+    background-color: #ffdddd;
+}
+
+.changed-after { 
+    background-color: #ffcc99;
+}

@@ -1,0 +1,73 @@
+.user-profile {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .profile-info .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info h2, .bio {
+    margin: 10px 0;
+    text-align: center;
+    color: #666; 
+  }
+  
+  .bio {
+    font-size: 18px; 
+  }
+  
+  .gallery h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .my-masonry-grid {
+    display: flex;
+    margin-left: -30px; 
+    width: auto;
+  }
+  
+  .my-masonry-grid_column {
+    padding-left: 30px; 
+    background-clip: padding-box;
+  }
+  
+  .my-masonry-grid_column > div {
+    margin-bottom: 30px;
+  }
+  
+  .my-masonry-grid_column > div > img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .my-masonry-grid_column > div > img:hover {
+    transform: scale(1.05);
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    height: auto;
+    overflow-y: auto; 
+  }
+  
+  
+  
