@@ -5,7 +5,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey; 
+    background-color: #f8f9fa; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   }
   
@@ -17,12 +17,13 @@ body, html {
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     text-align: center;
+    background-color: #e0e0e0; /* Light grey background to make it pop */
   }
   
   .form-container h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem; 
-    color: #ffffff; 
+    color: #343a40; 
   }
   
   .form-container form > div {
@@ -33,7 +34,7 @@ body, html {
     display: block;
     margin-bottom: .5rem;
     font-size: 1rem;
-    color: #ffffff;
+    color: #495057;
   }
   
   .form-container input[type="text"],
@@ -51,9 +52,9 @@ body, html {
   .form-container input[type="text"]:focus,
   .form-container input[type="email"]:focus,
   .form-container input[type="password"]:focus {
-    border-color: #5a6268;
+    border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(130,138,145,.25); 
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); 
   }
   
   .form-container button {
@@ -71,5 +72,10 @@ body, html {
   
   .form-container button:hover {
     background-color: #343a40;
+  }
+  
+  .form-container p {
+    margin-top: 1rem;
+    color: #dc3545;
   }
   

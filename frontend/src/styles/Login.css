@@ -5,15 +5,15 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e9ecef; 
+  background-color: lightgrey; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 
 .login-container {
-  width: 60vw;
+  width: 80vw;
   max-width: 400px;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: #6c757d;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   text-align: center;
@@ -22,7 +22,7 @@ body, html {
 .login-container h2 {
   margin-bottom: 1.5rem;
   font-size: 2rem; 
-  color: #495057; 
+  color: #ffffff; 
 }
 
 .login-container form > div {
@@ -33,7 +33,7 @@ body, html {
   display: block;
   margin-bottom: .5rem;
   font-size: 1rem;
-  color: #6c757d;
+  color: #ffffff;
 }
 
 .login-container input[type="text"],
@@ -49,16 +49,16 @@ body, html {
 
 .login-container input[type="text"]:focus,
 .login-container input[type="password"]:focus {
-  border-color: #80bdff;
+  border-color: #5a6268;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); 
+  box-shadow: 0 0 0 0.2rem rgba(130,138,145,.25); 
 }
 
 .login-container button {
   width: 100%;
   padding: 10px;
   margin-top: 1rem;
-  background-color: #007bff; 
+  background-color: #495057; 
   color: white;
   font-size: 1.1rem; 
   border: none;
@@ -68,5 +68,5 @@ body, html {
 }
 
 .login-container button:hover {
-  background-color: #0056b3;
+  background-color: #343a40;
 }

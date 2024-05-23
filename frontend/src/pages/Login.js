@@ -1,3 +1,4 @@
+// src/Login.js
 import React, { useState } from 'react';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +12,6 @@ const Login = () => {
     event.preventDefault();
     
     try {
-
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -20,9 +20,8 @@ const Login = () => {
 
       if (response.ok) {
         const { token } = await response.json();
-        localStorage.setItem('token', token); // Store the JWT token
-        navigate('/home');
-
+        localStorage.setItem('token', token);
+        navigate(`/users/${username}`);
       } else {
         alert('Authentication failed!');
       }
@@ -31,7 +30,6 @@ const Login = () => {
       console.error('Login error:', error);
       alert('Login error');
     }
-
   };
 
   return (
@@ -60,7 +58,6 @@ const Login = () => {
       </form>
     </div>
   );
-  
 };
 
 export default Login;

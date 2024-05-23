@@ -1,28 +1,25 @@
-// src/HomeScreen.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/HomeScreen.css';
 
-import photo1 from '../assets/1.png';
-import photo2 from '../assets/2.png';
-import photo3 from '../assets/3.png';
-import photo4 from '../assets/4.png';
+import photo1 from '../assets/foto.jpg';
+import photo2 from '../assets/23.jpg';
+import photo3 from '../assets/34.jpg';
 
 const Header = () => (
-    <div className="header">
-      <a href="/signup">Sign Up</a>
-      <span className="divider"></span>
-      <a href="/login">Log In</a>
-    </div>
-  );
-  
+  <div className="header">
+    <a href="/register">Sign Up</a>
+    <span className="divider"></span>
+    <a href="/login">Log In</a>
+  </div>
+);
 
 const MainContent = () => (
-    <div className="main-content">
-      <h1>Lorem ipsum dolor sit amet, consectetur (...)</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  );  
-  
+  <div className="main-content">
+    <h1>Žyminatorius</h1>
+    <p>Discover an innovative way to manage and explore photo collections with advanced AI features. Experience seamless search, tagging, and location-based viewing like never before.</p>
+  </div>
+);
+
 const ImageComponent = ({ image, text }) => (
   <div className="image-component">
     <img src={image} alt={text} />
@@ -32,42 +29,15 @@ const ImageComponent = ({ image, text }) => (
 
 const ImageGrid = () => (
   <div className="image-grid">
-    {[photo1, photo2, photo3, photo4].map((image, index) => (
-      <ImageComponent key={index} image={image} text={`Component ${index + 1}`} />
-    ))}
+    <ImageComponent image={photo1} text="AI Photo Tagging" />
+    <ImageComponent image={photo2} text="Dynamic Search" />
+    <ImageComponent image={photo3} text="Location Viewing" />
   </div>
 );
 
 function HomeScreen() {
-  const backgrounds = [photo1, photo2, photo3, photo4];
-  const [currentBackground, setCurrentBackground] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentBackground((currentBackground) => (currentBackground + 1) % backgrounds.length);
-    }, 10000);
-
-    const handleScroll = () => {
-      if (!isScrolled && window.scrollY > 0) {
-        window.scrollTo({
-          top: window.innerHeight,
-          behavior: "smooth"
-        });
-        setIsScrolled(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      clearInterval(intervalId);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isScrolled, backgrounds.length]);
-
   return (
-    <div className="home-screen" style={{ backgroundImage: `url(${backgrounds[currentBackground]})` }}>
+    <div className="home-screen" style={{ backgroundImage: `url(${photo1})` }}>
       <Header />
       <MainContent />
       <ImageGrid />
